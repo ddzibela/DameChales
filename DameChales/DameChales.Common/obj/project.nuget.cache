@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "f8YYrLxlEnbhHTDu2Ol2BsxunoXosN/jvctekyasGAVRA92NCEFREbxnyWbYBP73JtrnAHQH9KbLphhbauOV0Q==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\denis\\source\\repos\\iw5-2022-team-xkubic45\\DameChales\\DameChales.Common\\DameChales.Common.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\denis\\.nuget\\packages\\automapper\\12.0.0\\automapper.12.0.0.nupkg.sha512",
+    "C:\\Users\\denis\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512"
+  ],
+  "logs": []
+}
