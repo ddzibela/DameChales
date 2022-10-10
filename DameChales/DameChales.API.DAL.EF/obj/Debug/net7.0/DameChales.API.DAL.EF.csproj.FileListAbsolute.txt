@@ -1,0 +1,17 @@
+C:\Users\denis\source\repos\iw5-2022-team-xkubic45\DameChales\DameChales.API.DAL.EF\bin\Debug\net7.0\DameChales.API.DAL.EF.deps.json
+C:\Users\denis\source\repos\iw5-2022-team-xkubic45\DameChales\DameChales.API.DAL.EF\bin\Debug\net7.0\DameChales.API.DAL.EF.dll
+C:\Users\denis\source\repos\iw5-2022-team-xkubic45\DameChales\DameChales.API.DAL.EF\bin\Debug\net7.0\DameChales.API.DAL.EF.pdb
+C:\Users\denis\source\repos\iw5-2022-team-xkubic45\DameChales\DameChales.API.DAL.EF\bin\Debug\net7.0\DameChales.API.DAL.Common.dll
+C:\Users\denis\source\repos\iw5-2022-team-xkubic45\DameChales\DameChales.API.DAL.EF\bin\Debug\net7.0\DameChales.Common.dll
+C:\Users\denis\source\repos\iw5-2022-team-xkubic45\DameChales\DameChales.API.DAL.EF\bin\Debug\net7.0\DameChales.Common.pdb
+C:\Users\denis\source\repos\iw5-2022-team-xkubic45\DameChales\DameChales.API.DAL.EF\bin\Debug\net7.0\DameChales.API.DAL.Common.pdb
+C:\Users\denis\source\repos\iw5-2022-team-xkubic45\DameChales\DameChales.API.DAL.EF\obj\Debug\net7.0\DameChales.API.DAL.EF.csproj.AssemblyReference.cache
+C:\Users\denis\source\repos\iw5-2022-team-xkubic45\DameChales\DameChales.API.DAL.EF\obj\Debug\net7.0\DameChales.API.DAL.EF.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\denis\source\repos\iw5-2022-team-xkubic45\DameChales\DameChales.API.DAL.EF\obj\Debug\net7.0\DameChales.API.DAL.EF.AssemblyInfoInputs.cache
+C:\Users\denis\source\repos\iw5-2022-team-xkubic45\DameChales\DameChales.API.DAL.EF\obj\Debug\net7.0\DameChales.API.DAL.EF.AssemblyInfo.cs
+C:\Users\denis\source\repos\iw5-2022-team-xkubic45\DameChales\DameChales.API.DAL.EF\obj\Debug\net7.0\DameChales.API.DAL.EF.csproj.CoreCompileInputs.cache
+C:\Users\denis\source\repos\iw5-2022-team-xkubic45\DameChales\DameChales.API.DAL.EF\obj\Debug\net7.0\DameChales.API.DAL.EF.csproj.CopyComplete
+C:\Users\denis\source\repos\iw5-2022-team-xkubic45\DameChales\DameChales.API.DAL.EF\obj\Debug\net7.0\DameChales.API.DAL.EF.dll
+C:\Users\denis\source\repos\iw5-2022-team-xkubic45\DameChales\DameChales.API.DAL.EF\obj\Debug\net7.0\refint\DameChales.API.DAL.EF.dll
+C:\Users\denis\source\repos\iw5-2022-team-xkubic45\DameChales\DameChales.API.DAL.EF\obj\Debug\net7.0\DameChales.API.DAL.EF.pdb
+C:\Users\denis\source\repos\iw5-2022-team-xkubic45\DameChales\DameChales.API.DAL.EF\obj\Debug\net7.0\ref\DameChales.API.DAL.EF.dll

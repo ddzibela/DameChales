@@ -10,6 +10,9 @@ namespace DameChales.API.DAL.Common.Entities
         public required string PhotoURL { get; set; }
         public required string Description { get; set; }
         public required double Price { get; set; }
+
+        public Guid RestaurantGuid { get; set; }
+        public RestaurantEntity? Restaurant { get; set; }
         //TODO alergens
     }
 
