@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using AutoMapper;
+using DameChales.Common.Enums;
 
 namespace DameChales.API.DAL.Common.Entities
 {
@@ -13,7 +14,7 @@ namespace DameChales.API.DAL.Common.Entities
 
         public Guid RestaurantGuid { get; set; }
         public RestaurantEntity? Restaurant { get; set; }
-        //TODO alergens
+        public ICollection<Alergens> alergens { get; set; } = new List<Alergens>();
     }
 
     public class FoodEntityMapperProfile : Profile

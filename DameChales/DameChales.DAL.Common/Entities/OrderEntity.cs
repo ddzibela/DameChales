@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using AutoMapper;
+using DameChales.Common.Enums;
 
 namespace DameChales.API.DAL.Common.Entities
 {
@@ -10,7 +11,7 @@ namespace DameChales.API.DAL.Common.Entities
         public RestaurantEntity? RestaurantEntity { get; set; }
         public required DateTime DeliveryTime { get; set; }
         public required string Note { get; set; }
-        //TODO add order status
+        public required OrderStatus Status { get; set; }
     }
 
     public class OrderEntityMapperProfile : Profile
