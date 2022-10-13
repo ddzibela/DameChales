@@ -18,6 +18,19 @@
           }
         }
       },
+      "AutoMapper.Extensions.Microsoft.DependencyInjection/12.0.0": {
+        "type": "package",
+        "dependencies": {
+          "AutoMapper": "12.0.0",
+          "Microsoft.Extensions.Options": "6.0.0"
+        },
+        "compile": {
+          "lib/netstandard2.1/AutoMapper.Extensions.Microsoft.DependencyInjection.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.1/AutoMapper.Extensions.Microsoft.DependencyInjection.dll": {}
+        }
+      },
       "Microsoft.AspNetCore.Authentication.Abstractions/2.2.0": {
         "type": "package",
         "dependencies": {
@@ -625,10 +638,14 @@
           "buildTransitive/netcoreapp3.1/_._": {}
         }
       },
-      "Microsoft.Extensions.DependencyModel/3.1.6": {
+      "Microsoft.Extensions.DependencyModel/6.0.0": {
         "type": "package",
         "dependencies": {
-          "System.Text.Json": "4.7.2"
+          "System.Buffers": "4.5.1",
+          "System.Memory": "4.5.4",
+          "System.Runtime.CompilerServices.Unsafe": "6.0.0",
+          "System.Text.Encodings.Web": "6.0.0",
+          "System.Text.Json": "6.0.0"
         },
         "compile": {
           "lib/netstandard2.0/Microsoft.Extensions.DependencyModel.dll": {
@@ -970,19 +987,19 @@
           }
         }
       },
-      "Scrutor/3.3.0": {
+      "Scrutor/4.2.0": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "3.1.9",
-          "Microsoft.Extensions.DependencyModel": "3.1.6"
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "6.0.0",
+          "Microsoft.Extensions.DependencyModel": "6.0.0"
         },
         "compile": {
-          "lib/netcoreapp3.1/Scrutor.dll": {
+          "lib/net6.0/Scrutor.dll": {
             "related": ".pdb;.xml"
           }
         },
         "runtime": {
-          "lib/netcoreapp3.1/Scrutor.dll": {
+          "lib/net6.0/Scrutor.dll": {
             "related": ".pdb;.xml"
           }
         }
@@ -1001,7 +1018,7 @@
           "lib/net5.0/Scrutor.AspNetCore.dll": {}
         }
       },
-      "System.Buffers/4.5.0": {
+      "System.Buffers/4.5.1": {
         "type": "package",
         "compile": {
           "ref/netcoreapp2.0/_._": {}
@@ -1105,6 +1122,15 @@
           "lib/netstandard2.0/System.IdentityModel.Tokens.Jwt.dll": {
             "related": ".xml"
           }
+        }
+      },
+      "System.Memory/4.5.4": {
+        "type": "package",
+        "compile": {
+          "ref/netcoreapp2.1/_._": {}
+        },
+        "runtime": {
+          "lib/netcoreapp2.1/_._": {}
         }
       },
       "System.Runtime.Caching/4.7.0": {
@@ -1347,7 +1373,9 @@
         "framework": ".NETCoreApp,Version=v7.0",
         "dependencies": {
           "AutoMapper": "12.0.0",
-          "DameChales.Common": "1.0.0"
+          "AutoMapper.Extensions.Microsoft.DependencyInjection": "12.0.0",
+          "DameChales.Common": "1.0.0",
+          "Scrutor": "4.2.0"
         },
         "compile": {
           "bin/placeholder/DameChales.API.DAL.Common.dll": {}
@@ -1385,6 +1413,20 @@
         "icon.png",
         "lib/netstandard2.1/AutoMapper.dll",
         "lib/netstandard2.1/AutoMapper.xml"
+      ]
+    },
+    "AutoMapper.Extensions.Microsoft.DependencyInjection/12.0.0": {
+      "sha512": "XCJ4E3oKrbRl1qY9Mr+7uyC0xZj1+bqQjmQRWTiTKiVuuXTny+7YFWHi20tPjwkMukLbicN6yGlDy5PZ4wyi1w==",
+      "type": "package",
+      "path": "automapper.extensions.microsoft.dependencyinjection/12.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "automapper.extensions.microsoft.dependencyinjection.12.0.0.nupkg.sha512",
+        "automapper.extensions.microsoft.dependencyinjection.nuspec",
+        "icon.png",
+        "lib/netstandard2.1/AutoMapper.Extensions.Microsoft.DependencyInjection.dll"
       ]
     },
     "Microsoft.AspNetCore.Authentication.Abstractions/2.2.0": {
@@ -2011,26 +2053,23 @@
         "useSharedDesignerContext.txt"
       ]
     },
-    "Microsoft.Extensions.DependencyModel/3.1.6": {
-      "sha512": "/UlDKULIVkLQYn1BaHcy/rc91ApDxJb7T75HcCbGdqwvxhnRQRKM2di1E70iCPMF9zsr6f4EgQTotBGxFIfXmw==",
+    "Microsoft.Extensions.DependencyModel/6.0.0": {
+      "sha512": "TD5QHg98m3+QhgEV1YVoNMl5KtBw/4rjfxLHO0e/YV9bPUBDKntApP4xdrVtGgCeQZHVfC2EXIGsdpRNrr87Pg==",
       "type": "package",
-      "path": "microsoft.extensions.dependencymodel/3.1.6",
+      "path": "microsoft.extensions.dependencymodel/6.0.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "Icon.png",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
-        "lib/net451/Microsoft.Extensions.DependencyModel.dll",
-        "lib/net451/Microsoft.Extensions.DependencyModel.xml",
-        "lib/netstandard1.3/Microsoft.Extensions.DependencyModel.dll",
-        "lib/netstandard1.3/Microsoft.Extensions.DependencyModel.xml",
-        "lib/netstandard1.6/Microsoft.Extensions.DependencyModel.dll",
-        "lib/netstandard1.6/Microsoft.Extensions.DependencyModel.xml",
+        "lib/net461/Microsoft.Extensions.DependencyModel.dll",
+        "lib/net461/Microsoft.Extensions.DependencyModel.xml",
         "lib/netstandard2.0/Microsoft.Extensions.DependencyModel.dll",
         "lib/netstandard2.0/Microsoft.Extensions.DependencyModel.xml",
-        "microsoft.extensions.dependencymodel.3.1.6.nupkg.sha512",
-        "microsoft.extensions.dependencymodel.nuspec"
+        "microsoft.extensions.dependencymodel.6.0.0.nupkg.sha512",
+        "microsoft.extensions.dependencymodel.nuspec",
+        "useSharedDesignerContext.txt"
       ]
     },
     "Microsoft.Extensions.FileProviders.Abstractions/6.0.0": {
@@ -2486,23 +2525,26 @@
         "version.txt"
       ]
     },
-    "Scrutor/3.3.0": {
-      "sha512": "BwqCnFzp2/Z+pq17iztxlIkR/ZANyPRR4PdE57WL1w/JW4AM/2imoxBWTL3+G+YXA46ce4s9OUgwWqTXYrtI8A==",
+    "Scrutor/4.2.0": {
+      "sha512": "3A4HE/jetg7hySwrAPJY1G0mc6qo1StlF4y5JuIZOp17ULp0STnFWhIjBL+Qa/2z60y+SQ3xz3qMd9cSGS0qMg==",
       "type": "package",
-      "path": "scrutor/3.3.0",
+      "path": "scrutor/4.2.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "lib/net461/Scrutor.dll",
         "lib/net461/Scrutor.pdb",
         "lib/net461/Scrutor.xml",
+        "lib/net6.0/Scrutor.dll",
+        "lib/net6.0/Scrutor.pdb",
+        "lib/net6.0/Scrutor.xml",
         "lib/netcoreapp3.1/Scrutor.dll",
         "lib/netcoreapp3.1/Scrutor.pdb",
         "lib/netcoreapp3.1/Scrutor.xml",
         "lib/netstandard2.0/Scrutor.dll",
         "lib/netstandard2.0/Scrutor.pdb",
         "lib/netstandard2.0/Scrutor.xml",
-        "scrutor.3.3.0.nupkg.sha512",
+        "scrutor.4.2.0.nupkg.sha512",
         "scrutor.nuspec"
       ]
     },
@@ -2519,15 +2561,17 @@
         "scrutor.aspnetcore.nuspec"
       ]
     },
-    "System.Buffers/4.5.0": {
-      "sha512": "pL2ChpaRRWI/p4LXyy4RgeWlYF2sgfj/pnVMvBqwNFr5cXg7CXNnWZWxrOONLg8VGdFB8oB+EG2Qw4MLgTOe+A==",
+    "System.Buffers/4.5.1": {
+      "sha512": "Rw7ijyl1qqRS0YQD/WycNst8hUUMgrMH4FCn1nNm27M4VxchZ1js3fVjQaANHO5f3sN4isvP4a+Met9Y4YomAg==",
       "type": "package",
-      "path": "system.buffers/4.5.0",
+      "path": "system.buffers/4.5.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
+        "lib/net461/System.Buffers.dll",
+        "lib/net461/System.Buffers.xml",
         "lib/netcoreapp2.0/_._",
         "lib/netstandard1.1/System.Buffers.dll",
         "lib/netstandard1.1/System.Buffers.xml",
@@ -2542,7 +2586,7 @@
         "ref/netstandard2.0/System.Buffers.dll",
         "ref/netstandard2.0/System.Buffers.xml",
         "ref/uap10.0.16299/_._",
-        "system.buffers.4.5.0.nupkg.sha512",
+        "system.buffers.4.5.1.nupkg.sha512",
         "system.buffers.nuspec",
         "useSharedDesignerContext.txt",
         "version.txt"
@@ -2673,6 +2717,29 @@
         "lib/netstandard2.0/System.IdentityModel.Tokens.Jwt.xml",
         "system.identitymodel.tokens.jwt.6.8.0.nupkg.sha512",
         "system.identitymodel.tokens.jwt.nuspec"
+      ]
+    },
+    "System.Memory/4.5.4": {
+      "sha512": "1MbJTHS1lZ4bS4FmsJjnuGJOu88ZzTT2rLvrhW7Ygic+pC0NWA+3hgAen0HRdsocuQXCkUTdFn9yHJJhsijDXw==",
+      "type": "package",
+      "path": "system.memory/4.5.4",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net461/System.Memory.dll",
+        "lib/net461/System.Memory.xml",
+        "lib/netcoreapp2.1/_._",
+        "lib/netstandard1.1/System.Memory.dll",
+        "lib/netstandard1.1/System.Memory.xml",
+        "lib/netstandard2.0/System.Memory.dll",
+        "lib/netstandard2.0/System.Memory.xml",
+        "ref/netcoreapp2.1/_._",
+        "system.memory.4.5.4.nupkg.sha512",
+        "system.memory.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
       ]
     },
     "System.Runtime.Caching/4.7.0": {
@@ -3176,19 +3243,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\denis\\.nuget\\packages\\": {}
+    "C:\\Users\\martinkubicka\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\denis\\source\\repos\\iw5-2022-team-xkubic45\\DameChales\\DameChales.API.DAL.EF\\DameChales.API.DAL.EF.csproj",
+      "projectUniqueName": "C:\\py\\dameChales_iw5\\DameChales\\DameChales.API.DAL.EF\\DameChales.API.DAL.EF.csproj",
       "projectName": "DameChales.API.DAL.EF",
-      "projectPath": "C:\\Users\\denis\\source\\repos\\iw5-2022-team-xkubic45\\DameChales\\DameChales.API.DAL.EF\\DameChales.API.DAL.EF.csproj",
-      "packagesPath": "C:\\Users\\denis\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\denis\\source\\repos\\iw5-2022-team-xkubic45\\DameChales\\DameChales.API.DAL.EF\\obj\\",
+      "projectPath": "C:\\py\\dameChales_iw5\\DameChales\\DameChales.API.DAL.EF\\DameChales.API.DAL.EF.csproj",
+      "packagesPath": "C:\\Users\\martinkubicka\\.nuget\\packages\\",
+      "outputPath": "C:\\py\\dameChales_iw5\\DameChales\\DameChales.API.DAL.EF\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\denis\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\martinkubicka\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -3202,11 +3269,11 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "C:\\Users\\denis\\source\\repos\\iw5-2022-team-xkubic45\\DameChales\\DameChales.Common\\DameChales.Common.csproj": {
-              "projectPath": "C:\\Users\\denis\\source\\repos\\iw5-2022-team-xkubic45\\DameChales\\DameChales.Common\\DameChales.Common.csproj"
+            "C:\\py\\dameChales_iw5\\DameChales\\DameChales.Common\\DameChales.Common.csproj": {
+              "projectPath": "C:\\py\\dameChales_iw5\\DameChales\\DameChales.Common\\DameChales.Common.csproj"
             },
-            "C:\\Users\\denis\\source\\repos\\iw5-2022-team-xkubic45\\DameChales\\DameChales.DAL.Common\\DameChales.API.DAL.Common.csproj": {
-              "projectPath": "C:\\Users\\denis\\source\\repos\\iw5-2022-team-xkubic45\\DameChales\\DameChales.DAL.Common\\DameChales.API.DAL.Common.csproj"
+            "C:\\py\\dameChales_iw5\\DameChales\\DameChales.DAL.Common\\DameChales.API.DAL.Common.csproj": {
+              "projectPath": "C:\\py\\dameChales_iw5\\DameChales\\DameChales.DAL.Common\\DameChales.API.DAL.Common.csproj"
             }
           }
         }
@@ -3262,7 +3329,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100-rc.1.22431.12\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100-preview.7.22377.5\\RuntimeIdentifierGraph.json"
       }
     }
   }

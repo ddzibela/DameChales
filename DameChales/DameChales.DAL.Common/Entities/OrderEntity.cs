@@ -9,7 +9,7 @@ namespace DameChales.API.DAL.Common.Entities
     {
         public Guid RestaurantGuid { get; set; }
         public RestaurantEntity? RestaurantEntity { get; set; }
-        public required DateTime DeliveryTime { get; set; }
+        public required TimeSpan DeliveryTime { get; set; }
         public required string Note { get; set; }
         public required OrderStatus Status { get; set; }
     }
