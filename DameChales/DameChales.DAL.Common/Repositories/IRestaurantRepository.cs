@@ -2,7 +2,7 @@
 
 namespace DameChales.API.DAL.Common.Repositories
 {
-    public interface IRestaurantRepository : IApiRepository<FoodEntity>
+    public interface IRestaurantRepository : IApiRepository<RestaurantEntity>
     {
     }
 }

@@ -12,6 +12,8 @@ namespace DameChales.API.DAL.Common.Entities
         public required TimeSpan DeliveryTime { get; set; }
         public required string Note { get; set; }
         public required OrderStatus Status { get; set; }
+
+        public ICollection<FoodAmountEntity> FoodAmounts { get; set; } = new List<FoodAmountEntity>();
     }
 
     public class OrderEntityMapperProfile : Profile

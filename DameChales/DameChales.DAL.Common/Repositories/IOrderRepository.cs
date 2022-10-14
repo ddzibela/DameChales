@@ -2,7 +2,7 @@
 
 namespace DameChales.API.DAL.Common.Repositories
 {
-    public interface IOrderRepository : IApiRepository<FoodEntity>
+    public interface IOrderRepository : IApiRepository<OrderEntity>
     {
     }
 }
