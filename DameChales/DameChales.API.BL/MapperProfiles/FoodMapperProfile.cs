@@ -8,10 +8,10 @@ namespace DameChales.API.BL.MapperProfiles
     {
         public FoodMapperProfile()
         {
-            CreateMap<IngredientEntity, IngredientListModel>();
-            CreateMap<IngredientEntity, IngredientDetailModel>();
+            CreateMap<FoodEntity, FoodListModel>();
+            CreateMap<FoodEntity, FoodDetailModel>();
 
-            CreateMap<IngredientDetailModel, IngredientEntity>();
+            CreateMap<FoodDetailModel, FoodEntity>();
         }
     }
 }

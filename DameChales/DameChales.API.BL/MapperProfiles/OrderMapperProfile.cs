@@ -1,21 +1,21 @@
 ﻿using AutoMapper;
-using CookBook.Api.DAL.Common.Entities;
-using CookBook.Common.Extensions;
-using CookBook.Common.Models;
+using DameChales.API.DAL.Common.Entities;
+using DameChales.Common.Extensions;
+using DameChales.Common.Models;
 
-namespace CookBook.Api.BL.MapperProfiles
+namespace DameChales.API.BL.MapperProfiles
 {
     public class OrderMapperProfile : Profile
     {
         public OrderMapperProfile()
         {
-            CreateMap<RecipeEntity, RecipeListModel>();
-            CreateMap<RecipeEntity, RecipeDetailModel>()
-                .MapMember(dst => dst.IngredientAmounts, src => src.IngredientAmounts);
-            CreateMap<IngredientAmountEntity, RecipeDetailIngredientModel>();
+            CreateMap<OrderEntity, OrderListModel>();
+            CreateMap<OrderEntity, OrderDetailModel>()
+                .MapMember(dst => dst.FoodAmounts, src => src.FoodAmounts);
+            CreateMap<FoodAmountEntity, OrderDetailFoodModel>();
 
-            CreateMap<RecipeDetailModel, RecipeEntity>()
-                .Ignore(dst => dst.IngredientAmounts);
+            CreateMap<OrderDetailModel, OrderEntity>()
+                .Ignore(dst => dst.FoodAmounts);
         }
     }
 }
