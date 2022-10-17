@@ -97,6 +97,7 @@ namespace DameChales.API.DAL.Memory.Repositories
             foreach (var orderUpdateFoodModel in orderFoodModelsToUpdate)
             {
                 FoodAmountEntity? foodAmountEntity;
+#pragma warning disable CS8073 // The result of the expression is always the same since a value of this type is never equal to 'null'
                 if (orderUpdateFoodModel.Id == null)
                 {
                     foodAmountEntity = GetFoodAmountOrderIdAndFoodId(orderEntity.Id,
@@ -106,6 +107,7 @@ namespace DameChales.API.DAL.Memory.Repositories
                 {
                     foodAmountEntity = foodAmounts.Single(t => t.Id == orderUpdateFoodModel.Id);
                 }
+#pragma warning restore CS8073 // The result of the expression is always the same since a value of this type is never equal to 'null'
 
                 if (foodAmountEntity is not null)
                 {
