@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\denis\\source\\repos\\iw5-2022-team-xkubic45\\DameChales\\DameChales.Common\\DameChales.Common.csproj": {}
+    "C:\\Users\\denis\\source\\repos\\iw5-2022-team-xkubic45\\DameChales\\DameChales.Common.BL\\DameChales.Common.BL.csproj": {}
   },
   "projects": {
-    "C:\\Users\\denis\\source\\repos\\iw5-2022-team-xkubic45\\DameChales\\DameChales.Common\\DameChales.Common.csproj": {
+    "C:\\Users\\denis\\source\\repos\\iw5-2022-team-xkubic45\\DameChales\\DameChales.Common.BL\\DameChales.Common.BL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\denis\\source\\repos\\iw5-2022-team-xkubic45\\DameChales\\DameChales.Common\\DameChales.Common.csproj",
-        "projectName": "DameChales.Common",
-        "projectPath": "C:\\Users\\denis\\source\\repos\\iw5-2022-team-xkubic45\\DameChales\\DameChales.Common\\DameChales.Common.csproj",
+        "projectUniqueName": "C:\\Users\\denis\\source\\repos\\iw5-2022-team-xkubic45\\DameChales\\DameChales.Common.BL\\DameChales.Common.BL.csproj",
+        "projectName": "DameChales.Common.BL",
+        "projectPath": "C:\\Users\\denis\\source\\repos\\iw5-2022-team-xkubic45\\DameChales\\DameChales.Common.BL\\DameChales.Common.BL.csproj",
         "packagesPath": "C:\\Users\\denis\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\denis\\source\\repos\\iw5-2022-team-xkubic45\\DameChales\\DameChales.Common\\obj\\",
+        "outputPath": "C:\\Users\\denis\\source\\repos\\iw5-2022-team-xkubic45\\DameChales\\DameChales.Common.BL\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\denis\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -39,16 +39,6 @@
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
-          "dependencies": {
-            "AutoMapper": {
-              "target": "Package",
-              "version": "[12.0.0, )"
-            },
-            "Microsoft.Extensions.DependencyInjection": {
-              "target": "Package",
-              "version": "[6.0.1, )"
-            }
-          },
           "imports": [
             "net461",
             "net462",
