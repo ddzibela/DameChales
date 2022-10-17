@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\py\\dameChales_iw5\\DameChales\\DameChales.DAL.Common\\DameChales.API.DAL.Common.csproj": {}
+    "C:\\Users\\denis\\source\\repos\\iw5-2022-team-xkubic45\\DameChales\\DameChales.DAL.Common\\DameChales.API.DAL.Common.csproj": {}
   },
   "projects": {
-    "C:\\py\\dameChales_iw5\\DameChales\\DameChales.Common\\DameChales.Common.csproj": {
+    "C:\\Users\\denis\\source\\repos\\iw5-2022-team-xkubic45\\DameChales\\DameChales.Common\\DameChales.Common.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\py\\dameChales_iw5\\DameChales\\DameChales.Common\\DameChales.Common.csproj",
+        "projectUniqueName": "C:\\Users\\denis\\source\\repos\\iw5-2022-team-xkubic45\\DameChales\\DameChales.Common\\DameChales.Common.csproj",
         "projectName": "DameChales.Common",
-        "projectPath": "C:\\py\\dameChales_iw5\\DameChales\\DameChales.Common\\DameChales.Common.csproj",
-        "packagesPath": "C:\\Users\\martinkubicka\\.nuget\\packages\\",
-        "outputPath": "C:\\py\\dameChales_iw5\\DameChales\\DameChales.Common\\obj\\",
+        "projectPath": "C:\\Users\\denis\\source\\repos\\iw5-2022-team-xkubic45\\DameChales\\DameChales.Common\\DameChales.Common.csproj",
+        "packagesPath": "C:\\Users\\denis\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\denis\\source\\repos\\iw5-2022-team-xkubic45\\DameChales\\DameChales.Common\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\martinkubicka\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\denis\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -43,6 +43,10 @@
             "AutoMapper": {
               "target": "Package",
               "version": "[12.0.0, )"
+            },
+            "Microsoft.Extensions.DependencyInjection": {
+              "target": "Package",
+              "version": "[6.0.1, )"
             }
           },
           "imports": [
@@ -61,21 +65,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100-preview.7.22377.5\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100-rc.1.22431.12\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\py\\dameChales_iw5\\DameChales\\DameChales.DAL.Common\\DameChales.API.DAL.Common.csproj": {
+    "C:\\Users\\denis\\source\\repos\\iw5-2022-team-xkubic45\\DameChales\\DameChales.DAL.Common\\DameChales.API.DAL.Common.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\py\\dameChales_iw5\\DameChales\\DameChales.DAL.Common\\DameChales.API.DAL.Common.csproj",
+        "projectUniqueName": "C:\\Users\\denis\\source\\repos\\iw5-2022-team-xkubic45\\DameChales\\DameChales.DAL.Common\\DameChales.API.DAL.Common.csproj",
         "projectName": "DameChales.API.DAL.Common",
-        "projectPath": "C:\\py\\dameChales_iw5\\DameChales\\DameChales.DAL.Common\\DameChales.API.DAL.Common.csproj",
-        "packagesPath": "C:\\Users\\martinkubicka\\.nuget\\packages\\",
-        "outputPath": "C:\\py\\dameChales_iw5\\DameChales\\DameChales.DAL.Common\\obj\\",
+        "projectPath": "C:\\Users\\denis\\source\\repos\\iw5-2022-team-xkubic45\\DameChales\\DameChales.DAL.Common\\DameChales.API.DAL.Common.csproj",
+        "packagesPath": "C:\\Users\\denis\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\denis\\source\\repos\\iw5-2022-team-xkubic45\\DameChales\\DameChales.DAL.Common\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\martinkubicka\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\denis\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -89,8 +93,8 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "C:\\py\\dameChales_iw5\\DameChales\\DameChales.Common\\DameChales.Common.csproj": {
-                "projectPath": "C:\\py\\dameChales_iw5\\DameChales\\DameChales.Common\\DameChales.Common.csproj"
+              "C:\\Users\\denis\\source\\repos\\iw5-2022-team-xkubic45\\DameChales\\DameChales.Common\\DameChales.Common.csproj": {
+                "projectPath": "C:\\Users\\denis\\source\\repos\\iw5-2022-team-xkubic45\\DameChales\\DameChales.Common\\DameChales.Common.csproj"
               }
             }
           }
@@ -134,7 +138,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100-preview.7.22377.5\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100-rc.1.22431.12\\RuntimeIdentifierGraph.json"
         }
       }
     }

@@ -14,6 +14,24 @@ namespace DameChales.API.DAL.Common.Entities
 
         public ICollection<OrderEntity> Orders { get; set; } = new List<OrderEntity>();
         public ICollection<FoodEntity> Foods { get; set; } = new List<FoodEntity>();
+
+        public RestaurantEntity(Guid id, string name, string description, string logoURL, string address, string GPSCoordinates, List<OrderEntity> orderEntities, List<FoodEntity> foodEntities) :
+            base(id)
+        {
+            Name = name;
+            Description = description;
+            LogoURL = logoURL;
+            Address = address;
+            this.GPSCoordinates = GPSCoordinates;
+            Orders = orderEntities;
+            Foods = foodEntities;
+        }
+
+        public RestaurantEntity() :
+            this(Guid.Empty, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, new List<OrderEntity>(), new List<FoodEntity>())
+        {
+
+        }
     }
 
     public class RestaurantMapperProfile : Profile
