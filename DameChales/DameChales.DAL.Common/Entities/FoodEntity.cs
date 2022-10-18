@@ -14,7 +14,24 @@ namespace DameChales.API.DAL.Common.Entities
 
         public Guid RestaurantGuid { get; set; }
         public RestaurantEntity? Restaurant { get; set; }
-        public ICollection<Alergens> alergens { get; set; } = new List<Alergens>();
+        public ICollection<Alergens> alergens { get; set; } = new HashSet<Alergens>();
+
+        public FoodEntity(Guid id, string name, string photoURL, string description, double price, Guid restaurant, HashSet<Alergens> alergens) :
+            base(id)
+        {
+            Name = name;
+            PhotoURL = photoURL;
+            Description = description;
+            Price = price;
+            RestaurantGuid = restaurant;
+            this.alergens = alergens;
+        }
+
+        public FoodEntity() :
+            this(Guid.Empty, string.Empty, string.Empty, string.Empty, double.NaN, Guid.Empty, new HashSet<Alergens>())
+        {
+        }
+
     }
 
     public class FoodEntityMapperProfile : Profile

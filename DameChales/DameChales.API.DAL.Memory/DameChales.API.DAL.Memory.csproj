@@ -9,7 +9,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DameChales.API.DAL.EF\DameChales.API.DAL.EF.csproj" />
-    <ProjectReference Include="..\DameChales.API.DAL.IntegrationTests\DameChales.API.DAL.IntegrationTests.csproj" />
     <ProjectReference Include="..\DameChales.Common\DameChales.Common.csproj" />
     <ProjectReference Include="..\DameChales.DAL.Common\DameChales.API.DAL.Common.csproj" />
   </ItemGroup>

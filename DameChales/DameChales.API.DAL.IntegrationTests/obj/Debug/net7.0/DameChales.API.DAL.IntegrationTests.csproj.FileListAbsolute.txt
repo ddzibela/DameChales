@@ -1,5 +1,0 @@
-C:\py\dameChales_iw5\DameChales\DameChales.API.DAL.IntegrationTests\obj\Debug\net7.0\DameChales.API.DAL.IntegrationTests.csproj.AssemblyReference.cache
-C:\py\dameChales_iw5\DameChales\DameChales.API.DAL.IntegrationTests\obj\Debug\net7.0\DameChales.API.DAL.IntegrationTests.GeneratedMSBuildEditorConfig.editorconfig
-C:\py\dameChales_iw5\DameChales\DameChales.API.DAL.IntegrationTests\obj\Debug\net7.0\DameChales.API.DAL.IntegrationTests.AssemblyInfoInputs.cache
-C:\py\dameChales_iw5\DameChales\DameChales.API.DAL.IntegrationTests\obj\Debug\net7.0\DameChales.API.DAL.IntegrationTests.AssemblyInfo.cs
-C:\py\dameChales_iw5\DameChales\DameChales.API.DAL.IntegrationTests\obj\Debug\net7.0\DameChales.API.DAL.IntegrationTests.csproj.CoreCompileInputs.cache

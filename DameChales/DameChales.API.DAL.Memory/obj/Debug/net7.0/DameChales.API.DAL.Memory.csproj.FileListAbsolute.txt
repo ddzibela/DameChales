@@ -1,5 +1,0 @@
-C:\py\dameChales_iw5\DameChales\DameChales.API.DAL.Memory\obj\Debug\net7.0\DameChales.API.DAL.Memory.csproj.AssemblyReference.cache
-C:\py\dameChales_iw5\DameChales\DameChales.API.DAL.Memory\obj\Debug\net7.0\DameChales.API.DAL.Memory.GeneratedMSBuildEditorConfig.editorconfig
-C:\py\dameChales_iw5\DameChales\DameChales.API.DAL.Memory\obj\Debug\net7.0\DameChales.API.DAL.Memory.AssemblyInfoInputs.cache
-C:\py\dameChales_iw5\DameChales\DameChales.API.DAL.Memory\obj\Debug\net7.0\DameChales.API.DAL.Memory.AssemblyInfo.cs
-C:\py\dameChales_iw5\DameChales\DameChales.API.DAL.Memory\obj\Debug\net7.0\DameChales.API.DAL.Memory.csproj.CoreCompileInputs.cache

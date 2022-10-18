@@ -47,7 +47,8 @@ namespace DameChales.API.DAL.Memory
 
         private void SeedFoods()
         {
-            Foods.Add(new FoodEntity
+
+            Foods.Add(new FoodEntity()
             {
                 Id = foodGuids[0],
                 Name = "Vajicka s orechy",
@@ -55,9 +56,7 @@ namespace DameChales.API.DAL.Memory
                 Description = "Popis vajicek s orechy.",
                 Price = 150,
                 RestaurantGuid = restaurantGuids[0],
-
-                //todo alergens.Add(Alergens.Nuts),
-
+                alergens = new HashSet<Alergens>() { Alergens.Nuts }
             });
 
             Foods.Add(new FoodEntity
@@ -68,8 +67,7 @@ namespace DameChales.API.DAL.Memory
                 Description = "Popis cibule na slehacce.",
                 Price = 100.5,
                 RestaurantGuid = restaurantGuids[0],
-                //todo alergens.Add(Alergens.Nuts),
-
+                alergens = new HashSet<Alergens>() { Alergens.Milk }
             });
         }
    

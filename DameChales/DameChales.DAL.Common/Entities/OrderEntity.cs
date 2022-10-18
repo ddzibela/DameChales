@@ -14,6 +14,23 @@ namespace DameChales.API.DAL.Common.Entities
         public required OrderStatus Status { get; set; }
 
         public ICollection<FoodAmountEntity> FoodAmounts { get; set; } = new List<FoodAmountEntity>();
+
+        public OrderEntity(Guid id, Guid restaurantId, TimeSpan deliveryTime, string note, OrderStatus status, List<FoodAmountEntity> foodAmounts) :
+            base(id)
+        {
+            DeliveryTime = deliveryTime;
+            RestaurantGuid = restaurantId;
+            DeliveryTime = deliveryTime;
+            Note = note;
+            Status = status;
+            FoodAmounts = foodAmounts;
+        }
+
+        public OrderEntity() :
+            this(Guid.Empty, Guid.Empty, TimeSpan.Zero, string.Empty, OrderStatus.Accepted, new List<FoodAmountEntity>())
+        {
+        }
+
     }
 
     public class OrderEntityMapperProfile : Profile
