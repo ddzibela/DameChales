@@ -2,7 +2,7 @@
 using DameChales.Common.Installers;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace CookBook.Api.BL.Installers
+namespace DameChales.API.BL.Installers
 {
     public class ApiBLInstaller : IInstaller
     {
