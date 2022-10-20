@@ -2,89 +2,97 @@
 using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
-using CookBook.Api.DAL.Common.Entities;
-using CookBook.Api.DAL.Common.Repositories;
-using CookBook.Common.Models;
+using DameChales.API.DAL.Common.Entities;
+using DameChales.API.DAL.Common.Repositories;
+using DameChales.Common.Enums;
+using DameChales.Common.Models;
 
-namespace CookBook.Api.BL.Facades
+namespace DameChales.API.BL.Facades
 {
-    public class RecipeFacade : IRestaurantFacade
+    public class OrderFacade : IOrderFacade
     {
-        private readonly IRecipeRepository recipeRepository;
+        private readonly IOrderRepository orderRepository;
         private readonly IMapper mapper;
 
-        public RecipeFacade(
-            IRecipeRepository recipeRepository,
+        public OrderFacade(
+            IOrderRepository orderRepository,
             IMapper mapper)
         {
-            this.recipeRepository = recipeRepository;
+            this.orderRepository = orderRepository;
             this.mapper = mapper;
         }
-
-        public List<RecipeListModel> GetAll()
+        public List<OrderListModel> GetAll()
         {
-            var recipeEntities = recipeRepository.GetAll();
-            return mapper.Map<List<RecipeListModel>>(recipeEntities);
+            var orderEntities = orderRepository.GetAll();
+            return mapper.Map<List<OrderListModel>>(orderEntities);
         }
 
-        public RecipeDetailModel? GetById(Guid id)
+        public List<OrderListModel> GetByRestaurantId(Guid id)
         {
-            var recipeEntity = recipeRepository.GetById(id);
-            return mapper.Map<RecipeDetailModel>(recipeEntity);
+            var orderEntities = orderRepository.GetByRestaurantId(id);
+            return mapper.Map<List<OrderListModel>>(orderEntities);
+        }
+        public List<OrderListModel> GetByFoodId(Guid id)
+        {
+            var orderEntities = orderRepository.GetByFoodId(id);
+            return mapper.Map<List<OrderListModel>>(orderEntities);
+        }
+        public List<OrderListModel> GetByStatus(OrderStatus status)
+        {
+            var orderEntities = orderRepository.GetByStatus(status);
+            return mapper.Map<List<OrderListModel>>(orderEntities);
+        }
+        public OrderDetailModel? GetById(Guid id)
+        {
+            var orderEntity = orderRepository.GetById(id);
+            return mapper.Map<OrderDetailModel>(orderEntity);
         }
 
-        public Guid CreateOrUpdate(RecipeDetailModel recipeModel)
+        public Guid CreateOrUpdate(OrderDetailModel orderModel)
         {
-            return recipeRepository.Exists(recipeModel.Id)
-                ? Update(recipeModel)!.Value
-                : Create(recipeModel);
+            return orderRepository.Exists(orderModel.Id)
+                ? Update(orderModel)!.Value
+                : Create(orderModel);
         }
 
-        public Guid Create(RecipeDetailModel recipeModel)
+        public Guid Create(OrderDetailModel orderModel)
         {
-            MergeIngredientAmounts(recipeModel);
-            var recipeEntity = mapper.Map<RecipeEntity>(recipeModel);
-            return recipeRepository.Insert(recipeEntity);
+            MergeFoodAmounts(orderModel);
+            var orderEntity = mapper.Map<OrderEntity>(orderModel);
+            return orderRepository.Insert(orderEntity);
         }
 
-        public Guid? Update(RecipeDetailModel recipeModel)
+        public Guid? Update(OrderDetailModel orderModel)
         {
-            MergeIngredientAmounts(recipeModel);
+            MergeFoodAmounts(orderModel);
 
-            var recipeEntity = mapper.Map<RecipeEntity>(recipeModel);
-            recipeEntity.IngredientAmounts = recipeModel.IngredientAmounts.Select(t =>
-                new IngredientAmountEntity
-                {
-                    Id = t.Id,
-                    Amount = t.Amount,
-                    Unit = t.Unit,
-                    RecipeId = recipeEntity.Id,
-                    IngredientId = t.Ingredient.Id
-                }).ToList();
-            var result = recipeRepository.Update(recipeEntity);
+            var orderEntity = mapper.Map<OrderEntity>(orderModel);
+            orderEntity.FoodAmounts = orderModel.FoodAmounts.Select(t =>
+                new FoodAmountEntity(t.Id, t.FoodGuid, t.OrderGuid, t.Amount, t.Note)).ToList();
+            var result = orderRepository.Update(orderEntity);
             return result;
         }
 
-        public void MergeIngredientAmounts(RecipeDetailModel recipe)
+        public void MergeFoodAmounts(OrderDetailModel order)
         {
-            var result = new List<RecipeDetailIngredientModel>();
-            var ingredientAmountGroups = recipe.IngredientAmounts.GroupBy(t => $"{t.Ingredient.Id}-{t.Unit}");
+            var result = new List<OrderDetailFoodModel>();
+            var foodAmountGroups = order.FoodAmounts.GroupBy(t => $"{t.FoodEntity.Id}");
 
-            foreach (var ingredientAmountGroup in ingredientAmountGroups)
+            foreach (var foodAmountGroup in foodAmountGroups)
             {
-                var ingredientAmountFirst = ingredientAmountGroup.First();
-                var totalAmount = ingredientAmountGroup.Sum(t => t.Amount);
-                var ingredientAmount = ingredientAmountFirst with { Amount = totalAmount };
+                var foodAmountFirst = foodAmountGroup.First();
+                var totalAmount = foodAmountGroup.Sum(t => t.Amount);
+                var foodAmount = new OrderDetailFoodModel(foodAmountFirst.Id, totalAmount, foodAmountFirst.FoodEntity);
 
-                result.Add(ingredientAmount);
+                result.Add(foodAmount);
             }
 
-            recipe.IngredientAmounts = result;
+            order.FoodAmounts = result;
         }
 
         public void Delete(Guid id)
         {
-            recipeRepository.Remove(id);
+            orderRepository.Remove(id);
         }
     }
 }

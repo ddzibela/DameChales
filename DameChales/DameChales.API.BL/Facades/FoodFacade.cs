@@ -1,58 +1,75 @@
 ﻿using System;
 using System.Collections.Generic;
 using AutoMapper;
-using CookBook.Api.DAL.Common.Entities;
-using CookBook.Api.DAL.Common.Repositories;
-using CookBook.Common.Models;
+using DameChales.API.DAL.Common.Entities;
+using DameChales.API.DAL.Common.Repositories;
+using DameChales.Common.Enums;
+using DameChales.Common.Models;
 
-namespace CookBook.Api.BL.Facades
+namespace DameChales.API.BL.Facades
 {
     public class FoodFacade : IFoodFacade
     {
-        private readonly IIngredientRepository ingredientRepository;
+        private readonly IFoodRepository foodRepository;
         private readonly IMapper mapper;
 
         public FoodFacade(
-            IIngredientRepository ingredientRepository,
+            IFoodRepository foodRepository,
             IMapper mapper)
         {
-            this.ingredientRepository = ingredientRepository;
+            this.foodRepository = foodRepository;
             this.mapper = mapper;
         }
 
-        public List<IngredientListModel> GetAll()
+        public List<FoodListModel> GetAll()
         {
-            return mapper.Map<List<IngredientListModel>>(ingredientRepository.GetAll());
+            return mapper.Map<List<FoodListModel>>(foodRepository.GetAll());
         }
 
-        public IngredientDetailModel? GetById(Guid id)
+        public List<FoodListModel> GetWithoutAlergens(HashSet<Alergens> alergens)
         {
-            var ingredientEntity = ingredientRepository.GetById(id);
-            return mapper.Map<IngredientDetailModel>(ingredientEntity);
+            return mapper.Map<List<FoodListModel>>(foodRepository.GetWithoutAlergen(alergens));
         }
 
-        public Guid CreateOrUpdate(IngredientDetailModel ingredientModel)
+        public List<FoodListModel> GetByRestaurantId(Guid id)
         {
-            return ingredientRepository.Exists(ingredientModel.Id)
-                ? Update(ingredientModel)!.Value
-                : Create(ingredientModel);
+            return mapper.Map<List<FoodListModel>>(foodRepository.GetByRestaurantId(id));
         }
 
-        public Guid Create(IngredientDetailModel ingredientModel)
+        public List<FoodListModel> GetByName(string name)
         {
-            var ingredientEntity = mapper.Map<IngredientEntity>(ingredientModel);
-            return ingredientRepository.Insert(ingredientEntity);
+            return mapper.Map<List<FoodListModel>>(foodRepository.GetByName(name));
         }
 
-        public Guid? Update(IngredientDetailModel ingredientModel)
+        public FoodDetailModel? GetById(Guid id)
         {
-            var ingredientEntity = mapper.Map<IngredientEntity>(ingredientModel);
-            return ingredientRepository.Update(ingredientEntity);
+            var foodEntity = foodRepository.GetById(id);
+            return mapper.Map<FoodDetailModel>(foodEntity);
+        }
+
+
+        public Guid CreateOrUpdate(FoodDetailModel foodModel)
+        {
+            return foodRepository.Exists(foodModel.Id)
+                ? Update(foodModel)!.Value
+                : Create(foodModel);
+        }
+
+        public Guid Create(FoodDetailModel foodModel)
+        {
+            var foodEntity = mapper.Map<FoodEntity>(foodModel);
+            return foodRepository.Insert(foodEntity);
+        }
+
+        public Guid? Update(FoodDetailModel foodModel)
+        {
+            var foodEntity = mapper.Map<FoodEntity>(foodModel);
+            return foodRepository.Update(foodEntity);
         }
 
         public void Delete(Guid id)
         {
-            ingredientRepository.Remove(id);
+            foodRepository.Remove(id);
         }
     }
 }

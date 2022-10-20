@@ -1,17 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
-using CookBook.Common.BL.Facades;
-using CookBook.Common.Models;
+using DameChales.Common.BL.Facades;
+using DameChales.Common.Models;
 
-namespace CookBook.Api.BL.Facades
+namespace DameChales.API.BL.Facades
 {
     public interface IRestaurantFacade : IAppFacade
     {
-        List<RecipeListModel> GetAll();
-        RecipeDetailModel? GetById(Guid id);
-        Guid CreateOrUpdate(RecipeDetailModel recipeModel);
-        Guid Create(RecipeDetailModel recipeModel);
-        Guid? Update(RecipeDetailModel recipeModel);
+        List<RestaurantListModel> GetAll();
+        List<RestaurantListModel> GetByFoodId(Guid id);
+        RestaurantDetailModel? GetById(Guid id);
+        RestaurantDetailModel? GetByName(string name);
+        RestaurantDetailModel? GetByAddress(string address);
+        Guid CreateOrUpdate(RestaurantDetailModel restaurantModel);
+        Guid Create(RestaurantDetailModel restaurantModel);
+        Guid? Update(RestaurantDetailModel restaurantModel);
         void Delete(Guid id);
     }
 }

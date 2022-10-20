@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using DameChales.Common.BL.Facades;
+using DameChales.Common.Enums;
 using DameChales.Common.Models;
 
 namespace DameChales.API.BL.Facades
@@ -9,9 +10,9 @@ namespace DameChales.API.BL.Facades
     {
         List<FoodListModel> GetAll();
         FoodDetailModel? GetById(Guid id);
-
-        // TODO ziskanie jedal pre restauraciu
-        // TODO ziskanie jedla byName atd..
+        List<FoodListModel> GetByRestaurantId(Guid id);
+        List<FoodDetailModel> GetByName(string name);
+        List<FoodListModel> GetWithoutAlergens(HashSet<Alergens> alergens);
         Guid CreateOrUpdate(FoodDetailModel foodModel);
         Guid Create(FoodDetailModel foodModel);
         Guid? Update(FoodDetailModel foodModel);
