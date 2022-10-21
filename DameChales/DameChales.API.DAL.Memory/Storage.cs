@@ -93,6 +93,7 @@ namespace DameChales.API.DAL.Memory
         {
             Orders.Add(new OrderEntity
             {
+                Name = "Dominik Petrik",
                 Id = orderGuids[0],
                 RestaurantGuid = restaurantGuids[0],
                 DeliveryTime = TimeSpan.FromMinutes(15),
