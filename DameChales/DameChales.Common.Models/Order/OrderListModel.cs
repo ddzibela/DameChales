@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DameChales.Common.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,5 +10,7 @@ namespace DameChales.Common.Models
     public record OrderListModel : IWithId
     {
         public required Guid Id { get; init; }
+        public required string Name { get; set; }
+        public OrderStatus Status { get; set; }
     }
 }
