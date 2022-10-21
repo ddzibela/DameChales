@@ -36,18 +36,18 @@ namespace DameChales.API.DAL.Memory.Repositories
             return restaurants.SingleOrDefault(e => e.Id == id);
         }
 
-        RestaurantEntity? GetByFoodId(Guid id)
+        public RestaurantEntity? GetByFoodId(Guid id)
         {
             return restaurants.SingleOrDefault(e => e.Foods.Any(food => food.Id == id));
         }
 
-        IList<RestaurantEntity> GetByName(string name)
+        public IList<RestaurantEntity> GetByName(string name)
         {
             var nameRegex = new Regex(name);
             return restaurants.Where(e => nameRegex.IsMatch(e.Name)).ToList();
         }
 
-        IList<RestaurantEntity> GetByAddress(string address)
+        public IList<RestaurantEntity> GetByAddress(string address)
         {
             var addressRegex = new Regex(address);
             return restaurants.Where(e => addressRegex.IsMatch(e.Address)).ToList();

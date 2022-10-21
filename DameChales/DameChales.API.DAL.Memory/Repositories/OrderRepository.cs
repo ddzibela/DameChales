@@ -42,17 +42,17 @@ namespace DameChales.API.DAL.Memory.Repositories
             return orderEntity;
         }
 
-        IList<OrderEntity> GetByRestaurantId(Guid id)
+        public IList<OrderEntity> GetByRestaurantId(Guid id)
         {
             return orders.Where(order => order.RestaurantGuid == id).ToList();
         }
 
-        IList<OrderEntity> GetByFoodId(Guid id)
+        public IList<OrderEntity> GetByFoodId(Guid id)
         {
             return orders.Where(order => order.FoodAmounts.Any(amount => amount.FoodGuid == id)).ToList();
         }
 
-        IList<OrderEntity> GetByStatus(Guid restaurantId, OrderStatus status)
+        public IList<OrderEntity> GetByStatus(Guid restaurantId, OrderStatus status)
         {
             return orders.Where(order => order.RestaurantGuid == restaurantId && order.Status == status).ToList();
         }

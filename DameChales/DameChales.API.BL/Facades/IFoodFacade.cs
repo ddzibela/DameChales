@@ -11,8 +11,8 @@ namespace DameChales.API.BL.Facades
         List<FoodListModel> GetAll();
         FoodDetailModel? GetById(Guid id);
         List<FoodListModel> GetByRestaurantId(Guid id);
-        List<FoodDetailModel> GetByName(string name);
-        List<FoodListModel> GetWithoutAlergens(HashSet<Alergens> alergens);
+        List<FoodListModel> GetByName(string name);
+        List<FoodListModel> GetWithoutAlergens(Guid restaurantId, HashSet<Alergens> alergens);
         Guid CreateOrUpdate(FoodDetailModel foodModel);
         Guid Create(FoodDetailModel foodModel);
         Guid? Update(FoodDetailModel foodModel);

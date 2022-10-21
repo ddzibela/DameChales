@@ -11,7 +11,7 @@ namespace DameChales.API.BL.Facades
         List<OrderListModel> GetAll();
         List<OrderListModel> GetByRestaurantId(Guid id);
         List<OrderListModel> GetByFoodId(Guid id);
-        List<OrderListModel> GetByStatus(OrderStatus status);
+        List<OrderListModel> GetByStatus(Guid restaurantId, OrderStatus status);
         OrderDetailModel? GetById(Guid id);
         Guid CreateOrUpdate(OrderDetailModel orderModel);
         Guid Create(OrderDetailModel orderModel);

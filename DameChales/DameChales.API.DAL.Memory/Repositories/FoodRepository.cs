@@ -34,7 +34,7 @@ namespace DameChales.API.DAL.Memory.Repositories
             return foods.SingleOrDefault(entity => entity.Id == id);
         }
 
-        IList<FoodEntity> GetByRestaurantId(Guid id)
+        public IList<FoodEntity> GetByRestaurantId(Guid id)
         {
             return foods.Where(entity => entity.RestaurantGuid == id).ToList();
         }
@@ -42,7 +42,7 @@ namespace DameChales.API.DAL.Memory.Repositories
         /// <summary>
         /// Returns list of foods matching name regex
         /// </summary>
-        IList<FoodEntity> GetByName(string name)
+        public IList<FoodEntity> GetByName(string name)
         {
             var nameRegex = new Regex(name);
             return foods.Where(e => nameRegex.IsMatch(e.Name)).ToList();
@@ -54,7 +54,7 @@ namespace DameChales.API.DAL.Memory.Repositories
         /// <param name="id">Restaurant GUID</param>
         /// <param name="alergens">List of alergens to exclude</param>
         /// <returns>List of foods without alergens</returns>
-        IList<FoodEntity> GetWithoutAlergens(Guid id, HashSet<Alergens> alergens)
+        public IList<FoodEntity> GetWithoutAlergens(Guid id, HashSet<Alergens> alergens)
         {
             var restaurantFoods = GetByRestaurantId(id);
             return restaurantFoods.Where(e => e.alergens.Intersect(alergens).Any() == false).ToList();

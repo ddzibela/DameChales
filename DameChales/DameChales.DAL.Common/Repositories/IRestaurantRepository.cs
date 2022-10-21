@@ -4,8 +4,8 @@ namespace DameChales.API.DAL.Common.Repositories
 {
     public interface IRestaurantRepository : IApiRepository<RestaurantEntity>
     {
-        IList<RestaurantEntity> GetByFoodId(Guid id);
-        RestaurantEntity? GetByName(string name);
-        RestaurantEntity? GetByAddress(string address);
+        RestaurantEntity? GetByFoodId(Guid id);
+        IList<RestaurantEntity> GetByName(string name);
+        IList<RestaurantEntity> GetByAddress(string address);
     }
 }
