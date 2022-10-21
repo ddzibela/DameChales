@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using DameChales.API.DAL.Common.Entities;
 using DameChales.API.DAL.Common.Repositories;
+using DameChales.Common.Enums;
 
 namespace DameChales.API.DAL.Memory.Repositories
 {
@@ -39,6 +40,21 @@ namespace DameChales.API.DAL.Memory.Repositories
             }
 
             return orderEntity;
+        }
+
+        public IList<OrderEntity> GetByRestaurantId(Guid id)
+        {
+            return orders.Where(order => order.RestaurantGuid == id).ToList();
+        }
+
+        public IList<OrderEntity> GetByFoodId(Guid id)
+        {
+            return orders.Where(order => order.FoodAmounts.Any(amount => amount.FoodGuid == id)).ToList();
+        }
+
+        public IList<OrderEntity> GetByStatus(Guid restaurantId, OrderStatus status)
+        {
+            return orders.Where(order => order.RestaurantGuid == restaurantId && order.Status == status).ToList();
         }
 
         public Guid Insert(OrderEntity entity)

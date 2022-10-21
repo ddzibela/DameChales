@@ -85,7 +85,7 @@ namespace DameChales.API.BL.Facades
         public void MergeOrdersAndFoods(RestaurantDetailModel restaurant)
         {
             // order
-            var result = new List<RestaurantDetailOrderModel>();
+            var result = new List<OrderFoodAmountDetailModel>();
             var orderGroups = restaurant.Orders.GroupBy(t => $"{t.FoodAmounts.FoodEntity.Id}");
 
             foreach (var orderGroup in orderGroups)

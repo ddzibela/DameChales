@@ -26,9 +26,9 @@ namespace DameChales.API.BL.Facades
             return mapper.Map<List<FoodListModel>>(foodRepository.GetAll());
         }
 
-        public List<FoodListModel> GetWithoutAlergens(HashSet<Alergens> alergens)
+        public List<FoodListModel> GetWithoutAlergens(Guid restaurantId, HashSet<Alergens> alergens)
         {
-            return mapper.Map<List<FoodListModel>>(foodRepository.GetWithoutAlergen(alergens));
+            return mapper.Map<List<FoodListModel>>(foodRepository.GetWithoutAlergens(restaurantId, alergens));
         }
 
         public List<FoodListModel> GetByRestaurantId(Guid id)

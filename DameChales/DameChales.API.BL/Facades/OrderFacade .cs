@@ -37,9 +37,9 @@ namespace DameChales.API.BL.Facades
             var orderEntities = orderRepository.GetByFoodId(id);
             return mapper.Map<List<OrderListModel>>(orderEntities);
         }
-        public List<OrderListModel> GetByStatus(OrderStatus status)
+        public List<OrderListModel> GetByStatus(Guid restaurantId, OrderStatus status)
         {
-            var orderEntities = orderRepository.GetByStatus(status);
+            var orderEntities = orderRepository.GetByStatus(restaurantId, status);
             return mapper.Map<List<OrderListModel>>(orderEntities);
         }
         public OrderDetailModel? GetById(Guid id)

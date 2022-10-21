@@ -7,6 +7,6 @@ namespace DameChales.API.DAL.Common.Repositories
     {
         IList<OrderEntity> GetByRestaurantId(Guid id);
         IList<OrderEntity> GetByFoodId(Guid id);
-        IList<OrderEntity> GetByStatus(OrderStatus status);
+        IList<OrderEntity> GetByStatus(Guid restaurantId, OrderStatus status);
     }
 }

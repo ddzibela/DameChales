@@ -25,6 +25,8 @@
     <ProjectReference Include="..\DameChales.API.BL\DameChales.API.BL.csproj" />
     <ProjectReference Include="..\DameChales.API.DAL.EF\DameChales.API.DAL.EF.csproj" />
     <ProjectReference Include="..\DameChales.API.DAL.Memory\DameChales.API.DAL.Memory.csproj" />
+    <ProjectReference Include="..\DameChales.Common.Models\DameChales.Common.Models.csproj" />
+    <ProjectReference Include="..\DameChales.Common\DameChales.Common.csproj" />
   </ItemGroup>
 
 </Project>

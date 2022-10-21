@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using AutoMapper;
 using DameChales.API.DAL.Common.Entities;
 using DameChales.API.DAL.Common.Repositories;
+using DameChales.Common.Enums;
 
 namespace DameChales.API.DAL.Memory.Repositories
 {
@@ -30,6 +32,32 @@ namespace DameChales.API.DAL.Memory.Repositories
         public FoodEntity? GetById(Guid id)
         {
             return foods.SingleOrDefault(entity => entity.Id == id);
+        }
+
+        public IList<FoodEntity> GetByRestaurantId(Guid id)
+        {
+            return foods.Where(entity => entity.RestaurantGuid == id).ToList();
+        }
+
+        /// <summary>
+        /// Returns list of foods matching name regex
+        /// </summary>
+        public IList<FoodEntity> GetByName(string name)
+        {
+            var nameRegex = new Regex(name);
+            return foods.Where(e => nameRegex.IsMatch(e.Name)).ToList();
+        }
+
+        /// <summary>
+        /// get all foods from one restaurant not containing select alergens
+        /// </summary>
+        /// <param name="id">Restaurant GUID</param>
+        /// <param name="alergens">List of alergens to exclude</param>
+        /// <returns>List of foods without alergens</returns>
+        public IList<FoodEntity> GetWithoutAlergens(Guid id, HashSet<Alergens> alergens)
+        {
+            var restaurantFoods = GetByRestaurantId(id);
+            return restaurantFoods.Where(e => e.alergens.Intersect(alergens).Any() == false).ToList();
         }
 
         public Guid Insert(FoodEntity food)
