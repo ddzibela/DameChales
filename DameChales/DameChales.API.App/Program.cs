@@ -8,7 +8,7 @@ using DameChales.API.BL.Installers;
 using DameChales.API.DAL.EF.Extensions;
 using DameChales.Common.Extensions;
 using DameChales.Common.Models;
-using DameChales.Common.Resources;
+//using DameChales.Common.Resources;
 using DameChales.API.App.Extensions;
 using DameChales.API.DAL.Common.Entities;
 using DameChales.API.DAL.Common;

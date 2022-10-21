@@ -57,37 +57,17 @@ namespace DameChales.API.BL.Facades
 
         public Guid Create(OrderDetailModel orderModel)
         {
-            MergeFoodAmounts(orderModel);
             var orderEntity = mapper.Map<OrderEntity>(orderModel);
             return orderRepository.Insert(orderEntity);
         }
 
         public Guid? Update(OrderDetailModel orderModel)
         {
-            MergeFoodAmounts(orderModel);
-
             var orderEntity = mapper.Map<OrderEntity>(orderModel);
             orderEntity.FoodAmounts = orderModel.FoodAmounts.Select(t =>
-                new FoodAmountEntity(t.Id, t.FoodGuid, t.OrderGuid, t.Amount, t.Note)).ToList();
+                new FoodAmountEntity(t.Id, t.Food.Id, orderEntity.Id, t.Amount, t.Note)).ToList();
             var result = orderRepository.Update(orderEntity);
             return result;
-        }
-
-        public void MergeFoodAmounts(OrderDetailModel order)
-        {
-            var result = new List<OrderDetailFoodModel>();
-            var foodAmountGroups = order.FoodAmounts.GroupBy(t => $"{t.FoodEntity.Id}");
-
-            foreach (var foodAmountGroup in foodAmountGroups)
-            {
-                var foodAmountFirst = foodAmountGroup.First();
-                var totalAmount = foodAmountGroup.Sum(t => t.Amount);
-                var foodAmount = new OrderDetailFoodModel(foodAmountFirst.Id, totalAmount, foodAmountFirst.FoodEntity);
-
-                result.Add(foodAmount);
-            }
-
-            order.FoodAmounts = result;
         }
 
         public void Delete(Guid id)

@@ -10,7 +10,7 @@ namespace DameChales.API.DAL.Common.Entities
         public FoodEntity? FoodEntity { get; set; }
         public Guid OrderGuid { get; set; }
         public OrderEntity? OrderEntity { get; set; }
-        public required int Amount { get; set; }
+        public int Amount { get; set; }
         public string? Note { get; set; }
 
         public FoodAmountEntity(Guid id, Guid foodId, Guid orderId, int amount, string note) :

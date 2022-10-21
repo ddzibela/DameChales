@@ -56,62 +56,18 @@ namespace DameChales.API.BL.Facades
                 : Create(restaurantModel);
         }
 
-        //todo odtialto pokracovat
         public Guid Create(RestaurantDetailModel restaurantModel)
         {
-            MergeOrdersAndFoods(recipeModel);
             var restaurantEntity = mapper.Map<RestaurantEntity>(restaurantModel);
             return restaurantRepository.Insert(restaurantEntity);
         }
 
         public Guid? Update(RestaurantDetailModel restaurantModel)
         {
-            MergeOrdersAndFoods(restaurantModel);
-
             var restaurantEntity = mapper.Map<RestaurantEntity>(restaurantModel);
-            
-            restaurantEntity.Orders = restaurantModel.Orders.Select(t =>
-                new OrderEntity(t.Id, restaurantEntity.Id, t.DeliveryTime, t.Note, t.Status, t.FoodAmounts)).ToList();
-
-            restaurantEntity.Foods = restaurantModel.Foods.Select(t =>
-                new FoodEntity(t.Id, t.Name, t.PhotoURL, t.Description, t.Price, restaurantEntity.Id, t.alergens)).ToList();
-           
-            
             var result = restaurantRepository.Update(restaurantEntity);
 
             return result;
-        }
-
-        public void MergeOrdersAndFoods(RestaurantDetailModel restaurant)
-        {
-            // order
-            var result = new List<OrderFoodAmountDetailModel>();
-            var orderGroups = restaurant.Orders.GroupBy(t => $"{t.FoodAmounts.FoodEntity.Id}");
-
-            foreach (var orderGroup in orderGroups)
-            {
-                var orderFirst = orderGroup.First();
-                var totalAmount = orderGroup.Sum(t => t.FoodAmounts.Amount);
-                var order = new RestaurantDetailOrderModel(orderFirst.Id, totalAmount, orderFirst.FoodAmountEntity);
-
-                result.Add(order);
-            }
-
-            restaurant.Orders = result;
-
-            // food
-            var result1 = new List<RestaurantDetailFoodModel>();
-            var foodGroups = restaurant.Foods.GroupBy(t => $"{t.Id}");
-
-            foreach (var foodGroup in foodGroups)
-            {
-                var foodFirst = foodGroup.First();
-                var food = new RestaurantDetailFoodModel(foodFirst.Id);
-
-                result.Add(food);
-            }
-
-            restaurant.Foods = result1;
         }
 
         public void Delete(Guid id)
