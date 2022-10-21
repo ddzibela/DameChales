@@ -11,8 +11,8 @@ public interface IDatabaseFixture
     //restaurat-recipe
     //ingredient-order
 
-    FoodAmountEntity? GetFoodAmountDirectly(Guid foodAmountEntity);
-    FoodEntity? GetFoodRepository();
+    FoodAmountEntity? GetFoodAmountDirectly(Guid foodAmountId);
+    IFoodRepository? GetFoodRepository();
     OrderEntity? GetOrderDirectly(Guid orderId);
     RestaurantEntity? GetRestaurantDirectly(Guid restaurantId);
 
