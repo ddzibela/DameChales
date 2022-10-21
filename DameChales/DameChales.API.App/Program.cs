@@ -112,7 +112,29 @@ void UseEndpoints(WebApplication application)
 {
     var endpointsBase = application.MapGroup("api")
         .WithOpenApi();
+
+    UseFoodEndpoints(endpointsBase);
+    UseOrderEndpoints(endpointsBase);
 }
+
+void UseFoodEndpoints(RouteGroupBuilder routeGroupBuilder) 
+{
+    var foodEndpoints = routeGroupBuilder.MapGroup("food")
+        .WithTags("food");
+
+    foodEndpoints.MapGet("", (IFoodFacade foodFacade) => foodFacade.GetAll());
+
+}
+
+void UseOrderEndpoints(RouteGroupBuilder routeGroupBuilder)
+{
+    var orderEndpoints = routeGroupBuilder.MapGroup("order")
+        .WithTags("order");
+
+    orderEndpoints.MapGet("", (IOrderFacade orderFacade) => orderFacade.GetAll());
+
+}
+
 
 void UseDevelopmentSettings(WebApplication application)
 {

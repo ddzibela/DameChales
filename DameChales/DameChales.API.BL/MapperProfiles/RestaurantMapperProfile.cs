@@ -13,13 +13,11 @@ namespace DameChales.API.BL.MapperProfiles
 
             CreateMap<RestaurantEntity, RestaurantDetailModel>()
                 .MapMember(dst => dst.Foods, src => src.Foods);
-            CreateMap<FoodEntity, RestaurantDetailFoodModel>();
             CreateMap<RestaurantDetailModel, RestaurantEntity>()
                 .Ignore(dst => dst.Foods);
 
             CreateMap<RestaurantEntity, RestaurantDetailModel>()
-                .MapMember(dst => dst.Orders, src => src.Orders);
-            CreateMap<OrderEntity, RestaurantDetailOrderModel>();
+                .MapMember(dst => dst.Orders, src => src.Orders);;
             CreateMap<RestaurantDetailModel, RestaurantEntity>()
                 .Ignore(dst => dst.Orders);
         }

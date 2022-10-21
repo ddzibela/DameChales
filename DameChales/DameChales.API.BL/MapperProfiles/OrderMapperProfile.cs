@@ -12,7 +12,7 @@ namespace DameChales.API.BL.MapperProfiles
             CreateMap<OrderEntity, OrderListModel>();
             CreateMap<OrderEntity, OrderDetailModel>()
                 .MapMember(dst => dst.FoodAmounts, src => src.FoodAmounts);
-            CreateMap<FoodAmountEntity, OrderDetailFoodModel>();
+            CreateMap<FoodAmountEntity, OrderFoodAmountDetailModel>();
 
             CreateMap<OrderDetailModel, OrderEntity>()
                 .Ignore(dst => dst.FoodAmounts);
