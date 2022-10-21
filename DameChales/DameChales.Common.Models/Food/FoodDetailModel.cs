@@ -12,10 +12,10 @@ namespace DameChales.Common.Models
     {
         public required Guid Id { get; init; }
 
-        public required string Name { get; init; }
-        public required string PhotoURL { get; init; }
-        public required string Description { get; init; }
-        public required double Price { get; init; }
+        public required string Name { get; set; }
+        public required string PhotoURL { get; set; }
+        public required string Description { get; set; }
+        public required double Price { get; set; }
 
         public ICollection<Alergens> alergens { get; set; } = new HashSet<Alergens>();
     }
