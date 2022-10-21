@@ -1,40 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using DameChales.API.DAL.Common.Entities;
+using DameChales.API.DAL.Common.Repositories;
+using DameChales.API.DAL.Memory;
+using DameChales.API.DAL.Memory.Repositories;
+using DameChales.Common.Enums;
+using Newtonsoft.Json;
 
 namespace DameChales.API.DAL.IntegrationTests;
 
 
 //todo check if it does a make sense becouse I am not sure about Restaurant entity and other entities
 public class InMemoryDatabaseFixture : IDatabaseFixture
-{
-    //restaurat-recipe
-    //ingredient-order
-
-    FoodAmountEntity? GetFoodAmountDirectly(Guid foodAmountId)
+{   
+    public FoodAmountEntity? GetFoodAmountDirectly(Guid foodAmountId)
     {
-        var foodAmount = inMemoryStorage.Value.FoodsAmounts.SingleOrDefault(t=>t.Id == foodAmountId);
+        var foodAmount = inMemoryStorage.Value.FoodAmounts.SingleOrDefault(t=>t.Id == foodAmountId);
 
-        return foodAmount;
+        return DeepClone(foodAmount);
     }
 
-    /*
-    public IngredientAmountEntity? GetIngredientAmountDirectly(Guid ingredientAmountId)
+    public RestaurantEntity? GetRestaurantDirectly(Guid restaurantId)
     {
-        var ingredientAmount = inMemoryStorage.Value.IngredientAmounts.SingleOrDefault(t => t.Id == ingredientAmountId);
-
-        return DeepClone(ingredientAmount);
-    }
-    */
-    RestaurantEntity? GetRestaurantDirectly(Guid restaurantId)
-    {
-        var restaurant = inMemoryStorage.Value.Restaurants.SingleOrDefault(t=>t?.Id == restaurantId);
-        if (restaurant == null)
-        {
-            return null;
-        }
-
-        restaurant.FoodsAmounts = inMemoryStorage.Value.FoodsAmounts.Where(t => t.RestaurantId == restaurantId).ToList();
+        var restaurant = inMemoryStorage.Value.Restaurants.SingleOrDefault(t=>t.Id == restaurantId);
 
         return DeepClone(restaurant);
     }
@@ -46,33 +35,24 @@ public class InMemoryDatabaseFixture : IDatabaseFixture
         {
             return null;
         }
-        order.FoodsAmounts = inMemoryStorage.Value.FoodsAmounts.Where(t => t.OrderId== orderId).ToList();
+        order.FoodAmounts = inMemoryStorage.Value.FoodAmounts.Where(t => t.OrderGuid == orderId).ToList();
 
         return DeepClone(order);
 
     }
 
-
-    /*
-    public RecipeEntity? GetRecipeDirectly(Guid recipeId)
+    private T DeepClone<T>(T input)
     {
-        var recipe = inMemoryStorage.Value.Recipes.SingleOrDefault(t => t.Id == recipeId);
-        if (recipe == null)
-        {
-            return null;
-        }
-
-        recipe.IngredientAmounts = inMemoryStorage.Value.IngredientAmounts.Where(t => t.RecipeId == recipeId).ToList();
-
-
-        return DeepClone(recipe);
+        var json = JsonConvert.SerializeObject(input);
+        return JsonConvert.DeserializeObject<T>(json);
     }
-    */
 
-    IFoodRepository? GetFoodRepository()
+    public IRestaurantRepository GetRestaurantRepository()
     {
-        return new FoodRepository(inMemoryStorage.Value);
+        return new RestaurantRepository(inMemoryStorage.Value);
     }
+
+
 
 
     /*
@@ -81,14 +61,7 @@ public class InMemoryDatabaseFixture : IDatabaseFixture
         return new RecipeRepository(inMemoryStorage.Value);
     }
     */
-
-
-    //ponecham
-    private T DeepClone<T>(T input)
-    {
-        var json = JsonConvert.SerializeObject(input);
-        return JsonConvert.DeserializeObject<T>(json);
-    }
+  
 
     /*
     public IList<Guid> IngredientGuids { get; } = new List<Guid>
@@ -145,7 +118,6 @@ public class InMemoryDatabaseFixture : IDatabaseFixture
     //todo add restaurants , food and orders 
     private void SeedStorage(Storage storage)
     {
-                private void SeedFoods()
         {
 
             Foods.Add(new FoodEntity()

@@ -12,7 +12,7 @@ public interface IDatabaseFixture
     //ingredient-order
 
     FoodAmountEntity? GetFoodAmountDirectly(Guid foodAmountId);
-    IFoodRepository? GetFoodRepository();
+    IRestaurantRepository? GetRestaurantRepository();
     OrderEntity? GetOrderDirectly(Guid orderId);
     RestaurantEntity? GetRestaurantDirectly(Guid restaurantId);
 
@@ -22,9 +22,9 @@ public interface IDatabaseFixture
     IRecipeRepository GetRecipeRepository();
     */
 
-    IList<Guid> foodGuids { get; }
-    IList<Guid> foodAmountGuids { get; }
-    IList<Guid> RecipeGuids { get; }
-    IList<Guid> restaurantGuids { get; }
+    IList<Guid> FoodGuids { get; }
+    IList<Guid> FoodAmountGuids { get; }
+    IList<Guid> OrderGuids { get; }
+    IList<Guid> RestaurantGuids { get; }
 
 }
