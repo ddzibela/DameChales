@@ -15,10 +15,7 @@ public class FoodRepositoryTests
     }
 
     private readonly IDatabaseFixture dbFixture;
-    //recipe-restaurat
-    //ingredient-order
 
-    //todo How to enter the FooAmount?
     [Fact]
     public void GetById_Returns_Requested_Order_Including_Their_OrdersAmounts()
     {
