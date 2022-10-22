@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.Xml.Linq;
 using AutoMapper;
 using DameChales.Common.Enums;
 
@@ -16,19 +17,20 @@ namespace DameChales.API.DAL.Common.Entities
 
         public ICollection<FoodAmountEntity> FoodAmounts { get; set; } = new List<FoodAmountEntity>();
 
-        public OrderEntity(Guid id, Guid restaurantId, TimeSpan deliveryTime, string note, OrderStatus status, List<FoodAmountEntity> foodAmounts) :
+        public OrderEntity(string name, Guid id, Guid restaurantId, TimeSpan deliveryTime, string note, OrderStatus status, List<FoodAmountEntity> foodAmounts) :
             base(id)
         {
+            Name = name;
             DeliveryTime = deliveryTime;
             RestaurantGuid = restaurantId;
-            DeliveryTime = deliveryTime;
+            //DeliveryTime = deliveryTime;
             Note = note;
             Status = status;
             FoodAmounts = foodAmounts;
         }
 
         public OrderEntity() :
-            this(Guid.Empty, Guid.Empty, TimeSpan.Zero, string.Empty, OrderStatus.Accepted, new List<FoodAmountEntity>())
+            this(string.Empty,Guid.Empty, Guid.Empty, TimeSpan.Zero, string.Empty, OrderStatus.Accepted, new List<FoodAmountEntity>())
         {
         }
 

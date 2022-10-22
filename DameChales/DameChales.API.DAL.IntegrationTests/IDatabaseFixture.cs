@@ -15,7 +15,7 @@ public interface IDatabaseFixture
     IRestaurantRepository? GetRestaurantRepository();
     OrderEntity? GetOrderDirectly(Guid orderId);
     RestaurantEntity? GetRestaurantDirectly(Guid restaurantId);
-
+    IOrderRepository? GetOrderRepository()
     /*
     IngredientAmountEntity? GetIngredientAmountDirectly(Guid ingredientAmountId);
     RecipeEntity? GetRecipeDirectly(Guid recipeId);

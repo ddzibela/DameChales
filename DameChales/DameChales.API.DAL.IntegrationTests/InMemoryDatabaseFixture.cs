@@ -47,6 +47,11 @@ public class InMemoryDatabaseFixture : IDatabaseFixture
         return JsonConvert.DeserializeObject<T>(json);
     }
 
+    public IOrderRepository GetOrderRepository()
+    {
+        return new OrderRepository(inMemoryStorage.Value);
+    }
+
     public IRestaurantRepository GetRestaurantRepository()
     {
         return new RestaurantRepository(inMemoryStorage.Value,);
@@ -145,7 +150,7 @@ public class InMemoryDatabaseFixture : IDatabaseFixture
             storage.Restaurants.Add(new RestaurantEntity
             {
                 Id = RestaurantGuids[0],
-                Name = "SkvelaRestaurace",
+                Name = "Pizza Forte",
                 Description="Mame nejlepsi vajicka",
                 LogoURL= "https://m.facebook.com/eggotruckbrno/",
                 Address= "Dvořákova 12, Brno, Czech Republic",
