@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.2.0" />
+    <PackageReference Include="Moq.AutoMock" Version="3.4.0" />
     <PackageReference Include="xunit" Version="2.4.2" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.5">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -23,13 +24,15 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DameChales.API.BL\DameChales.API.BL.csproj" />
-    <ProjectReference Include="..\DameChales.API.DAL.EF\DameChales.API.DAL.EF.csproj" />
-    <ProjectReference Include="..\DameChales.API.DAL.IntegrationTests\DameChales.API.DAL.IntegrationTests.csproj" />
-    <ProjectReference Include="..\DameChales.API.DAL.Memory\DameChales.API.DAL.Memory.csproj" />
     <ProjectReference Include="..\DameChales.Common.BL\DameChales.Common.BL.csproj" />
     <ProjectReference Include="..\DameChales.Common.Models\DameChales.Common.Models.csproj" />
-    <ProjectReference Include="..\DameChales.Common\DameChales.Common.csproj" />
     <ProjectReference Include="..\DameChales.DAL.Common\DameChales.API.DAL.Common.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="DameChales.API.BL">
+      <HintPath>..\DameChales.API.BL\bin\Debug\net7.0\DameChales.API.BL.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>
