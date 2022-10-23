@@ -10,26 +10,26 @@ using DameChales.API.DAL.Common.Repositories;
 using Moq;
 using Xunit;
 
-namespace CookBook.Api.BL.UnitTests;
-public class RecipeFacadeTests
+namespace DameChales.API.BL.UnitTests;
+public class OrderFacadeTests
 {
     [Fact]
     public void Delete_Calls_Correct_Method_On_Repository()
     {
         //arrange
-        var repositoryMock = new Mock<IRestaurantRepository>(MockBehavior.Strict);
-        repositoryMock.Setup(recipeRepository => recipeRepository.Remove(It.IsAny<Guid>()));
+        var repositoryMock = new Mock<IOrderRepository>(MockBehavior.Strict);
+        repositoryMock.Setup(orderRepository => orderRepository.Remove(It.IsAny<Guid>()));
 
-        var repository = repositoryMock.Object;
+        var order = repositoryMock.Object;
         var mapper = new Mock<IMapper>(MockBehavior.Strict).Object;
-        var facade = new RestaurantFacade(repository, mapper);
+        var facade = new OrderFacade(order, mapper);
 
         var itemId = Guid.NewGuid();
         //act
         facade.Delete(itemId);
 
         //assert
-        repositoryMock.Verify(restaurantRepository => restaurantRepository.Remove(itemId));
+        repositoryMock.Verify(orderRepository => orderRepository.Remove(itemId));
     }
 
     [Fact]
@@ -244,7 +244,6 @@ public class RecipeFacadeTests
         Assert.Empty(order.FoodAmounts);
     }
 
-    //todo
     private static OrderFacade GetFacadeWithForbiddenDependencyCalls()
     {
         var repository = new Mock<IOrderRepository>(MockBehavior.Strict).Object;
