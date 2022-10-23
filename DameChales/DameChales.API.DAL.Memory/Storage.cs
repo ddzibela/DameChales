@@ -9,24 +9,24 @@ namespace DameChales.API.DAL.Memory
     {
         private readonly IList<Guid> foodGuids = new List<Guid>
         {
-            new ("df935095-8709-4040-a2bb-b6f97cb416dc"),
-            new ("23b3902d-7d4f-4213-9cf0-112348f56238")
+        new ("96103111-393B-46B8-8B4F-EC82212CFFBF"),
+        new ("82BFF672-382C-49E9-ACA2-52DD028414A3")
         };
 
         private readonly IList<Guid> foodAmountGuids = new List<Guid>
         {
-            new ("0d4fa150-ad80-4d46-a511-4c666166ec5e"),
-            new ("87833e66-05ba-4d6b-900b-fe5ace88dbd8")
+        new ("67ECBE97-BA81-490D-9F9A-11C4832B4E94"),
+        new ("3B9F8A14-B6ED-4701-AB35-B05096C2FCCF")
         };
 
         private readonly IList<Guid> orderGuids = new List<Guid>
         {
-            new ("fabde0cd-eefe-443f-baf6-3d96cc2cbf2e")
+        new ("E184748D-B151-4129-83F9-F2AC2486FA55")
         };
 
         private readonly IList<Guid> restaurantGuids = new List<Guid>
         {
-            new ("gacce0cd-hhfe-123f-fag3-3d96aaaabf2e")
+        new ("75970373-0AFA-4C9B-9BC3-2655F3C1EFE0")
         };
 
         public IList<FoodEntity> Foods { get; } = new List<FoodEntity>();

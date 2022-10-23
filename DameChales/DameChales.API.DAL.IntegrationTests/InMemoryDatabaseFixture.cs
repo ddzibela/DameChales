@@ -54,29 +54,29 @@ public class InMemoryDatabaseFixture : IDatabaseFixture
 
     public IRestaurantRepository GetRestaurantRepository()
     {
-        return new RestaurantRepository(inMemoryStorage.Value,);
+        return new RestaurantRepository(inMemoryStorage.Value);
     }
 
     public IList<Guid> FoodGuids { get; } = new List<Guid>
     {
-        new ("df935025-8709-4040-a2bb-b6f97cb416dc"),
-        new ("23b3901d-7d4f-4213-9cf0-112348f56238")
+        new ("96103111-393B-46B8-8B4F-EC82212CFFBF"),
+        new ("82BFF672-382C-49E9-ACA2-52DD028414A3")
     };
 
     public IList<Guid> FoodAmountGuids { get; } = new List<Guid>
     {
-        new ("0d4fa150-ad80-4d46-a511-4c666166ec5e"),
-        new ("87833e36-05ba-4d6b-900b-fe5ace88dbd8")
+        new ("67ECBE97-BA81-490D-9F9A-11C4832B4E94"),
+        new ("3B9F8A14-B6ED-4701-AB35-B05096C2FCCF")
     };
 
     public IList<Guid> OrderGuids { get; } = new List<Guid>
     {
-        new ("fabde3cd-eefe-443f-baf6-3d96cc2cbf2e")
+        new ("E184748D-B151-4129-83F9-F2AC2486FA55")
     };
 
     public IList<Guid> RestaurantGuids { get; } = new List<Guid>
     {
-        new ("gacce2cd-hhfe-123f-fag3-3d96aaaabf2e")
+        new ("75970373-0AFA-4C9B-9BC3-2655F3C1EFE0")
     };
 
     //ponecham
