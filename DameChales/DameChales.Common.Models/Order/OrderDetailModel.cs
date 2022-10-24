@@ -11,6 +11,7 @@ namespace DameChales.Common.Models
     {
         public required Guid Id { get; init; }
 
+        public Guid RestaurantGuid { get; set; }
         public required string Name {get; set;}
         public required string? Note { get; set;}
         public required TimeSpan DeliveryTime { get; set; }

@@ -9,13 +9,28 @@ namespace DameChales.API.BL.MapperProfiles
     {
         public OrderMapperProfile()
         {
-            CreateMap<OrderEntity, OrderListModel>();
-            CreateMap<OrderEntity, OrderDetailModel>()
-                .MapMember(dst => dst.FoodAmounts, src => src.FoodAmounts);
-            CreateMap<FoodAmountEntity, OrderFoodAmountDetailModel>();
+            CreateMap<OrderEntity, OrderListModel>()
+                .ForMember(dst => dst.Id, opt => opt.MapFrom(src => src.Id))
+                .ForMember(dst => dst.RestaurantGuid, opt => opt.MapFrom(src => src.RestaurantGuid))
+                .ForMember(dst => dst.Name, opt => opt.MapFrom(src => src.Name))
+                .ForMember(dst => dst.Status, opt => opt.MapFrom(src => src.Status))
+                .ReverseMap();
 
-            CreateMap<OrderDetailModel, OrderEntity>()
-                .Ignore(dst => dst.FoodAmounts);
+            CreateMap<OrderEntity, OrderDetailModel>()
+                .ForMember(dst => dst.Id, opt => opt.MapFrom(src => src.Id))
+                .ForMember(dst => dst.RestaurantGuid, opt => opt.MapFrom(src => src.RestaurantGuid))
+                .ForMember(dst => dst.Name, opt => opt.MapFrom(src => src.Name))
+                .ForMember(dst => dst.Note, opt => opt.MapFrom(src => src.Note))
+                .ForMember(dst => dst.Status, opt => opt.MapFrom(src => src.Status))
+                .ForMember(dst => dst.FoodAmounts, opt => opt.MapFrom(src => src.FoodAmounts))
+                .ReverseMap();
+
+            CreateMap<FoodAmountEntity, OrderFoodAmountDetailModel>()
+                .ForMember(dst => dst.Id, opt => opt.MapFrom(src => src.Id))
+                .ForMember(dst => dst.Note, opt => opt.MapFrom(src => src.Note))
+                .ForMember(dst => dst.Amount, opt => opt.MapFrom(src => src.Amount))
+                .ForMember(dst => dst.Food, opt => opt.MapFrom(src => src.FoodEntity))
+                .ReverseMap();
         }
     }
 }

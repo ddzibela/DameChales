@@ -129,13 +129,13 @@ void UseFoodEndpoints(RouteGroupBuilder routeGroupBuilder)
         => foodFacade.GetById(id) is { } food
             ? TypedResults.Ok(food)
             : TypedResults.NotFound(foodEndpointsLocalizer[nameof(FoodEndpointsResources.GetById_NotFound), id].Value));
-
     //get by restaurant id
     foodEndpoints.MapGet("restaurant/{id:guid}", Results<Ok<FoodDetailModel>, NotFound<string>> (Guid id, IFoodFacade foodFacade, IStringLocalizer<FoodEndpointsResources> foodEndpointsLocalizer)
         => foodFacade.GetByRestaurantId(id) is { } food
             ? TypedResults.Ok(food)
             : TypedResults.NotFound(foodEndpointsLocalizer[nameof(FoodEndpointsResources.GetByRestaurantId_NotFound), id].Value));
 
+    /*
     //get by name
     foodEndpoints.MapGet("{name:string}", Results<Ok<FoodDetailModel>, NotFound<string>> (string name, IFoodFacade foodFacade, IStringLocalizer<FoodEndpointsResources> foodEndpointsLocalizer)
         => foodFacade.GetByName(name) is { } food
@@ -148,7 +148,7 @@ void UseFoodEndpoints(RouteGroupBuilder routeGroupBuilder)
             ? TypedResults.Ok(food)
             : TypedResults.NotFound(foodEndpointsLocalizer[nameof(FoodEndpointsResources.GetWithoutAlergens_NotFound), id, alergensstr].Value));
 
-
+    */
     foodEndpoints.MapPost("", (FoodDetailModel food, IFoodFacade foodFacade) => foodFacade.Create(food));
     foodEndpoints.MapPut("", (FoodDetailModel food, IFoodFacade foodFacade) => foodFacade.Update(food));
     foodEndpoints.MapPost("upsert", (FoodDetailModel food, IFoodFacade foodFacade) => foodFacade.CreateOrUpdate(food));
@@ -167,7 +167,7 @@ void UseOrderEndpoints(RouteGroupBuilder routeGroupBuilder)
         => orderFacade.GetById(id) is { } order
             ? TypedResults.Ok(order)
             : TypedResults.NotFound(orderEndpointsLocalizer[nameof(OrderEndpointsResources.GetById_NotFound), id].Value));
-
+    /*
     //get by food id
     orderEndpoints.MapGet("food/{id:guid}", Results<Ok<OrderDetailModel>, NotFound<string>> (Guid id, IOrderFacade orderFacade, IStringLocalizer<OrderEndpointsResources> orderEndpointsLocalizer)
         => orderFacade.GetByFoodId(id) is { } order
@@ -187,13 +187,28 @@ void UseOrderEndpoints(RouteGroupBuilder routeGroupBuilder)
         => orderFacade.GetByStatus(id, status) is { } order
             ? TypedResults.Ok(order)
             : TypedResults.NotFound(orderEndpointsLocalizer[nameof(OrderEndpointsResources.GetByStatus_NotFound), id, status].Value));
-
+    */
     orderEndpoints.MapPost("", (OrderDetailModel order, IOrderFacade orderFacade) => orderFacade.Create(order));
     orderEndpoints.MapPut("", (OrderDetailModel order, IOrderFacade orderFacade) => orderFacade.Update(order));
     orderEndpoints.MapPost("upsert", (OrderDetailModel order, IOrderFacade orderFacade) => orderFacade.CreateOrUpdate(order));
     orderEndpoints.MapDelete("{id:guid}", (Guid id, IOrderFacade orderFacade) => orderFacade.Delete(id));
 }
 
+void UseRestaurantEndpoints(RouteGroupBuilder routeGroupBuilder)
+{
+    var restaurantEndpoints = routeGroupBuilder.MapGroup("restaurant")
+    .WithTags("restaurant");
+
+    restaurantEndpoints.MapGet("", (IRestaurantFacade restarantFacade) => restarantFacade.GetAll());
+
+    //get by id
+
+    restaurantEndpoints.MapPost("", (RestaurantDetailModel restaurant, IRestaurantFacade restaurantFacade) => restaurantFacade.Create(restaurant));
+    restaurantEndpoints.MapPut("", (RestaurantDetailModel restaurant, IRestaurantFacade restaurantFacade) => restaurantFacade.Update(restaurant));
+    restaurantEndpoints.MapPost("upsert", (RestaurantDetailModel restaurant, IRestaurantFacade restaurantFacade) => restaurantFacade.CreateOrUpdate(restaurant));
+    restaurantEndpoints.MapDelete("", (Guid id, IRestaurantFacade restaurantFacade) => restaurantFacade.Delete(id));
+
+}
 
 void UseDevelopmentSettings(WebApplication application)
 {

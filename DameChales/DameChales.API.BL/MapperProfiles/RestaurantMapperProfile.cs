@@ -9,17 +9,22 @@ namespace DameChales.API.BL.MapperProfiles
     {
         public RestaurantMapperProfile()
         {
-            CreateMap<RestaurantEntity, RestaurantListModel>();
+            CreateMap<RestaurantEntity, RestaurantListModel>()
+                .ForMember(dst => dst.Id, opt => opt.MapFrom(src => src.Id))
+                .ForMember(dst => dst.Name, opt => opt.MapFrom(src => src.Name))
+                .ForMember(dst => dst.PhotoURL, opt => opt.MapFrom(src => src.LogoURL))
+                .ReverseMap();
 
             CreateMap<RestaurantEntity, RestaurantDetailModel>()
-                .MapMember(dst => dst.Foods, src => src.Foods);
-            CreateMap<RestaurantDetailModel, RestaurantEntity>()
-                .Ignore(dst => dst.Foods);
-
-            CreateMap<RestaurantEntity, RestaurantDetailModel>()
-                .MapMember(dst => dst.Orders, src => src.Orders);;
-            CreateMap<RestaurantDetailModel, RestaurantEntity>()
-                .Ignore(dst => dst.Orders);
+                .ForMember(dst => dst.Id, opt => opt.MapFrom(src => src.Id))
+                .ForMember(dst => dst.Name, opt => opt.MapFrom(src => src.Name))
+                .ForMember(dst => dst.Description, opt => opt.MapFrom(src => src.Description))
+                .ForMember(dst => dst.PhotoURL, opt => opt.MapFrom(src => src.LogoURL))
+                .ForMember(dst => dst.Address, opt => opt.MapFrom(src => src.Address))
+                .ForMember(dst => dst.GPSCoordinates, opt => opt.MapFrom(src => src.GPSCoordinates))
+                .ForMember(dst => dst.Foods, opt => opt.MapFrom(src => src.Foods))
+                .ForMember(dst => dst.Orders, opt => opt.MapFrom(src => src.Orders))
+                .ReverseMap();
         }
     }
 }

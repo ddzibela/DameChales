@@ -15,15 +15,14 @@ namespace DameChales.API.DAL.Memory.Repositories
         private readonly IList<OrderEntity> orders;
         private readonly IList<FoodEntity> foods;
         private readonly IList<FoodAmountEntity> foodAmounts;
-        private readonly IMapper mapper;
+       // private readonly IMapper mapper;
 
-        public RestaurantRepository(Storage storage, IMapper mapper)
+        public RestaurantRepository(Storage storage)
         {
             restaurants = storage.Restaurants;
             orders = storage.Orders;
             foods = storage.Foods;
             foodAmounts = storage.FoodAmounts;
-            this.mapper = mapper;
         }
 
         public IList<RestaurantEntity> GetAll()
@@ -64,7 +63,7 @@ namespace DameChales.API.DAL.Memory.Repositories
             var restaurantExisting = foods.SingleOrDefault(e => e.Id == restaurant.Id);
             if (restaurantExisting != null)
             {
-                mapper.Map(restaurant, restaurantExisting);
+               // mapper.Map(restaurant, restaurantExisting);
             }
 
             return restaurantExisting?.Id;

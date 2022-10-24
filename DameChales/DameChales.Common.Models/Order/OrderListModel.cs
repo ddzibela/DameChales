@@ -10,6 +10,7 @@ namespace DameChales.Common.Models
     public record OrderListModel : IWithId
     {
         public required Guid Id { get; init; }
+        public Guid RestaurantGuid { get; set; }
         public required string Name { get; set; }
         public OrderStatus Status { get; set; }
     }
