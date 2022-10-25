@@ -96,6 +96,20 @@ namespace DameChales.API.DAL.Memory.Repositories
 
         }
 
+        public double GetRestaurantEarnings(Guid id)
+        {
+            double earnings = 0;
+            var ordersToCount = orders.Where(e => e.RestaurantGuid == id);
+            foreach(var order in ordersToCount)
+            {
+               foreach(var amount in order.FoodAmounts)
+                {
+                    earnings += (amount.FoodEntity.Price * amount.Amount);
+                } 
+            }
+            return earnings;
+        }
+
         public bool Exists(Guid id)
         {
             return restaurants.Any(e => e.Id == id);
