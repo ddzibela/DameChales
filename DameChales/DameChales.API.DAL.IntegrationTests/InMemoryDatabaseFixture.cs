@@ -125,6 +125,7 @@ public class InMemoryDatabaseFixture : IDatabaseFixture
             {
                 Id = FoodAmountGuids[0],
                 OrderGuid = OrderGuids[0],
+                FoodGuid = FoodGuids[0],
                 Amount = 1,
                 Note = "poznamka"
             });
@@ -133,6 +134,7 @@ public class InMemoryDatabaseFixture : IDatabaseFixture
             {
                 Id = FoodAmountGuids[1],
                 OrderGuid = OrderGuids[0],
+                FoodGuid = FoodGuids[1],
                 Amount = 2
             });
 

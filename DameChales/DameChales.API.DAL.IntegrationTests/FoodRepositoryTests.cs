@@ -25,21 +25,22 @@ public class FoodRepositoryTests
         //act
         var order = orderRepository.GetById(dbFixture.OrderGuids[0]);
 
-        Assert.Equal(2,order.FoodAmounts.Count);
+        //assert
+        Assert.Equal(2, order.FoodAmounts.Count);
 
         var orderAmount1 =
             Assert.Single(order.FoodAmounts.Where(entity => entity.Id == dbFixture.FoodAmountGuids[0]));
         var orderAmount2 =
             Assert.Single(order.FoodAmounts.Where(entity => entity.Id == dbFixture.FoodAmountGuids[1]));
 
-        //Assert.Equal(dbFixture.OrderGuids[0], orderAmount1.Id);
-        //Assert.Equal(dbFixture.OrderGuids[0], orderAmount2.Id);
+        Assert.Equal(dbFixture.OrderGuids[0], orderAmount1.OrderGuid);
+        Assert.Equal(dbFixture.OrderGuids[0], orderAmount2.OrderGuid);
 
         Assert.NotNull(orderAmount1.FoodEntity);
         Assert.Equal("orechy",orderAmount1.FoodEntity.Name);
 
         Assert.NotNull(orderAmount2.FoodEntity);
-        Assert.Equal("slehacka", orderAmount2.FoodEntity.Name);
+        Assert.Equal("Slehacka", orderAmount2.FoodEntity.Name);
 
     }
 
@@ -69,6 +70,7 @@ public class FoodRepositoryTests
         var orderId = Guid.NewGuid();
 
         var newOrder = new OrderEntity {
+            Id = orderId,
             Name = "Name",
             DeliveryTime = duration,
             RestaurantGuid = restaurantId,
@@ -112,7 +114,8 @@ public class FoodRepositoryTests
         var newOrderAmount =
             new FoodAmountEntity
             {
-                FoodGuid = foodAmountId,
+                Id = foodAmountId,
+                FoodGuid = dbFixture.FoodGuids[0],
                 Amount = 3,
                 OrderGuid = orderId,
                 OrderEntity=order,
