@@ -18,6 +18,9 @@
     <EmbeddedResource Update="Resources\OrderEndpointsResources.resx">
       <Generator></Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Resources\RestaurantEndpointsResources.en.resx">
+      <Generator></Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Resources\RestaurantEndpointsResources.resx">
       <Generator></Generator>
     </EmbeddedResource>

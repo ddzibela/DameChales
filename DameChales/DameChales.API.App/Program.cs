@@ -116,6 +116,7 @@ void UseEndpoints(WebApplication application)
 
     UseFoodEndpoints(endpointsBase);
     UseOrderEndpoints(endpointsBase);
+    UseRestaurantEndpoints(endpointsBase);
 }
 
 void UseFoodEndpoints(RouteGroupBuilder routeGroupBuilder)
@@ -181,6 +182,11 @@ void UseRestaurantEndpoints(RouteGroupBuilder routeGroupBuilder)
     restaurantEndpoints.MapGet("", (IRestaurantFacade restarantFacade) => restarantFacade.GetAll());
 
     //get by id
+    restaurantEndpoints.MapGet("{id:guid}", Results<Ok<RestaurantDetailModel>, NotFound<string>> (Guid id, IRestaurantFacade restaurantFacade, IStringLocalizer<RestaurantEndpointsResources> restaurantEndpointsLocalizer)
+    => restaurantFacade.GetById(id) is { } restaurant
+        ? TypedResults.Ok(restaurant)
+        : TypedResults.NotFound(restaurantEndpointsLocalizer[nameof(RestaurantEndpointsResources.GetById_NotFound), id].Value));
+
 
     restaurantEndpoints.MapPost("", (RestaurantDetailModel restaurant, IRestaurantFacade restaurantFacade) => restaurantFacade.Create(restaurant));
     restaurantEndpoints.MapPut("", (RestaurantDetailModel restaurant, IRestaurantFacade restaurantFacade) => restaurantFacade.Update(restaurant));

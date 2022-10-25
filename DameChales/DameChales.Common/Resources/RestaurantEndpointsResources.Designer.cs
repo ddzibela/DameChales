@@ -59,5 +59,14 @@ namespace DameChales.Common.Resources {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Restaurant with id &apos;{0}&apos; not found.
+        /// </summary>
+        public static string GetById_NotFound {
+            get {
+                return ResourceManager.GetString("GetById_NotFound", resourceCulture);
+            }
+        }
     }
 }
