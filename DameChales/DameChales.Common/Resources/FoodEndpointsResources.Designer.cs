@@ -29,14 +29,14 @@ namespace DameChales.Common.Resources {
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal FoodEndpointsResources() {
+        public FoodEndpointsResources() {
         }
         
         /// <summary>
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("DameChales.Common.Resources.FoodEndpointsResources", typeof(FoodEndpointsResources).Assembly);
@@ -51,7 +51,7 @@ namespace DameChales.Common.Resources {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -59,7 +59,7 @@ namespace DameChales.Common.Resources {
                 resourceCulture = value;
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Food with id &apos;{0}&apos; was not found.
         /// </summary>
@@ -68,7 +68,7 @@ namespace DameChales.Common.Resources {
                 return ResourceManager.GetString("GetById_NotFound", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Food with name &apos;{0}&apos; not found.
         /// </summary>
@@ -77,7 +77,7 @@ namespace DameChales.Common.Resources {
                 return ResourceManager.GetString("GetByName_NotFounGetByName_NotFound", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Food from restaurant id &apos;{0}&apos; not found.
         /// </summary>
@@ -86,7 +86,7 @@ namespace DameChales.Common.Resources {
                 return ResourceManager.GetString("GetByRestaurantId_NotFound", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Food from restaurant id &apos;{0}&apos; without alergens &apos;{1}&apos; not found.
         /// </summary>
