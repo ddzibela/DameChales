@@ -38,7 +38,7 @@ ConfigureAutoMapper(builder.Services);
 
 var app = builder.Build();
 
-ValidateAutoMapperConfiguration(app.Services);
+//ValidateAutoMapperConfiguration(app.Services);
 
 UseDevelopmentSettings(app);
 UseSecurityFeatures(app);
@@ -129,26 +129,16 @@ void UseFoodEndpoints(RouteGroupBuilder routeGroupBuilder)
         => foodFacade.GetById(id) is { } food
             ? TypedResults.Ok(food)
             : TypedResults.NotFound(foodEndpointsLocalizer[nameof(FoodEndpointsResources.GetById_NotFound), id].Value));
-    //get by restaurant id
-    foodEndpoints.MapGet("restaurant/{id:guid}", Results<Ok<FoodDetailModel>, NotFound<string>> (Guid id, IFoodFacade foodFacade, IStringLocalizer<FoodEndpointsResources> foodEndpointsLocalizer)
-        => foodFacade.GetByRestaurantId(id) is { } food
-            ? TypedResults.Ok(food)
-            : TypedResults.NotFound(foodEndpointsLocalizer[nameof(FoodEndpointsResources.GetByRestaurantId_NotFound), id].Value));
 
-    /*
+    //get foods by restaurant id
+    foodEndpoints.MapGet("restaurant/{id:guid}", (Guid id, IFoodFacade foodFacade) => foodFacade.GetByRestaurantId(id));
+
     //get by name
-    foodEndpoints.MapGet("{name:string}", Results<Ok<FoodDetailModel>, NotFound<string>> (string name, IFoodFacade foodFacade, IStringLocalizer<FoodEndpointsResources> foodEndpointsLocalizer)
-        => foodFacade.GetByName(name) is { } food
-            ? TypedResults.Ok(food)
-            : TypedResults.NotFound(foodEndpointsLocalizer[nameof(FoodEndpointsResources.GetByName_NotFound), name].Value));
+    //foodEndpoints.MapGet("{name:string}", (string name, IFoodFacade foodFacade) => foodFacade.GetByName(name));
 
     //get without alergens example - /api/food/restaurant/{someId}/noalergnes/{1_2_7_11}
-    foodEndpoints.MapGet("restaurant/{id:guid}/noalergens/{alergensstr}", Results<Ok<FoodDetailModel>, NotFound<string>> (Guid id, string alergensstr, IFoodFacade foodFacade, IStringLocalizer<FoodEndpointsResources> foodEndpointsLocalizer)
-        => foodFacade.GetWithoutAlergens(id, new HashSet<Alergens>(alergensstr.Split("_").Select(a => (Alergens)Enum.Parse(typeof(Alergens), a)))) is { } food
-            ? TypedResults.Ok(food)
-            : TypedResults.NotFound(foodEndpointsLocalizer[nameof(FoodEndpointsResources.GetWithoutAlergens_NotFound), id, alergensstr].Value));
+    foodEndpoints.MapGet("restaurant/{id:guid}/noalergens/{alergensstr}", (Guid id, string alergensstr, IFoodFacade foodFacade) => foodFacade.GetWithoutAlergens(id, new HashSet<Alergens>(alergensstr.Split("_").Select(a => (Alergens)Enum.Parse(typeof(Alergens), a)))));
 
-    */
     foodEndpoints.MapPost("", (FoodDetailModel food, IFoodFacade foodFacade) => foodFacade.Create(food));
     foodEndpoints.MapPut("", (FoodDetailModel food, IFoodFacade foodFacade) => foodFacade.Update(food));
     foodEndpoints.MapPost("upsert", (FoodDetailModel food, IFoodFacade foodFacade) => foodFacade.CreateOrUpdate(food));
@@ -167,27 +157,16 @@ void UseOrderEndpoints(RouteGroupBuilder routeGroupBuilder)
         => orderFacade.GetById(id) is { } order
             ? TypedResults.Ok(order)
             : TypedResults.NotFound(orderEndpointsLocalizer[nameof(OrderEndpointsResources.GetById_NotFound), id].Value));
-    /*
-    //get by food id
-    orderEndpoints.MapGet("food/{id:guid}", Results<Ok<OrderDetailModel>, NotFound<string>> (Guid id, IOrderFacade orderFacade, IStringLocalizer<OrderEndpointsResources> orderEndpointsLocalizer)
-        => orderFacade.GetByFoodId(id) is { } order
-            ? TypedResults.Ok(order)
-            : TypedResults.NotFound(orderEndpointsLocalizer[nameof(OrderEndpointsResources.GetByFoodId_NotFound), id].Value));
+    
+    //get orders by food id
+    orderEndpoints.MapGet("food/{id:guid}", (Guid id, IOrderFacade orderFacade) => orderFacade.GetByFoodId(id));
 
+    //get orders by restaurant id
+    orderEndpoints.MapGet("restaurant/{id:guid}", (Guid id, IOrderFacade orderFacade) => orderFacade.GetByRestaurantId(id));
 
-    //get by restaurant id
-    orderEndpoints.MapGet("restaurant/{id:guid}", Results<Ok<OrderDetailModel>, NotFound<string>> (Guid id, IOrderFacade orderFacade, IStringLocalizer<OrderEndpointsResources> orderEndpointsLocalizer)
-        => orderFacade.GetByRestaurantId(id) is { } order
-            ? TypedResults.Ok(order)
-            : TypedResults.NotFound(orderEndpointsLocalizer[nameof(OrderEndpointsResources.GetByRestaurantId_NotFound), id].Value));
+    //get orders by status and restaurant id
+    orderEndpoints.MapGet("restaurant/{id:guid}/status/{status}", (Guid id, OrderStatus status,IOrderFacade orderFacade) => orderFacade.GetByStatus(id, status));
 
-
-    //get by status
-    orderEndpoints.MapGet("restaurant/{id:guid}/status/{status}", Results<Ok<OrderDetailModel>, NotFound<string>> (Guid id, OrderStatus status,IOrderFacade orderFacade, IStringLocalizer<OrderEndpointsResources> orderEndpointsLocalizer)
-        => orderFacade.GetByStatus(id, status) is { } order
-            ? TypedResults.Ok(order)
-            : TypedResults.NotFound(orderEndpointsLocalizer[nameof(OrderEndpointsResources.GetByStatus_NotFound), id, status].Value));
-    */
     orderEndpoints.MapPost("", (OrderDetailModel order, IOrderFacade orderFacade) => orderFacade.Create(order));
     orderEndpoints.MapPut("", (OrderDetailModel order, IOrderFacade orderFacade) => orderFacade.Update(order));
     orderEndpoints.MapPost("upsert", (OrderDetailModel order, IOrderFacade orderFacade) => orderFacade.CreateOrUpdate(order));
