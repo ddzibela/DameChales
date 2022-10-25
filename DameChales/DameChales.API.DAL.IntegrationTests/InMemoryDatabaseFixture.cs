@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using AutoMapper;
 using DameChales.API.DAL.Common.Entities;
 using DameChales.API.DAL.Common.Repositories;
 using DameChales.API.DAL.Memory;
@@ -54,7 +55,8 @@ public class InMemoryDatabaseFixture : IDatabaseFixture
 
     public IRestaurantRepository GetRestaurantRepository()
     {
-        return new RestaurantRepository(inMemoryStorage.Value);
+        var options = new MapperConfiguration(cfg => cfg.CreateMap<RestaurantEntity, RestaurantEntity>());
+        return new RestaurantRepository(inMemoryStorage.Value, new Mapper(options));
     }
 
     public IList<Guid> FoodGuids { get; } = new List<Guid>
