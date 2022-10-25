@@ -12,35 +12,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Resources\FoodEndpointsResources.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>FoodEndpointsResources.resx</DependentUpon>
-    </Compile>
-    <Compile Update="Resources\OrderEndpointsResources.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>OrderEndpointsResources.resx</DependentUpon>
-    </Compile>
-    <Compile Update="Resources\RestaurantEndpointsResources.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>RestaurantEndpointsResources.resx</DependentUpon>
-    </Compile>
-  </ItemGroup>
-
-  <ItemGroup>
     <EmbeddedResource Update="Resources\FoodEndpointsResources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>FoodEndpointsResources.Designer.cs</LastGenOutput>
+      <Generator></Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Resources\OrderEndpointsResources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>OrderEndpointsResources.Designer.cs</LastGenOutput>
+      <Generator></Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Resources\RestaurantEndpointsResources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>RestaurantEndpointsResources.Designer.cs</LastGenOutput>
+      <Generator></Generator>
     </EmbeddedResource>
   </ItemGroup>
 
