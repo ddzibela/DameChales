@@ -32,21 +32,26 @@ namespace DameChales.API.BL.Facades
             var restaurantEntities = restaurantRepository.GetByFoodId(id);
             return mapper.Map<List<RestaurantListModel>>(restaurantEntities);
         }
-        public RestaurantDetailModel? GetByName(string name)
+        public List<RestaurantListModel>? GetByName(string name)
         {
             var restaurantEntity = restaurantRepository.GetByName(name);
-            return mapper.Map<RestaurantDetailModel>(restaurantEntity);
+            return mapper.Map<List<RestaurantListModel>>(restaurantEntity);
         }
-        public RestaurantDetailModel? GetByAddress(string address)
+        public List<RestaurantListModel>? GetByAddress(string address)
         {
             var restaurantEntity = restaurantRepository.GetByAddress(address);
-            return mapper.Map<RestaurantDetailModel>(restaurantEntity);
+            return mapper.Map<List<RestaurantListModel>>(restaurantEntity);
         }
 
         public RestaurantDetailModel? GetById(Guid id)
         {
             var restaurantEntity = restaurantRepository.GetById(id);
             return mapper.Map<RestaurantDetailModel>(restaurantEntity);
+        }
+
+        public double GetEarnings(Guid id)
+        {
+            return restaurantRepository.GetEarnings(id);
         }
 
         public Guid CreateOrUpdate(RestaurantDetailModel restaurantModel)
