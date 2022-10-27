@@ -39,7 +39,7 @@ namespace DameChales.API.DAL.Memory.Repositories
 
         public RestaurantEntity? GetByFoodId(Guid id)
         {
-            return restaurants.SingleOrDefault(e => e.Foods.Any(food => food.Id == id));
+            return restaurants.Where(e => e.Foods.Any(f => f.Id == id)).SingleOrDefault();
         }
 
         public IList<RestaurantEntity> GetByName(string name)

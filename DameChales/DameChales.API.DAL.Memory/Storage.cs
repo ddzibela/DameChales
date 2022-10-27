@@ -29,19 +29,20 @@ namespace DameChales.API.DAL.Memory
         new ("75970373-0AFA-4C9B-9BC3-2655F3C1EFE0")
         };
 
+        public IList<RestaurantEntity> Restaurants { get; } = new List<RestaurantEntity>();
         public IList<FoodEntity> Foods { get; } = new List<FoodEntity>();
         public IList<FoodAmountEntity> FoodAmounts { get; } = new List<FoodAmountEntity>();
         public IList<OrderEntity> Orders { get; } = new List<OrderEntity>();
-        public IList<RestaurantEntity> Restaurants { get; } = new List<RestaurantEntity>();
 
         public Storage(bool seedData = true)
         {
             if (seedData)
             {
+                SeedRestaurants();
                 SeedFoods();
+                SeedRestaurantFoods();
                 SeedFoodAmounts();
                 SeedOrders();
-                SeedRestaurants();
             }
         }
 
@@ -56,8 +57,9 @@ namespace DameChales.API.DAL.Memory
                 Description = "Popis vajicek s orechy.",
                 Price = 150,
                 RestaurantGuid = restaurantGuids[0],
+                Restaurant = Restaurants.Single(e => e.Id == restaurantGuids[0]),
                 alergens = new HashSet<Alergens>() { Alergens.Nuts }
-            });
+            }); ;
 
             Foods.Add(new FoodEntity
             {
@@ -67,6 +69,7 @@ namespace DameChales.API.DAL.Memory
                 Description = "Popis cibule na slehacce.",
                 Price = 100.5,
                 RestaurantGuid = restaurantGuids[0],
+                Restaurant = Restaurants.Single(e => e.Id == restaurantGuids[0]),
                 alergens = new HashSet<Alergens>() { Alergens.Milk }
             });
         }
@@ -114,6 +117,13 @@ namespace DameChales.API.DAL.Memory
                 GPSCoordinates= "49.195942, 16.611404"
 
             });
+        }
+
+        private void SeedRestaurantFoods()
+        {
+            var restaurant = Restaurants.Single(e => e.Id == restaurantGuids[0]);
+            restaurant.Foods.Add(Foods.Single(f => f.Id == foodGuids[0]));
+            restaurant.Foods.Add(Foods.Single(f => f.Id == foodGuids[1]));
         }
 
     }

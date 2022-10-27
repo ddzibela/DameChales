@@ -8,7 +8,7 @@ namespace DameChales.API.BL.Facades
     public interface IRestaurantFacade : IAppFacade
     {
         List<RestaurantListModel> GetAll();
-        List<RestaurantListModel> GetByFoodId(Guid id);
+        RestaurantDetailModel? GetByFoodId(Guid id);
         RestaurantDetailModel? GetById(Guid id);
         List<RestaurantListModel>? GetByName(string name);
         List<RestaurantListModel>? GetByAddress(string address);

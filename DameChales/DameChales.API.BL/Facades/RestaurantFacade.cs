@@ -27,10 +27,10 @@ namespace DameChales.API.BL.Facades
             return mapper.Map<List<RestaurantListModel>>(restaurantEntities);
         }
 
-        public List<RestaurantListModel> GetByFoodId(Guid id)
+        public RestaurantDetailModel? GetByFoodId(Guid id)
         {
             var restaurantEntities = restaurantRepository.GetByFoodId(id);
-            return mapper.Map<List<RestaurantListModel>>(restaurantEntities);
+            return mapper.Map<RestaurantDetailModel>(restaurantEntities);
         }
         public List<RestaurantListModel>? GetByName(string name)
         {
