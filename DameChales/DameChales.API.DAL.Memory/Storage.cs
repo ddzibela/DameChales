@@ -81,14 +81,16 @@ namespace DameChales.API.DAL.Memory
                 Id = foodAmountGuids[0],
                 OrderGuid = orderGuids[0],
                 Amount = 1,
-                Note = "poznamka"
+                Note = "poznamka",
+                FoodGuid = foodGuids[0]
     });
 
             FoodAmounts.Add(new FoodAmountEntity
             {
                 Id = foodAmountGuids[1],
                 OrderGuid = orderGuids[0],
-                Amount = 2
+                Amount = 2,
+                FoodGuid = foodGuids[1]
             });
         }
 
@@ -114,8 +116,9 @@ namespace DameChales.API.DAL.Memory
                 Description="Mame nejlepsi vajicka",
                 LogoURL= "https://m.facebook.com/eggotruckbrno/",
                 Address= "Dvořákova 12, Brno, Czech Republic",
-                GPSCoordinates= "49.195942, 16.611404"
-
+                GPSCoordinates= "49.195942, 16.611404",
+                Orders = new List<OrderEntity>() { Orders[0] },
+                Foods = new List<FoodEntity>() { Foods[0], Foods[1] }
             });
         }
 
