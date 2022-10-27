@@ -194,8 +194,10 @@ void UseRestaurantEndpoints(RouteGroupBuilder routeGroupBuilder)
     //get by food id
     restaurantEndpoints.MapGet("food/{id:guid}", (Guid id, IRestaurantFacade restaurantFacade) => restaurantFacade.GetByFoodId(id));
 
-    /*
+
     //get earnings
+    restaurantEndpoints.MapGet("earnings/{id:guid}", (Guid id, IRestaurantFacade restaurantFacade) => restaurantFacade.GetEarnings(id));
+    /*
     restaurantEndpoints.MapGet("earnings/{id:guid}", Results<Ok<double>, NotFound<string>>, (Guid id, IRestaurantFacade restaurantFacade, IStringLocalizer<RestaurantEndpointsResources> restaurantEndpointsLocalizer)
         => restaurantFacade.GetEarnings(id) is { } earnings
         ? TypedResults.Ok(earnings)
