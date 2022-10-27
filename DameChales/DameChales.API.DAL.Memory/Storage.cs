@@ -82,15 +82,17 @@ namespace DameChales.API.DAL.Memory
                 OrderGuid = orderGuids[0],
                 Amount = 1,
                 Note = "poznamka",
-                FoodGuid = foodGuids[0]
-    });
+                FoodGuid = foodGuids[0],
+                FoodEntity = Foods.Single(f => f.Id == foodGuids[0]),
+            });
 
             FoodAmounts.Add(new FoodAmountEntity
             {
                 Id = foodAmountGuids[1],
                 OrderGuid = orderGuids[0],
                 Amount = 2,
-                FoodGuid = foodGuids[1]
+                FoodGuid = foodGuids[1],
+                FoodEntity = Foods.Single(f => f.Id == foodGuids[1])
             });
         }
 
@@ -101,10 +103,19 @@ namespace DameChales.API.DAL.Memory
                 Name = "Dominik Petrik",
                 Id = orderGuids[0],
                 RestaurantGuid = restaurantGuids[0],
+                RestaurantEntity = Restaurants.Single(f => f.Id == restaurantGuids[0]),
                 DeliveryTime = TimeSpan.FromMinutes(15),
                 Note = "Poznamka k objednavce.",
-                Status = OrderStatus.Accepted
+                Status = OrderStatus.Accepted,
+                FoodAmounts = new List<FoodAmountEntity>
+                {
+                    FoodAmounts[0],
+                    FoodAmounts[1]
+                }
             });
+
+            FoodAmounts[0].OrderEntity = Orders[0];
+            FoodAmounts[1].OrderEntity = Orders[0];
         }
 
         private void SeedRestaurants()
@@ -117,8 +128,8 @@ namespace DameChales.API.DAL.Memory
                 LogoURL= "https://m.facebook.com/eggotruckbrno/",
                 Address= "Dvořákova 12, Brno, Czech Republic",
                 GPSCoordinates= "49.195942, 16.611404",
-                Orders = new List<OrderEntity>() { Orders[0] },
-                Foods = new List<FoodEntity>() { Foods[0], Foods[1] }
+                Orders = new List<OrderEntity>(),
+                Foods = new List<FoodEntity>()
             });
         }
 
@@ -128,6 +139,5 @@ namespace DameChales.API.DAL.Memory
             restaurant.Foods.Add(Foods.Single(f => f.Id == foodGuids[0]));
             restaurant.Foods.Add(Foods.Single(f => f.Id == foodGuids[1]));
         }
-
     }
 }
