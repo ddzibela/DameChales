@@ -20,15 +20,39 @@ namespace DameChales.API.App.EndToEndTests
         }
 
         [Fact]
-        public async Task GetAllOrders_Returns_At_Last_One_Recipe()
+        public async Task GetAllOrders_Returns_At_Last_One_Order()
         {
             var response = await client.Value.GetAsync("/api/order");
 
             response.EnsureSuccessStatusCode();
 
-            var recipes = await response.Content.ReadFromJsonAsync<ICollection<OrderListModel>>();
-            Assert.NotNull(recipes);
-            Assert.NotEmpty(recipes);
+            var orders = await response.Content.ReadFromJsonAsync<ICollection<OrderListModel>>();
+            Assert.NotNull(orders);
+            Assert.NotEmpty(orders);
+        }
+
+        [Fact]
+        public async Task GetAllRestaurants_Returns_At_Last_One_Restaurant()
+        {
+            var response = await client.Value.GetAsync("/api/restaurant");
+
+            response.EnsureSuccessStatusCode();
+
+            var restaurants = await response.Content.ReadFromJsonAsync<ICollection<RestaurantListModel>>();
+            Assert.NotNull(restaurants);
+            Assert.NotEmpty(restaurants);
+        }
+
+        [Fact]
+        public async Task GetAllFoods_Returns_At_Last_One_Food()
+        {
+            var response = await client.Value.GetAsync("/api/food");
+
+            response.EnsureSuccessStatusCode();
+
+            var foods = await response.Content.ReadFromJsonAsync<ICollection<FoodListModel>>();
+            Assert.NotNull(foods);
+            Assert.NotEmpty(foods);
         }
 
         public async ValueTask DisposeAsync()
