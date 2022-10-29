@@ -26,6 +26,10 @@ stages:
       name: "Build"
       inputs:
         command: 'build'
-        projects: '**/DameChales.API.App.csproj'
+        projects: '**/*.csproj'
+    - task: DotNetCoreCLI@2
+      inputs:
+        command: 'test'
+        projects: '**/*Tests*.csproj'
 
 
