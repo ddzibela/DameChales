@@ -1,7 +1,5 @@
 trigger:
-  branches:
-    include:
-    - tmp
+  - master
 variables:
 - name: buildConfiguration
   value: 'Release'
