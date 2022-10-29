@@ -26,6 +26,6 @@ stages:
       name: "Build"
       inputs:
         command: 'build'
-        projects: 'DameChales/DameChales.API.App/DameChales.API.App.csproj'
+        projects: '**/DameChales.API.App.csproj'
 
 
