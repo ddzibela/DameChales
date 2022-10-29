@@ -28,7 +28,6 @@ namespace DameChales.API.BL.MapperProfiles
                 .ForMember(dst => dst.Price, opt => opt.MapFrom(src => src.Price))
                 .ForMember(dst => dst.alergens, opt => opt.MapFrom(src => src.alergens))
                 .ForMember(dst => dst.RestaurantGuid, opt => opt.MapFrom(src => src.RestaurantGuid))
-                .Ignore(dst => dst.Restaurant)
                 .ReverseMap();
         }
     }

@@ -13,10 +13,10 @@ namespace DameChales.API.DAL.Common.Entities
         public required double Price { get; set; }
 
         public Guid RestaurantGuid { get; set; }
-        public RestaurantEntity? Restaurant { get; set; }
+        public RestaurantEntity? RestaurantEntity { get; set; }
         public ICollection<Alergens> alergens { get; set; } = new HashSet<Alergens>();
 
-        public FoodEntity(Guid id, string name, string photoURL, string description, double price, Guid restaurant, HashSet<Alergens> alergens, RestaurantEntity? Restaurant) :
+        public FoodEntity(Guid id, string name, string photoURL, string description, double price, Guid restaurant, HashSet<Alergens> alergens) :
             base(id)
         {
             Name = name;
@@ -25,11 +25,10 @@ namespace DameChales.API.DAL.Common.Entities
             Price = price;
             RestaurantGuid = restaurant;
             this.alergens = alergens;
-            this.Restaurant = Restaurant;
         }
 
         public FoodEntity() :
-            this(Guid.Empty, string.Empty, string.Empty, string.Empty, double.NaN, Guid.Empty, new HashSet<Alergens>(), null)
+            this(Guid.Empty, string.Empty, string.Empty, string.Empty, double.NaN, Guid.Empty, new HashSet<Alergens>())
         {
         }
 

@@ -31,7 +31,7 @@ namespace DameChales.API.DAL.EF
 
             modelBuilder.Entity<RestaurantEntity>()
                 .HasMany(restaurantEntity => restaurantEntity.Foods)
-                .WithOne(foodEntity => foodEntity.Restaurant)
+                .WithOne(foodEntity => foodEntity.RestaurantEntity)
                 .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<FoodEntity>()

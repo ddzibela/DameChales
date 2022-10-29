@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using DameChales.API.DAL.Common.Entities;
 using DameChales.Common.Enums;
+using Microsoft.Data.SqlClient;
 
 namespace DameChales.API.DAL.Memory
 {
@@ -43,6 +44,7 @@ namespace DameChales.API.DAL.Memory
                 SeedRestaurantFoods();
                 SeedFoodAmounts();
                 SeedOrders();
+                SeedRestaurantOrders();
             }
         }
 
@@ -57,9 +59,9 @@ namespace DameChales.API.DAL.Memory
                 Description = "Popis vajicek s orechy.",
                 Price = 150,
                 RestaurantGuid = restaurantGuids[0],
-                Restaurant = Restaurants.Single(e => e.Id == restaurantGuids[0]),
+                RestaurantEntity = Restaurants.Single(e => e.Id == restaurantGuids[0]),
                 alergens = new HashSet<Alergens>() { Alergens.Nuts }
-            }); ;
+            }); 
 
             Foods.Add(new FoodEntity
             {
@@ -69,11 +71,11 @@ namespace DameChales.API.DAL.Memory
                 Description = "Popis cibule na slehacce.",
                 Price = 100.5,
                 RestaurantGuid = restaurantGuids[0],
-                Restaurant = Restaurants.Single(e => e.Id == restaurantGuids[0]),
+                RestaurantEntity = Restaurants.Single(e => e.Id == restaurantGuids[0]),
                 alergens = new HashSet<Alergens>() { Alergens.Milk }
             });
         }
-   
+
         private void SeedFoodAmounts()
         {
             FoodAmounts.Add(new FoodAmountEntity
@@ -124,10 +126,10 @@ namespace DameChales.API.DAL.Memory
             {
                 Id = restaurantGuids[0],
                 Name = "SkvelaRestaurace",
-                Description="Mame nejlepsi vajicka",
-                LogoURL= "https://m.facebook.com/eggotruckbrno/",
-                Address= "Dvořákova 12, Brno, Czech Republic",
-                GPSCoordinates= "49.195942, 16.611404",
+                Description = "Mame nejlepsi vajicka",
+                LogoURL = "https://m.facebook.com/eggotruckbrno/",
+                Address = "Dvořákova 12, Brno, Czech Republic",
+                GPSCoordinates = "49.195942, 16.611404",
                 Orders = new List<OrderEntity>(),
                 Foods = new List<FoodEntity>()
             });
@@ -138,6 +140,12 @@ namespace DameChales.API.DAL.Memory
             var restaurant = Restaurants.Single(e => e.Id == restaurantGuids[0]);
             restaurant.Foods.Add(Foods.Single(f => f.Id == foodGuids[0]));
             restaurant.Foods.Add(Foods.Single(f => f.Id == foodGuids[1]));
+        }
+
+        private void SeedRestaurantOrders()
+        {
+            var restaurant = Restaurants.Single(e => e.Id == restaurantGuids[0]);
+            restaurant.Orders.Add(Orders.Single(f => f.Id == orderGuids[0]));
         }
     }
 }
