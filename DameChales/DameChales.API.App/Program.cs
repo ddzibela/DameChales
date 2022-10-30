@@ -206,7 +206,7 @@ void UseRestaurantEndpoints(RouteGroupBuilder routeGroupBuilder)
     restaurantEndpoints.MapPost("", (RestaurantDetailModel restaurant, IRestaurantFacade restaurantFacade) => restaurantFacade.Create(restaurant));
     restaurantEndpoints.MapPut("", (RestaurantDetailModel restaurant, IRestaurantFacade restaurantFacade) => restaurantFacade.Update(restaurant));
     restaurantEndpoints.MapPost("upsert", (RestaurantDetailModel restaurant, IRestaurantFacade restaurantFacade) => restaurantFacade.CreateOrUpdate(restaurant));
-    restaurantEndpoints.MapDelete("", (Guid id, IRestaurantFacade restaurantFacade) => restaurantFacade.Delete(id));
+    restaurantEndpoints.MapDelete("{id:guid}", (Guid id, IRestaurantFacade restaurantFacade) => restaurantFacade.Delete(id));
 
 }
 
