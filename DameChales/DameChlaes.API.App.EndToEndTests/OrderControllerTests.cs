@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
+using DameChales.Common.Enums;
 using DameChales.Common.Models;
 using Xunit;
 
@@ -18,6 +19,29 @@ namespace DameChales.API.App.EndToEndTests
             application = new DameChalesApiApplicationFactory();
             client = new Lazy<HttpClient>(application.CreateClient());
         }
+
+        [Fact]
+        public async Task PostFood_Test()
+        {
+
+            var myObject = new
+            {
+                id= "96103111-393b-46b8-8b4f-ec82212cffba",
+                name="string",
+                photoURL="string",
+                description="string",
+                price=0,
+                restaurantGuid= "75970373-0afa-4c9b-9bc3-2655f3c1efe0",
+                alergens = new HashSet<Alergens>()
+            };
+
+            JsonContent content = JsonContent.Create(myObject);
+
+            var response = await client.Value.PostAsync("/api/food", content);
+
+            response.EnsureSuccessStatusCode();
+        }
+
 
         [Fact]
         public async Task GetAllOrders_Returns_At_Last_One_Order()
