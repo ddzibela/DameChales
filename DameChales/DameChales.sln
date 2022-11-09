@@ -48,6 +48,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{63090959-F1E
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DameChales.Web.DAL", "DameChales.Web.DAL\DameChales.Web.DAL.csproj", "{C26509E1-D454-4E3D-9742-8DC1444654B2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DameChales.Web.BL", "DameChales.Web.BL\DameChales.Web.BL.csproj", "{86423A20-9FCE-4937-9654-02CE770778EE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -102,6 +104,10 @@ Global
 		{C26509E1-D454-4E3D-9742-8DC1444654B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C26509E1-D454-4E3D-9742-8DC1444654B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C26509E1-D454-4E3D-9742-8DC1444654B2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{86423A20-9FCE-4937-9654-02CE770778EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86423A20-9FCE-4937-9654-02CE770778EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86423A20-9FCE-4937-9654-02CE770778EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86423A20-9FCE-4937-9654-02CE770778EE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -124,6 +130,7 @@ Global
 		{14D31CD6-F0D6-4734-A32A-9CDF7097C380} = {10F2C2DE-DFB6-45DE-B0C5-1E26D1F28416}
 		{EFE36363-B0E3-44F7-8642-F7379368F236} = {14D31CD6-F0D6-4734-A32A-9CDF7097C380}
 		{C26509E1-D454-4E3D-9742-8DC1444654B2} = {63090959-F1E1-4E0F-94DC-D4238FD773F4}
+		{86423A20-9FCE-4937-9654-02CE770778EE} = {63090959-F1E1-4E0F-94DC-D4238FD773F4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {430A5F1C-59B4-4FC6-BA12-65708700D151}
