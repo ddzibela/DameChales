@@ -2,9 +2,9 @@
 
 namespace DameChales.Web.BL;
 
-public partial class OrderApiClient
+public partial class OrderClient
 {
-    public OrderApiClient(HttpClient httpClient, string baseUrl)
+    public OrderClient(HttpClient httpClient, string baseUrl)
         : this(httpClient)
     {
         BaseUrl = baseUrl;

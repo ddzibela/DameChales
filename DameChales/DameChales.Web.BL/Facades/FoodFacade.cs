@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 using AutoMapper;
+using DameChales.Common.Enums;
 using DameChales.Common.Models;
 using DameChales.Web.BL.Options;
 using DameChales.Web.DAL.Repositories;
@@ -11,10 +13,10 @@ namespace DameChales.Web.BL.Facades
 {
     public class FoodFacade : FacadeBase<FoodDetailModel, FoodListModel>
     {
-        private readonly IFoodApiClient apiClient;
+        private readonly IFoodClient apiClient;
 
         public FoodFacade(
-            IFoodApiClient apiClient,
+            IFoodClient apiClient,
             FoodRepository foodRepository,
             IMapper mapper,
             IOptions<LocalDbOptions> localDbOptions)
@@ -27,7 +29,7 @@ namespace DameChales.Web.BL.Facades
         {
             var foodsAll = await base.GetAllAsync();
 
-            var foodsFromApi = await apiClient.IngredientGetAsync(apiVersion, culture);
+            var foodsFromApi = await apiClient.FoodGetAsync();
             foodsAll.AddRange(foodsFromApi);
 
             return foodsAll;
@@ -35,17 +37,47 @@ namespace DameChales.Web.BL.Facades
 
         public override async Task<FoodDetailModel> GetByIdAsync(Guid id)
         {
-            return await apiClient.FoodGetAsync(id, apiVersion, culture);
+            return await apiClient.FoodGetAsync(id);
+        }
+
+        public async Task<List<FoodListModel>> GetByNameAsync(string name)
+        {
+            var foodsAll = await base.GetAllAsync();
+
+            var foodsFromApi = await apiClient.NameAsync(name);
+            foodsAll.AddRange(foodsFromApi);
+
+            return foodsAll;
+        }
+
+        public async Task<List<FoodListModel>> GetByRestaurantIdAsync(Guid id)
+        {
+            var foodsAll = await base.GetAllAsync();
+
+            var foodsFromApi = await apiClient.RestaurantAsync(id);
+            foodsAll.AddRange(foodsFromApi);
+
+            return foodsAll;
+        }
+
+        public async Task<List<FoodListModel>> GetWithoutAlergensAsync(Guid id, string alergensstr)
+        {
+            var foodsAll = await base.GetAllAsync();
+
+            var foodsFromApi = await apiClient.NoalergensAsync(id, alergensstr);
+            foodsAll.AddRange(foodsFromApi);
+
+            return foodsAll;
         }
 
         protected override async Task<Guid> SaveToApiAsync(FoodDetailModel data)
         {
-            return await apiClient.UpsertAsync(apiVersion, culture, data);
+            return await apiClient.UpsertAsync(data);
         }
 
         public override async Task DeleteAsync(Guid id)
         {
-            await apiClient.FoodDeleteAsync(id, apiVersion, culture);
+            await apiClient.FoodDeleteAsync(id);
         }
     }
 }

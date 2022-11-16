@@ -5,8 +5,10 @@ using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using AutoMapper;
+using DameChales.API.DAL.Memory.Repositories;
 using DameChales.Common;
 using DameChales.Common.BL.Facades;
+using DameChales.Common.Models;
 using DameChales.Web.BL.Options;
 using DameChales.Web.DAL.Repositories;
 using Microsoft.Extensions.Options;
@@ -45,8 +47,8 @@ namespace DameChales.Web.BL.Facades
 
         protected async Task<IList<TListModel>> GetAllFromLocalDbAsync()
         {
-            var recipesLocal = await repository.GetAllAsync();
-            return mapper.Map<IList<TListModel>>(recipesLocal);
+            var restaurantsLocal = await repository.GetAllAsync();
+            return mapper.Map<IList<TListModel>>(restaurantsLocal);
         }
 
         public abstract Task<TDetailModel> GetByIdAsync(Guid id);
