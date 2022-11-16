@@ -2,9 +2,9 @@
 
 namespace DameChales.Web.BL;
 
-public partial class RestaurantApiClient
+public partial class FoodClient
 {
-    public RestaurantApiClient(HttpClient httpClient, string baseUrl)
+    public FoodClient(HttpClient httpClient, string baseUrl)
         : this(httpClient)
     {
         BaseUrl = baseUrl;

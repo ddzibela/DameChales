@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DameChales.Common.Enums;
 using AutoMapper;
 using DameChales.Common.Models;
 using DameChales.Web.BL.Options;
@@ -12,10 +13,10 @@ namespace DameChales.Web.BL.Facades
 {
     public class OrderFacade : FacadeBase<OrderDetailModel, OrderListModel>
     {
-        private readonly IOrderApiClient apiClient;
+        private readonly IOrderClient apiClient;
 
         public OrderFacade(
-            IOrderApiClient apiClient,
+            IOrderClient apiClient,
             OrderRepository orderRepository,
             IMapper mapper,
             IOptions<LocalDbOptions> localDbOptions)
@@ -28,7 +29,7 @@ namespace DameChales.Web.BL.Facades
         {
             var ordersAll = await base.GetAllAsync();
 
-            var ordersFromApi = await apiClient.OrderGetAsync(apiVersion, culture);
+            var ordersFromApi = await apiClient.OrderGetAsync();
             foreach (var orderFromApi in ordersFromApi)
             {
                 if (ordersAll.Any(r => r.Id == orderFromApi.Id) is false)
@@ -42,17 +43,36 @@ namespace DameChales.Web.BL.Facades
 
         public override async Task<OrderDetailModel> GetByIdAsync(Guid id)
         {
-            return await apiClient.OrderGetAsync(id, apiVersion, culture);
+            return await apiClient.OrderGetAsync(id);
         }
 
         protected override async Task<Guid> SaveToApiAsync(OrderDetailModel data)
         {
-            return await apiClient.UpsertAsync(apiVersion, culture, data);
+            return await apiClient.UpsertAsync(data);
+        }
+
+        public async Task<List<OrderListModel>> GetByRestaurantIdAsync(Guid id)
+        {
+            var foodsAll = await base.GetAllAsync();
+
+            var foodsFromApi = await apiClient.RestaurantAsync(id);
+            foodsAll.AddRange(foodsFromApi);
+
+            return foodsAll;
+        }
+        public async Task<List<OrderListModel>> GetByStatusAsync(Guid id, OrderStatus status)
+        {
+            var foodsAll = await base.GetAllAsync();
+
+            var foodsFromApi = await apiClient.StatusAsync(id, status);
+            foodsAll.AddRange(foodsFromApi);
+
+            return foodsAll;
         }
 
         public override async Task DeleteAsync(Guid id)
         {
-            await apiClient.OrderDeleteAsync(id, apiVersion, culture);
+            await apiClient.OrderDeleteAsync(id);
         }
     }
 }
