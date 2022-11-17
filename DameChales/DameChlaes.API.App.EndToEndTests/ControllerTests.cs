@@ -76,6 +76,7 @@ namespace DameChales.API.App.EndToEndTests
             response.EnsureSuccessStatusCode();
         }
 
+        [Fact]
         public async Task UpdateFood_Test()
         {
 
