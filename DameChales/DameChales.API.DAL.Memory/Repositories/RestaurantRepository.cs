@@ -6,6 +6,7 @@ using AutoMapper;
 using DameChales.API.DAL.Common.Entities;
 using DameChales.API.DAL.Common.Entities.Interfaces;
 using DameChales.API.DAL.Common.Repositories;
+using DameChales.Common.Enums
 using Microsoft.AspNetCore.Authorization.Infrastructure;
 
 namespace DameChales.API.DAL.Memory.Repositories
@@ -101,7 +102,7 @@ namespace DameChales.API.DAL.Memory.Repositories
         {
             double earnings = 0;
             if (!Exists(id)) return double.NaN;
-            var ordersToCount = orders.Where(e => e.RestaurantGuid == id);
+            var ordersToCount = orders.Where(e => e.RestaurantGuid == id && e.Status == OrderStatus.Delivered);
             foreach(var order in ordersToCount)
             {
                foreach(var amount in order.FoodAmounts)
