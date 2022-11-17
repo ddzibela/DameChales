@@ -6,7 +6,7 @@ using AutoMapper;
 using DameChales.API.DAL.Common.Entities;
 using DameChales.API.DAL.Common.Entities.Interfaces;
 using DameChales.API.DAL.Common.Repositories;
-using DameChales.Common.Enums
+using DameChales.Common.Enums;
 using Microsoft.AspNetCore.Authorization.Infrastructure;
 
 namespace DameChales.API.DAL.Memory.Repositories
