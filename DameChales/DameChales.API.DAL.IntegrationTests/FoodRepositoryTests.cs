@@ -65,14 +65,14 @@ public class FoodRepositoryTests
 
         var foodAmountId = Guid.NewGuid();
         var restaurantId = Guid.NewGuid();
-        var duration = TimeSpan.FromMinutes(5);
+        var duration = DateTime.MinValue.AddMinutes(15);
         var status = OrderStatus.Accepted;
         var orderId = Guid.NewGuid();
 
         var newOrder = new OrderEntity {
             Id = orderId,
             Name = "Name",
-            DeliveryTime = duration,
+            DeliveryTime = DateTime.MinValue.AddMinutes(15),
             RestaurantGuid = restaurantId,
             Note = "Note",
             Status = status,
