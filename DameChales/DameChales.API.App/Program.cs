@@ -197,12 +197,7 @@ void UseRestaurantEndpoints(RouteGroupBuilder routeGroupBuilder)
 
     //get earnings
     restaurantEndpoints.MapGet("earnings/{id:guid}", (Guid id, IRestaurantFacade restaurantFacade) => restaurantFacade.GetEarnings(id));
-    /*
-    restaurantEndpoints.MapGet("earnings/{id:guid}", Results<Ok<double>, NotFound<string>>, (Guid id, IRestaurantFacade restaurantFacade, IStringLocalizer<RestaurantEndpointsResources> restaurantEndpointsLocalizer)
-        => restaurantFacade.GetEarnings(id) is { } earnings
-        ? TypedResults.Ok(earnings)
-        : TypedResults.NotFound(restaurantEndpointsLocalizer[nameof(RestaurantEndpointsResources.GetById_NotFound), id].Value));
-    */
+
     restaurantEndpoints.MapPost("", (RestaurantDetailModel restaurant, IRestaurantFacade restaurantFacade) => restaurantFacade.Create(restaurant));
     restaurantEndpoints.MapPut("", (RestaurantDetailModel restaurant, IRestaurantFacade restaurantFacade) => restaurantFacade.Update(restaurant));
     restaurantEndpoints.MapPost("upsert", (RestaurantDetailModel restaurant, IRestaurantFacade restaurantFacade) => restaurantFacade.CreateOrUpdate(restaurant));
