@@ -145,7 +145,7 @@ public class InMemoryDatabaseFixture : IDatabaseFixture
                 Name = "Peter Parker",
                 Id = OrderGuids[0],
                 RestaurantGuid = RestaurantGuids[0],
-                DeliveryTime = TimeSpan.FromMinutes(15),
+                DeliveryTime = DateTime.Now.AddHours(3),
                 Note = "Poznamka k objednavce.",
                 Status = OrderStatus.Accepted
             });

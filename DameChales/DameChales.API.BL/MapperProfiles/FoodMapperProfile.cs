@@ -14,10 +14,6 @@ namespace DameChales.API.BL.MapperProfiles
                 .ForMember(dst => dst.Name, opt => opt.MapFrom(src => src.Name))
                 .ForMember(dst => dst.PhotoURL, opt => opt.MapFrom(src => src.PhotoURL))
                 .ForMember(dst => dst.Price, opt => opt.MapFrom(src => src.Price))
-                //.Ignore(dst => dst.RestaurantGuid)
-                //.Ignore(dst => dst.Restaurant)
-                //.Ignore(dst => dst.alergens)
-                //.Ignore(dst => dst.Description)
                 .ReverseMap();
 
             CreateMap<FoodEntity, FoodDetailModel>()
