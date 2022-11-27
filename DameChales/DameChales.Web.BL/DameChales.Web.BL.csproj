@@ -8,9 +8,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Options" Version="7.0.0" />
+    <PackageReference Include="Microsoft.JSInterop.WebAssembly" Version="7.0.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\DameChales.Common.BL\DameChales.Common.BL.csproj" />
     <ProjectReference Include="..\DameChales.Common.Models\DameChales.Common.Models.csproj" />
-    <ProjectReference Include="..\DameChales.Common\DameChales.Common.csproj" />
     <ProjectReference Include="..\DameChales.Web.DAL\DameChales.Web.DAL.csproj" />
   </ItemGroup>
 

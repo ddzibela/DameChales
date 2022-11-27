@@ -5,7 +5,6 @@ using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using AutoMapper;
-using DameChales.API.DAL.Memory.Repositories;
 using DameChales.Common;
 using DameChales.Common.BL.Facades;
 using DameChales.Common.Models;
