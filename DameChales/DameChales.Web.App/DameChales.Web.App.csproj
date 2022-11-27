@@ -1,20 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
 
-  <PropertyGroup>
-    <TargetFramework>net7.0</TargetFramework>
-    <Nullable>enable</Nullable>
-    <ImplicitUsings>enable</ImplicitUsings>
-  </PropertyGroup>
-
-
-    <PropertyGroup>
-	    <AnalysisLevel>preview</AnalysisLevel>
-	    <AnalysisMode>AllEnabledByDefault</AnalysisMode>
-    </PropertyGroup>
-
-    <PropertyGroup>
-	    <BlazorWebAssemblyLoadAllGlobalizationData>true</BlazorWebAssemblyLoadAllGlobalizationData>
-    </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net7.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+	</PropertyGroup>
 
 
 	<ItemGroup>
@@ -32,6 +22,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Resources\Texts\IndexResources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>IndexResources.resx</DependentUpon>
+    </Compile>
     <Compile Update="Resources\Texts\NavMenuResources.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -40,10 +35,18 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="Resources\Texts\IndexResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>IndexResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Update="Resources\Texts\NavMenuResources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>NavMenuResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Pages\Food\" />
+  </ItemGroup>
+	
 </Project>
