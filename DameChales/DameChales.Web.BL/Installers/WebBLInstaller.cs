@@ -9,22 +9,22 @@ namespace DameChales.Web.BL.Installers
     {
         public void Install(IServiceCollection serviceCollection, string apiBaseUrl)
         {
-            serviceCollection.AddTransient<IRestaurantApiClient, RestaurantClient>(provider =>
+            serviceCollection.AddTransient<IRestaurantClient, RestaurantClient>(provider =>
             {
                 var client = CreateApiHttpClient(provider, apiBaseUrl);
                 return new RestaurantClient(client, apiBaseUrl);
             });
 
-            serviceCollection.AddTransient<IOrderApiClient, OrderClient>(provider =>
+            serviceCollection.AddTransient<IOrderClient, OrderClient>(provider =>
             {
                 var client = CreateApiHttpClient(provider, apiBaseUrl);
                 return new OrderClient(client, apiBaseUrl);
             });
 
-            serviceCollection.AddTransient<IFoodApiClient, FoodApiClient>(provider =>
+            serviceCollection.AddTransient<IFoodClient, FoodClient>(provider =>
             {
                 var client = CreateApiHttpClient(provider, apiBaseUrl);
-                return new FoodApiClient(client, apiBaseUrl);
+                return new FoodClient(client, apiBaseUrl);
             });
 
             serviceCollection.Scan(selector =>
