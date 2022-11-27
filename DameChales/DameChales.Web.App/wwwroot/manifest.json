@@ -1,0 +1,7 @@
+{
+  "theme_color": "#04173D",
+  "background_color": "#FFFFFF",
+    "permissions": [
+        "storage"
+    ]
+}
