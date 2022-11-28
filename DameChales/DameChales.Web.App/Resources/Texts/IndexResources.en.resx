@@ -118,12 +118,12 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="GoToRestaurantsList_Button" xml:space="preserve">
-    <value>Go to Restaurants List</value>
+    <value>Go to Restaurants list</value>
   </data>
   <data name="Page_Description" xml:space="preserve">
-    <value>Order now!</value>
+    <value>Hungry?</value>
   </data>
   <data name="Page_Title" xml:space="preserve">
-    <value>Hungry?</value>
+    <value>DameChales</value>
   </data>
 </root>

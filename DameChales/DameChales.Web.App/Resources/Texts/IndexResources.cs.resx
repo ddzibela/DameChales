@@ -117,13 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="GoToRestaurantsList_Button" xml:space="preserve">
+  <data name="GoToRestauratnsList_Button" xml:space="preserve">
     <value>Přejít na seznam restaurací</value>
   </data>
   <data name="Page_Description" xml:space="preserve">
-    <value>Objednej si teď!</value>
+    <value>Hladovej?</value>
   </data>
   <data name="Page_Title" xml:space="preserve">
-    <value>Hladovej?</value>
+    <value>DameChales!</value>
   </data>
 </root>

@@ -63,9 +63,9 @@ namespace DameChales.Web.App.Resources.Texts {
         /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
-        public static string GoToRestarantsList_Button {
+        public static string GoToRestaurantsList_Button {
             get {
-                return ResourceManager.GetString("GoToRestarantsList_Button", resourceCulture);
+                return ResourceManager.GetString("GoToRestaurantsList_Button", resourceCulture);
             }
         }
         
