@@ -117,13 +117,25 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="GoToRestaurantsList_Button" xml:space="preserve">
-    <value>Přejít na seznam restaurací</value>
+  <data name="CreateNewRecipe_Button" xml:space="preserve">
+    <value>Create new food</value>
   </data>
-  <data name="Page_Description" xml:space="preserve">
-    <value>Hladovej?</value>
+  <data name="EditFood_Button" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="GoToRestaurant_Button" xml:space="preserve">
+    <value>Go to restaurant</value>
+  </data>
+  <data name="Image_TableHeader" xml:space="preserve">
+    <value>Image</value>
+  </data>
+  <data name="Name_TableHeader" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="Note_TableHeader" xml:space="preserve">
+    <value>Note</value>
   </data>
   <data name="Page_Title" xml:space="preserve">
-    <value>Dáme Cháles!</value>
+    <value>Foods</value>
   </data>
 </root>

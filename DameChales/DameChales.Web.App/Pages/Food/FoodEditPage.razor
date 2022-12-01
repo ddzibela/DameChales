@@ -1,0 +1,180 @@
+﻿@page "/food/create"
+@page "/food/{Id:guid}"
+@inherits DameChales.Web.App.Pages.PageBase
+@namespace DameChales.Web.App.Pages
+@using DameChales.Common.Enums
+@using DameChales.Web.App.Extensions
+@using DameChales.Web.App.Resources.Texts
+@using Microsoft.Extensions.Localization
+@inject IStringLocalizer<FoodEditPageResources> FoodEditPageLocalizer
+
+
+<h3 class="mb-4">@FoodEditPageLocalizer["Page_Title"]</h3>
+
+<EditForm Model="@Data">
+    <DataAnnotationsValidator />
+
+    <div class="row">
+        <div class="col-md-8">
+            <div class="form-group">
+                <label class="w-100 font-weight-bold">
+                    @FoodEditPageLocalizer["Name_FormLabel"]
+                    <InputText @bind-Value="@Data.Name" class="form-control" />
+                    <small class="form-text text-danger">
+                        <ValidationMessage For="@(() => Data.Name)" />
+                    </small>
+                </label>
+            </div>
+
+                <div class="form-group">
+                    <label class="w-100 font-weight-bold">
+                        @FoodEditPageLocalizer["Price_FormLabel"]
+
+                    <InputNumber @bind-Value="@Data.Price" class="form-control" />
+                        <small class="form-text text-danger">
+                            <ValidationMessage For="@(() => Data.Price)" />
+                        </small>
+                    </label>
+                </div>
+
+            <div class="form-group">
+                <label class="w-100 font-weight-bold">
+                    @FoodEditPageLocalizer["RestaurantName_FormLabel"]
+                    <InputSelect @bind-Value="Data.RestaurantGuid" class="form-control">
+                        @foreach (var restaurant in Restaurants)
+                        {
+                            <option value="@restaurant.Id">@restaurant.Name</option>
+                        }
+                    </InputSelect>
+                    <small class="form-text text-danger">
+                        <ValidationMessage For="@(() => Data.RestaurantGuid)" />
+                    </small>
+                </label>
+            </div>
+
+                    <div class="form-group">
+                        <label class="w-100 font-weight-bold">
+                            @FoodEditPageLocalizer["Alergens_FormLabel"]
+                        </label>
+                            <br />
+                            @foreach (var alergens in Enum.GetValues<Alergens>())
+                {
+
+                    @code {
+                    [Parameter]
+                                        public bool IsChecked { get; set; } = false;
+
+
+                                        // Internal field holding checkbox state
+                                        private bool isChecked;
+
+
+                                        // updates the internal value whwenever the component is updated
+                                        // You may not want that??
+                                        protected override void OnParametersSet()
+                                        {
+                    isChecked = this.IsChecked;
+
+                                        }
+
+        private void CheckboxChanged(ChangeEventArgs e)
+        {
+
+                    //todo store alergens 
+                    //alergens - aktualny - IsChecked == true - pridaj inak remove
+                    Console.WriteLine(alg);
+
+                    if (e.Value.ToString() == "True") {
+
+                        //Data.alergens.Add(alergens);
+                    } else {
+                        //Data.alergens.Remove(alergens);
+                    }
+            }
+
+
+       
+
+        }
+
+                                @foreach (var foodAlergen in Data.alergens) {
+                                        if (foodAlergen == alergens) {
+                                            isChecked = true;
+                                 
+                                            break;
+                                         } else {
+                                            isChecked = false;
+                                    
+                                        }
+                                }
+
+                                
+                                
+
+
+                                
+                                <div class="form-check form-check-inline">
+                        <input checked="@isChecked" value="@alergens" @oninput="CheckboxChanged" class="form-check-input" type="checkbox" id="flexCheckDefault" />
+                                                <label class="form-check-label" for="flexCheckDefault">
+                                                   @alergens.GetReadableName()
+                                                 </label>
+
+
+                       
+
+
+                    </div>
+       
+                            }
+                            <small class="form-text text-danger">
+                                <ValidationMessage For="@(() => Data.alergens)" />
+                            </small>
+                    </div>
+
+            <div class="rounded">
+                <div class="form-group">
+                    <label class="w-100 font-weight-bold">
+                        @FoodEditPageLocalizer["Description_FormLabel"]
+                        <InputTextArea @bind-Value="@Data.Description" class="form-control" />
+                        <small class="form-text text-danger">
+                            <ValidationMessage For="@(() => Data.Description)" />
+                        </small>
+                    </label>
+                </div>
+            </div>
+
+
+            <div class="form-group mb-0">
+                <label class="w-100 font-weight-bold mb-0">
+                    @FoodEditPageLocalizer["ImageUrl_FormLabel"]
+                    <InputText @bind-Value="@Data.PhotoURL" class="form-control" />
+                </label>
+
+                <small class="form-text text-danger">
+                    <ValidationMessage For="@(() => Data.PhotoURL)" />
+                </small>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="bg-warning rounded overflow-hidden h-100 d-flex">
+                <img src="@Data.PhotoURL" class="m-auto" style="max-width: 100%; max-height: 100%;" />
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <hr />
+
+    <div class="d-flex justify-content-end mt-2 mb-2">
+        <button type="submit" class="btn btn-success mr-2" @onclick="@Save">
+            @FoodEditPageLocalizer["Save_Button"]
+        </button>
+        @if (Id != Guid.Empty)
+        {
+            <button class="btn btn-danger" @onclick="@Delete">@FoodEditPageLocalizer["Delete_Button"]</button>
+        }
+    </div>
+</EditForm>
