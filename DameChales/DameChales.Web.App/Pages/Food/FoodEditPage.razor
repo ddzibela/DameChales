@@ -56,79 +56,51 @@
                         <label class="w-100 font-weight-bold">
                             @FoodEditPageLocalizer["Alergens_FormLabel"]
                         </label>
-                            <br />
+                        <br />
+
                             @foreach (var alergens in Enum.GetValues<Alergens>())
-                {
+                            {
 
-                    @code {
-                    [Parameter]
-                                        public bool IsChecked { get; set; } = false;
+                                @code {
+                                    [Parameter]
+                                    public bool IsChecked { get; set; } = false;
+                                        
+                                    // Internal field holding checkbox state
+                                    private bool isChecked;
 
+                                    // updates the internal value whwenever the component is updated
+                                    protected override void OnParametersSet()
+                                    {
+                                        isChecked = this.IsChecked;
+                                    }
 
-                                        // Internal field holding checkbox state
-                                        private bool isChecked;
-
-
-                                        // updates the internal value whwenever the component is updated
-                                        // You may not want that??
-                                        protected override void OnParametersSet()
-                                        {
-                    isChecked = this.IsChecked;
-
+                                    private void CheckboxChanged(ChangeEventArgs e)
+                                    {
+                                        if (e.Value.ToString() == "True") {
+                                     
+                                            //Data.alergens.Add(alergens);
+                                        } else {
+                                            //Data.alergens.Remove(alergens);
                                         }
-
-        private void CheckboxChanged(ChangeEventArgs e)
-        {
-
-                    //todo store alergens 
-                    //alergens - aktualny - IsChecked == true - pridaj inak remove
-                    //Console.WriteLine(alg);
-
-                    if (e.Value.ToString() == "True") {
-
-                        //Data.alergens.Add(alergens);
-                    } else {
-                        //Data.alergens.Remove(alergens);
-                    }
-            }
-
-
-       
-
-        }
-
+                                    }
+                                }
+                           
                                 @foreach (var foodAlergen in Data.alergens) {
-                                        if (foodAlergen == alergens) {
-                                            isChecked = true;
-                                 
-                                            break;
-                                         } else {
-                                            isChecked = false;
-                                    
-                                        }
+                                    if (foodAlergen == alergens) {
+                                        isChecked = true;
+                                        break;
+                                    } else {
+                                        isChecked = false;          
+                                    }
                                 }
 
-                                
-                                
-
-
-                                
                                 <div class="form-check form-check-inline">
-                        <input checked="@isChecked" value="@alergens" @oninput="CheckboxChanged" class="form-check-input" type="checkbox" id="flexCheckDefault" />
+                                    <input checked="@isChecked" value="@alergens" @oninput="CheckboxChanged" class="form-check-input" type="checkbox" id="flexCheckDefault" />
                                                 <label class="form-check-label" for="flexCheckDefault">
                                                    @alergens.GetReadableName()
                                                  </label>
-
-
-                       
-
-
-                    </div>
-       
+                                 </div>
                             }
-                            <small class="form-text text-danger">
-                                <ValidationMessage For="@(() => Data.alergens)" />
-                            </small>
                     </div>
 
             <div class="rounded">
