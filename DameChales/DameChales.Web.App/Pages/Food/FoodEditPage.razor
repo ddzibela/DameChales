@@ -58,49 +58,39 @@
                         </label>
                         <br />
 
-                            @foreach (var alergens in Enum.GetValues<Alergens>())
+
+                        @foreach (var alergen in Enum.GetNames(typeof(Alergens)))
+                        {
+
+                            Alergens a = (Alergens)Enum.Parse(typeof(Alergens), alergen);
+                            bool isChecked = false;
+
+                            @if (Data.alergens.Contains(a))
                             {
+                                isChecked = true;
 
-                                @code {
-                                    [Parameter]
-                                    public bool IsChecked { get; set; } = false;
-                                        
-                                    // Internal field holding checkbox state
-                                    private bool isChecked;
-
-                                    // updates the internal value whwenever the component is updated
-                                    protected override void OnParametersSet()
-                                    {
-                                        isChecked = this.IsChecked;
-                                    }
-
-                                    private void CheckboxChanged(ChangeEventArgs e)
-                                    {
-                                        if (e.Value.ToString() == "True") {
-                                     
-                                            //Data.alergens.Add(alergens);
-                                        } else {
-                                            //Data.alergens.Remove(alergens);
-                                        }
-                                    }
-                                }
-                           
-                                @foreach (var foodAlergen in Data.alergens) {
-                                    if (foodAlergen == alergens) {
-                                        isChecked = true;
-                                        break;
-                                    } else {
-                                        isChecked = false;          
-                                    }
-                                }
-
-                                <div class="form-check form-check-inline">
-                                    <input checked="@isChecked" value="@alergens" @oninput="CheckboxChanged" class="form-check-input" type="checkbox" id="flexCheckDefault" />
-                                                <label class="form-check-label" for="flexCheckDefault">
-                                                   @alergens.GetReadableName()
-                                                 </label>
-                                 </div>
                             }
+
+                            <div class="form-check form-check-inline">
+                                <input type="checkbox" class="form-check-input" @onchange="eventArgs => { CheckboxClicked(alergen, eventArgs.Value); }" checked="@isChecked" />
+                                @alergen
+                            </div>
+                        }
+
+                        @functions {
+                            void CheckboxClicked(string alergenStr, object checkedValue)
+                            {
+                                    if ((bool)checkedValue)
+                                    {
+                                        Data.alergens.Add((Alergens)Enum.Parse(typeof(Alergens), alergenStr));
+                                    }
+                                    else
+                                    {
+       
+                                        Data.alergens.Remove((Alergens)Enum.Parse(typeof(Alergens), alergenStr));
+                                    }
+                            }
+                        }                                 
                     </div>
 
             <div class="rounded">
