@@ -37,10 +37,6 @@ namespace DameChales.Web.App.Pages
                 Data = await FoodFacade.GetByIdAsync(Id);
             }
 
-            Restaurants = await RestaurantFacade.GetAllAsync();
-
-            RestaurantToFood = await RestaurantFacade.GetByFoodIdAsync(Id);
-
             await base.OnInitializedAsync();
         }
 
