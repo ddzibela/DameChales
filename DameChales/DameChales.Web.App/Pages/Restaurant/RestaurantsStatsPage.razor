@@ -1,0 +1,39 @@
+﻿@page "/restaurants/stats/{Id:guid}"
+@namespace DameChales.Web.App.Pages
+@layout ListLayout
+@using DameChales.Web.App.Resources.Texts
+@using DameChales.Common.Models
+@using Microsoft.Extensions.Localization
+@inherits PageBase
+@inject IStringLocalizer<FoodListPageResources> FoodListPageLocalizer
+
+	<div>
+		<ul>
+			<li>
+				<!--Total orders-->
+			Total orders: @totalOrders
+			<ul>
+					<li>
+						<!--Confirmed-->
+						confirmed @acceptedOrders
+					</li>
+					<li>
+						<!--Preparing-->
+						preparing @preparingOrders
+					</li>
+					<li>
+						<!--In delivery-->
+						in delivery @deliveringOrders
+					</li>
+					<li>
+						<!--Delivered-->
+						delivered @deliveredOrders
+					</li>
+				</ul>
+			</li>
+			<li>
+				<!--profits-->
+				profits @profits
+			</li>
+		</ul>
+	</div>

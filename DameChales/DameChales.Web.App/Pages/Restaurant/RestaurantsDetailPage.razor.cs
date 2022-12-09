@@ -19,16 +19,16 @@ namespace DameChales.Web.App.Pages
         private RestaurantDetailModel? restaurantDetailModel { get; set; }
 
         [Parameter]
-        public Guid RestaurantID { get; set; } = Guid.Empty;
+        public Guid Id { get; set; } = Guid.Empty;
 
         protected override async Task OnInitializedAsync()
         {
-            if (RestaurantID == Guid.Empty)
+            if (Id == Guid.Empty)
             {
                 navigationManager.NavigateTo($"/restaurants");
             }
-            restaurantDetailModel = await restaurantFacade.GetByIdAsync( RestaurantID );
-            foods = await foodFacade.GetByRestaurantIdAsync( RestaurantID );
+            restaurantDetailModel = await restaurantFacade.GetByIdAsync( Id );
+            foods = await foodFacade.GetByRestaurantIdAsync( Id );
 
             await base.OnInitializedAsync();
         }

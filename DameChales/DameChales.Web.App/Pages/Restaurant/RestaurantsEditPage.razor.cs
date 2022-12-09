@@ -44,7 +44,7 @@ namespace DameChales.Web.App.Pages
         private static RestaurantDetailModel GetNewRestaurantDetailModel()
             => new()
             {
-                Id = Guid.Empty,
+                Id = Guid.NewGuid(),
                 Address = string.Empty,
                 Description= string.Empty,
                 GPSCoordinates = string.Empty,
