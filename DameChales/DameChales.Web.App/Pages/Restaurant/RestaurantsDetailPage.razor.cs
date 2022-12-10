@@ -24,7 +24,6 @@ namespace DameChales.Web.App.Pages
 
         private ICollection<FoodListModel> foods { get; set; } = new List<FoodListModel>();
         private OrderDetailModel orderDetailModel { get; set; } = GetNewOrderDetailModel();
-        private List<OrderFoodAmountDetailModel> orderFoodModel { get; set; } = new List<OrderFoodAmountDetailModel>();
         private RestaurantDetailModel? restaurantDetailModel { get; set; }
         public string filterString { get; set; } = string.Empty;
 
@@ -68,6 +67,10 @@ namespace DameChales.Web.App.Pages
 
         public void AddToOrder(FoodListModel food)
         {
+            if (orderDetailModel.FoodAmounts.Where(x => x.Food.Id == food.Id).Count() > 0)
+            {
+                return;
+            }
             var orderAmount = new OrderFoodAmountDetailModel
             {
                 Id = Guid.NewGuid(),
@@ -76,8 +79,22 @@ namespace DameChales.Web.App.Pages
                 Food = food,
             };
 
-            orderFoodModel.Add(orderAmount);
-            orderDetailModel.FoodAmounts = orderFoodModel;
+            orderDetailModel.FoodAmounts.Add(orderAmount);
+        }
+
+        public void RemoveFromOrder(FoodListModel food)
+        {
+            var itemToRemove = orderDetailModel.FoodAmounts.SingleOrDefault(x => x.Food.Id == food.Id);
+            if (itemToRemove != null)
+            {
+                orderDetailModel.FoodAmounts.Remove(itemToRemove);
+            }
+        }
+    
+        public async Task PlaceOrder()
+        {
+            await orderFacade.SaveAsync(orderDetailModel);
+            orderDetailModel = await orderFacade.GetByIdAsync(orderDetailModel.Id);
         }
     }
 }

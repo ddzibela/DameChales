@@ -35,21 +35,31 @@
                     </p>
                 </div>    
             </div>
-        <a href=@($" /restaurants/stats/{restaurantDetailModel.Id}")>
-                <button type="submit" class="btn btn-info mr-2">>
-                    Stats
+        <div class="card m-1">
+            <h4 class="card-title">
+                Staff only!
+            </h4>
+            <a href=@($" /restaurants/")>
+                <button class="btn btn-success mr-2">
+                    Order mngmt
                 </button>
-        </a>
-        <a href=@($" /restaurants/")>
-            <button type="submit" class="btn btn-success mr-2">
-                Order mngmt
-            </button>
-        </a>
-        <a href=@($" /restaurants/edit/{restaurantDetailModel.Id}")>
-                <button type="submit" class="btn btn-warning mr-2">>
-                    Edit
-                </button>
-        </a>
+            </a>
+            <a href=@($" /restaurants/stats/{restaurantDetailModel.Id}")>
+                    <button class="btn btn-info mr-2">>
+                        Food mngmt
+                    </button>
+            </a>
+            <a href=@($" /restaurants/stats/{restaurantDetailModel.Id}")>
+                    <button class="btn btn-warning mr-2">>
+                        Stats
+                    </button>
+            </a>
+            <a href=@($" /restaurants/edit/{restaurantDetailModel.Id}")>
+                    <button class="btn btn-danger mr-2">>
+                        Edit
+                    </button>
+            </a>
+        </div>
 		</div>
 		<!--FOODS-->
 		<div style="float: left; width: 30%">
@@ -83,19 +93,46 @@
 		</div>
 		<!--ORDER BUTTON-->
         <div style="float: left; width: 30%">
-        @foreach (var amount in orderFoodModel)
+        @foreach (var amount in orderDetailModel.FoodAmounts)
         {
+            <div class="card m-1" style="width: 16rem;">
             <EditForm Model="@amount">
                 <DataAnnotationsValidator />
-                <p>@amount.Food.Name</p>
+                    <h5 class="card-title">
+                            @{
+                                <span>@amount.Food.Name</span>
+                            }
+                    </h5>
+                    <div class="form-group">
+                        <label class="w-100 font-weight-bold">
+                            @FoodEditPageLocalizer["Price_FormLabel"]
+                            <InputNumber @bind-Value="@amount.Amount" class="form-control" />
+                            <small class="form-text text-danger">
+                                <ValidationMessage For="@(() => amount.Amount)" />
+                            </small>
+                        </label>
+                    </div>
+                    <div class="form-group">
+                            <label class="w-100 font-weight-bold">
+                            @FoodEditPageLocalizer["Price_FormLabel"]
+                                <InputText @bind-Value="@amount.Note" class="form-control" />
+                                <small class="form-text text-danger">
+                                    <ValidationMessage For="@(() => amount.Note)" />
+                                </small>
+                            </label>
+                    </div>
+                    <button class="btn btn-danger" @onclick="@(() => RemoveFromOrder(amount.Food))">@FoodEditPageLocalizer["Delete_Button"]</button>
             </EditForm>
+            </div>
         }
-
-
         <EditForm Model=@orderDetailModel>
             <DataAnnotationsValidator />
-            <InputText @bind-Value="@orderDetailModel.Name" class="form-control" />
-
+            <InputText @bind-Value="orderDetailModel.Name" class="form-control" />
+            <InputDateTime @bind-Value="orderDetailModel.DeliveryTime" class="form-control" />
+            <InputTextArea @bind-Value="orderDetailModel.Note" class="form-control" />
+            <button type="submit" class="btn btn-success" @onclick="PlaceOrder">
+                Order
+            </button>
         </EditForm>
         </div>
 	</div>
