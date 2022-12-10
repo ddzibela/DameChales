@@ -8,6 +8,14 @@
 @inject IStringLocalizer<FoodListPageResources> FoodEditPageLocalizer
 
 	<div>
+        <EditForm Model="@filterString">
+            <DataAnnotationsValidator />
+            <InputText @bind-Value="@filterString" class="form-control" />
+            <button type="submit" class="btn btn-success mr-2" @onclick="@filter">
+                search
+            </button>
+        </EditForm>
+
 		<!--RESTAURANT INFO-->
 		<div style="float: left; width: 30%">
             <div class="card m-1">
@@ -28,42 +36,66 @@
                 </div>    
             </div>
         <a href=@($" /restaurants/stats/{restaurantDetailModel.Id}")>
-                <button type="submit" class="btn btn-success mr-2">>
+                <button type="submit" class="btn btn-info mr-2">>
                     Stats
                 </button>
         </a>
+        <a href=@($" /restaurants/")>
+            <button type="submit" class="btn btn-success mr-2">
+                Order mngmt
+            </button>
+        </a>
         <a href=@($" /restaurants/edit/{restaurantDetailModel.Id}")>
-                <button type="submit" class="btn btn-success mr-2">>
+                <button type="submit" class="btn btn-warning mr-2">>
                     Edit
                 </button>
         </a>
 		</div>
 		<!--FOODS-->
-        
 		<div style="float: left; width: 30%">
-        @foreach (var food in foods)
-        {
-            <div class="card m-1" style="width: 16rem;">
-                <img class="card-img-top" src="@food.PhotoURL" alt="Card image cap"/>
-                <div class="card-body text-center">
-                    <h5 class="card-title">
-                        @{
-                            <span>@food.Name</span>
-                        }
-                    </h5>
-                    <p class="card-text">
-                        @{
-                            @food.Price
-                        }
-                    </p>
+        <div>
+
+        </div>
+        <div>
+            @foreach (var food in foods)
+            {
+                <div class="card m-1" style="width: 16rem;">
+                    <img class="card-img-top" src="@food.PhotoURL" alt="Card image cap" />
+                    <div class="card-body text-center">
+                        <h5 class="card-title">
+                            @{
+                                <span>@food.Name</span>
+                            }
+                        </h5>
+                        <p class="card-text">
+                            @{
+                                @food.Price
+                            }
+                        </p>
+                            <button type="submit" class="btn btn-success mr-2" @onclick="() => AddToOrder(food)">
+                                >
+                                Order
+                            </button>
+                    </div>
                 </div>
-            </div>
-        }
+            }
+        </div>
 		</div>
 		<!--ORDER BUTTON-->
-		<div style="float: left; width: 30%">
-             <button type="submit" class="btn btn-success mr-2">>
-                Objednat!
-             </button>
-		</div>
+        <div style="float: left; width: 30%">
+        @foreach (var amount in orderFoodModel)
+        {
+            <EditForm Model="@amount">
+                <DataAnnotationsValidator />
+                <p>@amount.Food.Name</p>
+            </EditForm>
+        }
+
+
+        <EditForm Model=@orderDetailModel>
+            <DataAnnotationsValidator />
+            <InputText @bind-Value="@orderDetailModel.Name" class="form-control" />
+
+        </EditForm>
+        </div>
 	</div>

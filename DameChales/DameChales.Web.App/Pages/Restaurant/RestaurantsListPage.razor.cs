@@ -26,6 +26,7 @@ namespace DameChales.Web.App.Pages
 			if (filterString == string.Empty)
 			{
                 model = await facade!.GetAllAsync();
+				return;
             }
 
             model = await facade.GetByNameAsync(filterString);
