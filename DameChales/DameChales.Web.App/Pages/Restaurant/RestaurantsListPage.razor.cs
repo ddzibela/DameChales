@@ -10,11 +10,26 @@ namespace DameChales.Web.App.Pages
 	{
 		[Inject]
 		private RestaurantFacade? facade { get; set; } = null;
-		private ICollection<RestaurantListModel> model = new List<RestaurantListModel>();
+		
+		private IList<RestaurantListModel> model = new List<RestaurantListModel>();
+
+		public string filterString { get; set; } = string.Empty;
+
 		protected override async Task OnInitializedAsync()
 		{
 			model = await facade!.GetAllAsync();
 			await base.OnInitializedAsync();
+		}
+
+		public async Task filter()
+		{
+			if (filterString == string.Empty)
+			{
+                model = await facade!.GetAllAsync();
+            }
+
+            model = await facade.GetByNameAsync(filterString);
+			model = (IList<RestaurantListModel>)model.Concat(await facade.GetByAddressAsync(filterString));
 		}
 
 	}
