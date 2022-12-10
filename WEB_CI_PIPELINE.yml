@@ -2,7 +2,7 @@ trigger:
   branches:
     include:
     - web
-    - main
+    - master
 variables:
 - name: buildConfiguration
   value: 'Release'
