@@ -66,7 +66,7 @@ namespace DameChales.Web.App.Pages
             foods = (ICollection<FoodListModel>)foodFacade.GetByNameAsync(filterString).Result.Where(x => x.Id == Id);
         }
 
-        public async Task AddToOrder(FoodListModel food)
+        public void AddToOrder(FoodListModel food)
         {
             var orderAmount = new OrderFoodAmountDetailModel
             {
