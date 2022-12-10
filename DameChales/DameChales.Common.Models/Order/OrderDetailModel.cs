@@ -14,7 +14,7 @@ namespace DameChales.Common.Models
         public Guid RestaurantGuid { get; set; }
         public required string Name {get; set;}
         public required string? Note { get; set;}
-        public required TimeSpan DeliveryTime { get; set; }
+        public required DateTime DeliveryTime { get; set; }
         public required OrderStatus Status { get; set; }
         public IList<OrderFoodAmountDetailModel> FoodAmounts { get; set; } = new List<OrderFoodAmountDetailModel>();
     }
