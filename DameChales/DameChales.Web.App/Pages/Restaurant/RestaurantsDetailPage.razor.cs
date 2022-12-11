@@ -93,8 +93,10 @@ namespace DameChales.Web.App.Pages
     
         public async Task PlaceOrder()
         {
+            
             await orderFacade.SaveAsync(orderDetailModel);
-            orderDetailModel = await orderFacade.GetByIdAsync(orderDetailModel.Id);
+            await orderFacade.SaveAsync(orderDetailModel);
+            orderDetailModel = GetNewOrderDetailModel();
         }
     }
 }

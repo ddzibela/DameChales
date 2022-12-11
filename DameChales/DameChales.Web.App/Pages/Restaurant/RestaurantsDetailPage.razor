@@ -127,9 +127,9 @@
         }
         <EditForm Model=@orderDetailModel>
             <DataAnnotationsValidator />
-            <InputText @bind-Value="orderDetailModel.Name" class="form-control" />
-            <InputDateTime @bind-Value="orderDetailModel.DeliveryTime" class="form-control" />
-            <InputTextArea @bind-Value="orderDetailModel.Note" class="form-control" />
+            <InputText @bind-Value="@orderDetailModel.Name" class="form-control" />
+            <InputDateTime @bind-Value="@orderDetailModel.DeliveryTime" class="form-control" />
+            <InputTextArea @bind-Value="@orderDetailModel.Note" class="form-control" />
             <button type="submit" class="btn btn-success" @onclick="PlaceOrder">
                 Order
             </button>
