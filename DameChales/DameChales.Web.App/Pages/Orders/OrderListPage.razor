@@ -18,7 +18,7 @@
     @foreach (var order in acceptedOrders)
     {
             <div class="card m-1" style="width: 16rem;">
-                <a href="@(/restaurants/orders/detail/{order.Id})")>
+                <a href="@($"/restaurants/orders/detail/{order.Id}")">
                 <h5 class="card-title">
                     <span>@order.Name</span>
                 </h5>
