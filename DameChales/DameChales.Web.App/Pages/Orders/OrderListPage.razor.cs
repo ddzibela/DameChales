@@ -42,6 +42,7 @@ namespace DameChales.Web.App.Pages
             var _order = await orderFacade.GetByIdAsync(order.Id);
             _order.Status = order.Status;
             await orderFacade.SaveAsync(_order);
+            await orderFacade.SaveAsync(_order);
         }
     }
 }

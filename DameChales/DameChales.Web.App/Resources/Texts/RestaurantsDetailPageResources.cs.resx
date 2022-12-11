@@ -135,4 +135,19 @@
   <data name="Stats" xml:space="preserve">
     <value>Statistiky</value>
   </data>
+  <data name="Order_Date" xml:space="preserve">
+    <value>Datum doručení</value>
+  </data>
+  <data name="Order_Food" xml:space="preserve">
+    <value>Jídla</value>
+  </data>
+  <data name="Order_Name" xml:space="preserve">
+    <value>Jméno</value>
+  </data>
+  <data name="Order_Note" xml:space="preserve">
+    <value>Poznámka</value>
+  </data>
+  <data name="Order_Status" xml:space="preserve">
+    <value>Stav</value>
+  </data>
 </root>

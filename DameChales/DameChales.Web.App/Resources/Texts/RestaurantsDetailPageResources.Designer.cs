@@ -90,9 +90,54 @@ namespace DameChales.Web.App.Resources.Texts {
         /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
+        public static string Order_Date {
+            get {
+                return ResourceManager.GetString("Order_Date", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string Order_Food {
+            get {
+                return ResourceManager.GetString("Order_Food", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
         public static string Order_management {
             get {
                 return ResourceManager.GetString("Order_management", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string Order_Name {
+            get {
+                return ResourceManager.GetString("Order_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string Order_Note {
+            get {
+                return ResourceManager.GetString("Order_Note", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string Order_Status {
+            get {
+                return ResourceManager.GetString("Order_Status", resourceCulture);
             }
         }
         

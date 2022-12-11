@@ -135,4 +135,19 @@
   <data name="search" xml:space="preserve">
     <value>Filter</value>
   </data>
+  <data name="Order_Date" xml:space="preserve">
+    <value>Delivery date</value>
+  </data>
+  <data name="Order_Food" xml:space="preserve">
+    <value>Meals</value>
+  </data>
+  <data name="Order_Name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="Order_Note" xml:space="preserve">
+    <value>Note</value>
+  </data>
+  <data name="Order_Status" xml:space="preserve">
+    <value>Status</value>
+  </data>
 </root>
