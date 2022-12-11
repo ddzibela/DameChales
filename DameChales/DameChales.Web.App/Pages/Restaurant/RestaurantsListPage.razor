@@ -1,0 +1,59 @@
+﻿@page "/restaurants"
+@namespace DameChales.Web.App.Pages
+@layout ListLayout
+@using DameChales.Web.App.Resources.Texts
+@using DameChales.Common.Models
+@using Microsoft.Extensions.Localization
+@inherits PageBase
+@inject IStringLocalizer<FoodListPageResources> FoodListPageLocalizer
+
+<div class="d-flex flex-row justify-content-between align-items-center mb-4">
+    <h1>@FoodListPageLocalizer["Page_Title"]</h1>
+
+    <div class="text-center">
+        <OnlineStatusIndicator>
+            <OnlineFragment>
+                <NavLink href="@("/restaurants/create")" class="btn btn-success">
+                    @FoodListPageLocalizer["CreateNewFood_Button"]
+                </NavLink>
+            </OnlineFragment>
+            <OfflineFragment>
+                <h1>You are offline. Cannot create new food when offline!</h1>
+            </OfflineFragment>
+        </OnlineStatusIndicator>
+    </div>
+    <div>
+        <EditForm Model="@filterString">
+            <DataAnnotationsValidator />
+            <InputText @bind-Value="@filterString" class="form-control" />
+            <button type="submit" class="btn btn-success mr-2" @onclick="@filter">
+                search
+            </button>
+        </EditForm>
+
+
+    </div>
+</div>
+
+<div class="d-flex flex-wrap">
+    @foreach (var restaurant in model)
+    {
+        <a href="@($" /restaurants/{restaurant.Id}")">
+        <div class="card m-1" style="width: 16rem;">
+            <img class="card-img-top" src="@restaurant.PhotoURL" alt="Card image cap">
+            <div class="card-body text-center">
+                <h5 class="card-title">
+                    @{
+                        <span>@restaurant.Name</span>
+                    }
+                </h5>
+                <p class="card-text">
+                    @{
+                        @restaurant.Description
+                    }
+                </p>
+            </div>
+        </div>
+        </a>
+    }
+</div>

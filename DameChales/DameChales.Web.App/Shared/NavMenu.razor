@@ -1,0 +1,44 @@
+﻿@using DameChales.Web.App.Resources.Texts
+@using Microsoft.Extensions.Localization
+@namespace DameChales.Web.App
+@inject IStringLocalizer<NavMenuResources> NavMenuLocalizer
+
+
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: black">
+    <div class="container-fluid">
+        <a class="navbar-brand mb-0 h1" href="/" >
+            DameChales
+        </a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <NavLink href="" Match="NavLinkMatch.All" ActiveClass="active" class="nav-link font-weight-bold">
+                        @NavMenuLocalizer["Home_Label"]
+                    </NavLink>
+                </li>
+                <li class="nav-item">
+                    <NavLink href="/foods" Match="NavLinkMatch.All" ActiveClass="active" class="nav-link font-weight-bold">
+                        @NavMenuLocalizer["Foods_Label"]
+                    </NavLink>
+                </li>
+                <li class="nav-item">
+                    <NavLink href="/orders" Match="NavLinkMatch.All" ActiveClass="active" class="nav-link font-weight-bold">
+                        @NavMenuLocalizer["Orders_Label"]
+                    </NavLink>
+                </li>
+                <li class="nav-item">
+                    <NavLink href="/restaurants" Match="NavLinkMatch.All" ActiveClass="active" class="nav-link font-weight-bold">
+                        @NavMenuLocalizer["Restaurants_Label"]
+                    </NavLink>
+                </li>
+            </ul>
+            @*<CultureSelector/>*@
+
+        </div>
+    </div>
+</nav>

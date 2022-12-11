@@ -1,0 +1,138 @@
+﻿@page "/restaurants/{Id:guid}"
+@namespace DameChales.Web.App.Pages
+@layout ListLayout
+@using DameChales.Web.App.Resources.Texts
+@using DameChales.Common.Models
+@using Microsoft.Extensions.Localization
+@inherits PageBase
+@inject IStringLocalizer<FoodListPageResources> FoodEditPageLocalizer
+
+	<div>
+        <EditForm Model="@filterString">
+            <DataAnnotationsValidator />
+            <InputText @bind-Value="@filterString" class="form-control" />
+            <button type="submit" class="btn btn-success mr-2" @onclick="@filter">
+                search
+            </button>
+        </EditForm>
+
+		<!--RESTAURANT INFO-->
+		<div style="float: left; width: 30%">
+            <div class="card m-1">
+                <img class="card-img-top" src="@restaurantDetailModel.PhotoURL" alt="Card image cap" />
+                <div class="card-body text-center">
+                    <h4 class="card-title">
+                        @{
+                            <span>@restaurantDetailModel.Name</span>
+                        }
+                    </h4>
+                    <p class="card-text">
+                        @restaurantDetailModel.Address<br />
+                        @restaurantDetailModel.GPSCoordinates<br />
+                    </p>
+                    <p class="card-text">
+                        @restaurantDetailModel.Description
+                    </p>
+                </div>    
+            </div>
+        <div class="card m-1">
+            <h4 class="card-title">
+                Staff only!
+            </h4>
+            <a href=@($" /restaurants/orders/{Id}")>
+                <button class="btn btn-success mr-2">
+                    Order mngmt
+                </button>
+            </a>
+            <a href=@($" /foods/{restaurantDetailModel.Id}")>
+                    <button class="btn btn-info mr-2">>
+                        Food mngmt
+                    </button>
+            </a>
+            <a href=@($" /restaurants/stats/{restaurantDetailModel.Id}")>
+                    <button class="btn btn-warning mr-2">>
+                        Stats
+                    </button>
+            </a>
+            <a href=@($" /restaurants/edit/{restaurantDetailModel.Id}")>
+                    <button class="btn btn-danger mr-2">>
+                        Edit
+                    </button>
+            </a>
+        </div>
+		</div>
+		<!--FOODS-->
+		<div style="float: left; width: 30%">
+        <div>
+
+        </div>
+        <div>
+            @foreach (var food in foods)
+            {
+                <div class="card m-1" style="width: 16rem;">
+                    <img class="card-img-top" src="@food.PhotoURL" alt="Card image cap" />
+                    <div class="card-body text-center">
+                        <h5 class="card-title">
+                            @{
+                                <span>@food.Name</span>
+                            }
+                        </h5>
+                        <p class="card-text">
+                            @{
+                                @food.Price
+                            }
+                        </p>
+                            <button type="submit" class="btn btn-success mr-2" @onclick="() => AddToOrder(food)">
+                                >
+                                Order
+                            </button>
+                    </div>
+                </div>
+            }
+        </div>
+		</div>
+		<!--ORDER BUTTON-->
+        <div style="float: left; width: 30%">
+        @foreach (var amount in orderDetailModel.FoodAmounts)
+        {
+            <div class="card m-1" style="width: 16rem;">
+            <EditForm Model="@amount">
+                <DataAnnotationsValidator />
+                    <h5 class="card-title">
+                            @{
+                                <span>@amount.Food.Name</span>
+                            }
+                    </h5>
+                    <div class="form-group">
+                        <label class="w-100 font-weight-bold">
+                            @FoodEditPageLocalizer["Price_FormLabel"]
+                            <InputNumber @bind-Value="@amount.Amount" class="form-control" />
+                            <small class="form-text text-danger">
+                                <ValidationMessage For="@(() => amount.Amount)" />
+                            </small>
+                        </label>
+                    </div>
+                    <div class="form-group">
+                            <label class="w-100 font-weight-bold">
+                            @FoodEditPageLocalizer["Price_FormLabel"]
+                                <InputText @bind-Value="@amount.Note" class="form-control" />
+                                <small class="form-text text-danger">
+                                    <ValidationMessage For="@(() => amount.Note)" />
+                                </small>
+                            </label>
+                    </div>
+                    <button class="btn btn-danger" @onclick="@(() => RemoveFromOrder(amount.Food))">@FoodEditPageLocalizer["Delete_Button"]</button>
+            </EditForm>
+            </div>
+        }
+        <EditForm Model=@orderDetailModel>
+            <DataAnnotationsValidator />
+            <InputText @bind-Value="orderDetailModel.Name" class="form-control" />
+            <InputDateTime @bind-Value="orderDetailModel.DeliveryTime" class="form-control" />
+            <InputTextArea @bind-Value="orderDetailModel.Note" class="form-control" />
+            <button type="submit" class="btn btn-success" @onclick="PlaceOrder">
+                Order
+            </button>
+        </EditForm>
+        </div>
+	</div>
