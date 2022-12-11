@@ -23,18 +23,20 @@
             </OfflineFragment>
         </OnlineStatusIndicator>
     </div>
-    <div>
-        <EditForm Model="@filterString">
-            <DataAnnotationsValidator />
-            <InputText @bind-Value="@filterString" class="form-control" />
-            <button type="submit" class="btn btn-success mr-2" @onclick="@filter">
+</div>
+
+
+ <EditForm Model="@filterString">
+    <DataAnnotationsValidator />
+    <div class="input-group pb-2">
+        <InputText @bind-Value="@filterString" class="form-control" aria-describedby="basic-addon2" />
+        <div class="input-group-btn">
+            <button type="submit" class="btn btn-success" @onclick="@filter">
                 @Localizer["search"]
             </button>
-        </EditForm>
-
-
+        </div>
     </div>
-</div>
+</EditForm>
 
 <div class="d-flex flex-wrap">
     @foreach (var restaurant in model)

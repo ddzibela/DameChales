@@ -10,11 +10,16 @@
 	<div>
         <EditForm Model="@filterString">
             <DataAnnotationsValidator />
-            <InputText @bind-Value="@filterString" class="form-control" />
-            <button type="submit" class="btn btn-success mr-2" @onclick="@filter">
-                @Localizer["search"]
-            </button>
+            <div class="input-group pb-2">
+                <InputText @bind-Value="@filterString" class="form-control" aria-describedby="basic-addon2" />
+                <div class="input-group-btn">
+                    <button type="submit" class="btn btn-success" @onclick="@filter">
+                        @Localizer["search"]
+                    </button>
+                </div>
+            </div>
         </EditForm>
+
 
 		<!--RESTAURANT INFO-->
 		<div style="float: left; width: 30%">
@@ -35,41 +40,43 @@
                     </p>
                 </div>    
             </div>
-        <div class="card m-1">
+        <div class="card m-1 align-items-center justify-content-center">
             <h4 class="card-title">
                 Staff only!
             </h4>
-            <a href=@($" /restaurants/orders/{Id}")>
-                <button class="btn btn-success mr-2">
-                    @Localizer["Order_management"]
-                </button>
-            </a>
-            <a href=@($" /foods/{restaurantDetailModel.Id}")>
-                    <button class="btn btn-info mr-2">
-                        @Localizer["Food_management"]
+
+            <div class="btn-group-vertical" role="group">
+                <a href=@($" /restaurants/orders/{Id}")>
+                    <button class="btn btn-success mr-2 mb-2 btn-block" style="width:200px" type="button">
+                        @Localizer["Order_management"]
                     </button>
-            </a>
-            <a href=@($" /restaurants/stats/{restaurantDetailModel.Id}")>
-                    <button class="btn btn-warning mr-2">
+                </a>
+                <a href=@($" /foods/{restaurantDetailModel.Id}")>
+                    <button class="btn btn-info mr-2 mb-2 btn-block" style="width:200px" type="button">
+                            @Localizer["Food_management"]
+                        </button>
+                </a>
+
+                <a href=@($" /restaurants/stats/{restaurantDetailModel.Id}")>
+                    <button class="btn btn-warning mr-2 mb-2 btn-block" style="width:200px" type="button">
                         @Localizer["Stats"]
                     </button>
-            </a>
-            <a href=@($" /restaurants/edit/{restaurantDetailModel.Id}")>
-                    <button class="btn btn-danger mr-2">
+                </a>
+                <a href=@($" /restaurants/edit/{restaurantDetailModel.Id}")>
+                    <button class="btn btn-danger mr-2 mb-2 btn-block"style="width:200px" type="button">
                         @Localizer["Edit"]
                     </button>
-            </a>
+                </a>
+            </div>
+
         </div>
 		</div>
 		<!--FOODS-->
 		<div style="float: left; width: 30%">
         <div>
-
-        </div>
-        <div>
             @foreach (var food in foods)
             {
-                <div class="card m-1" style="width: 16rem;">
+                <div class="card m-1">
                     <img class="card-img-top" src="@food.PhotoURL" alt="Card image cap" />
                     <div class="card-body text-center">
                         <h5 class="card-title">
@@ -91,10 +98,9 @@
         </div>
 		</div>
 		<!--ORDER BUTTON-->
-        <div style="float: left; width: 30%">
         @foreach (var amount in orderDetailModel.FoodAmounts)
         {
-            <div class="card m-1" style="width: 16rem;">
+        <div class="card m-1" style="width: 16rem;">
             <EditForm Model="@amount">
                 <DataAnnotationsValidator />
                     <h5 class="card-title">
@@ -104,34 +110,56 @@
                     </h5>
                     <div class="form-group">
                         <label class="w-100 font-weight-bold">
-                            @Localizer["Ammount"]
+                            @Localizer["Amount"]
                             <InputNumber @bind-Value="@amount.Amount" class="form-control" />
                             <small class="form-text text-danger">
                                 <ValidationMessage For="@(() => amount.Amount)" />
                             </small>
                         </label>
                     </div>
-                    <div class="form-group">
-                            <label class="w-100 font-weight-bold">
-                            @Localizer["Food_Note"]
-                                <InputText @bind-Value="@amount.Note" class="form-control" />
-                                <small class="form-text text-danger">
-                                    <ValidationMessage For="@(() => amount.Note)" />
-                                </small>
-                            </label>
-                    </div>
-                    <button class="btn btn-danger" @onclick="@(() => RemoveFromOrder(amount.Food))">@Localizer["Delete_Button"]</button>
+                <button class="btn btn-danger float-right" @onclick="@(() => RemoveFromOrder(amount.Food))">@Localizer["Delete_Button"]</button>
             </EditForm>
-            </div>
+         </div>
         }
-        <EditForm Model=@orderDetailModel>
-            <DataAnnotationsValidator />
-            <InputText @bind-Value="@orderDetailModel.Name" class="form-control" />
-            <InputDateTime @bind-Value="@orderDetailModel.DeliveryTime" class="form-control" />
-            <InputTextArea @bind-Value="@orderDetailModel.Note" class="form-control" />
-            <button type="submit" class="btn btn-success" @onclick="PlaceOrder">
-                @Localizer["Order"]
-            </button>
-        </EditForm>
-        </div>
+
+
+            <div class="card m-1" style="width: 16rem;"
+                <EditForm Model=@orderDetailModel>
+                    <DataAnnotationsValidator />
+
+                    <div class="form-group">
+                        <label class="w-100 font-weight-bold">
+                            @Localizer["Food_Name"]
+                            <InputText @bind-Value="@orderDetailModel.Name" class="form-control" />
+                            <small class="form-text text-danger">
+                                <ValidationMessage For="@(() => orderDetailModel.Name)" />
+                            </small>
+                        </label>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="w-100 font-weight-bold">
+                            @Localizer["Food_DeliveryTime"]
+                            <InputDateTime @bind-Value="@orderDetailModel.DeliveryTime" class="form-control" />
+                            <small class="form-text text-danger">
+                                <ValidationMessage For="@(() => orderDetailModel.DeliveryTime)" />
+                            </small>
+                        </label>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="w-100 font-weight-bold">
+                            @Localizer["Food_Note"]
+                            <InputTextArea @bind-Value="@orderDetailModel.Note" class="form-control" />
+                            <small class="form-text text-danger">
+                                <ValidationMessage For="@(() => orderDetailModel.Note)" />
+                            </small>
+                        </label>
+                    </div>
+
+                    <button type="submit" class="btn btn-success float-right" @onclick="PlaceOrder">
+                        @Localizer["Order"]
+                    </button>
+                </EditForm>
+            </div>
 	</div>
