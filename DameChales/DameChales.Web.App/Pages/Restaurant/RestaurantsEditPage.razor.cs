@@ -31,7 +31,7 @@ namespace DameChales.Web.App.Pages
         public async Task Save()
         {
             
-            await RestaurantFacade.SaveAsync(restaurantDetailModel);
+            await RestaurantFacade!.SaveAsync(restaurantDetailModel!);
             navigationManager.NavigateTo($"/restaurants");
         }
 

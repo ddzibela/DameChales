@@ -150,4 +150,7 @@
   <data name="Stats" xml:space="preserve">
     <value />
   </data>
+  <data name="Amount" xml:space="preserve">
+    <value></value>
+  </data>
 </root>

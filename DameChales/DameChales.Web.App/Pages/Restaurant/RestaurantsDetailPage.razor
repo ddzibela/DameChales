@@ -116,6 +116,13 @@
                                 <ValidationMessage For="@(() => amount.Amount)" />
                             </small>
                         </label>
+                        <label class="w-100 font-weight-bold">
+                            @Localizer["Order_Note"]
+                            <InputText @bind-Value="@amount.Note" class="form-control" />
+                            <small class="form-text text-danger">
+                                <ValidationMessage For="@(() => amount.Note)" />
+                            </small>
+                        </label>
                     </div>
                 <button class="btn btn-danger float-right" @onclick="@(() => RemoveFromOrder(amount.Food))">@Localizer["Delete_Button"]</button>
             </EditForm>
@@ -129,7 +136,7 @@
 
                     <div class="form-group">
                         <label class="w-100 font-weight-bold">
-                            @Localizer["Food_Name"]
+                            @Localizer["Order_Name"]
                             <InputText @bind-Value="@orderDetailModel.Name" class="form-control" />
                             <small class="form-text text-danger">
                                 <ValidationMessage For="@(() => orderDetailModel.Name)" />
@@ -139,7 +146,7 @@
 
                     <div class="form-group">
                         <label class="w-100 font-weight-bold">
-                            @Localizer["Food_DeliveryTime"]
+                            @Localizer["Order_Date"]
                             <InputDateTime @bind-Value="@orderDetailModel.DeliveryTime" class="form-control" />
                             <small class="form-text text-danger">
                                 <ValidationMessage For="@(() => orderDetailModel.DeliveryTime)" />

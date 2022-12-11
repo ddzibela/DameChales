@@ -150,4 +150,7 @@
   <data name="Order_Status" xml:space="preserve">
     <value>Status</value>
   </data>
+  <data name="Amount" xml:space="preserve">
+    <value>Amount</value>
+  </data>
 </root>
