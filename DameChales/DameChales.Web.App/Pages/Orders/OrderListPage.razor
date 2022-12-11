@@ -23,65 +23,77 @@
                     <span>@order.Name</span>
                 </h5>
                 </a>
-                <InputSelect @bind-Value="order.Status">
-                    @foreach (var status in Enum.GetValues(typeof(DameChales.Common.Enums.OrderStatus)))
-                    {
-                        <option value="@status">@status</option>
-                    }
-                </InputSelect>
-                <button @onclick="@(() => UpdateOrderStatus(order))">Update</button>
+                <div class="input-group mb-3">
+                    <InputSelect @bind-Value="order.Status" class="form-control">
+                        @foreach (var status in Enum.GetValues(typeof(DameChales.Common.Enums.OrderStatus)))
+                        {
+                            <option value="@status">@status</option>
+                        }
+                    </InputSelect>
+                </div>
+                <button class="btn btn-secondary btn-block"  @onclick="@(() => UpdateOrderStatus(order))">Update</button>
             </div>
     }
     <h1>Preparing orders</h1>
     @foreach (var order in preparingOrders)
     {
             <div class="card m-1" style="width: 16rem;">
-                <h5 class="card-title">
-                    <span>@order.Name</span>
-                </h5>
+                <a href="@($"/restaurants/orders/detail/{order.Id}")">
+                    <h5 class="card-title">
+                        <span>@order.Name</span>
+                    </h5>
+                </a>
+                <div class="input-group mb-3">
                 <InputSelect @bind-Value="order.Status">
                     @foreach (var status in Enum.GetValues(typeof(DameChales.Common.Enums.OrderStatus)))
                     {
                         <option value="@status">@status</option>
                     }
+                
                 </InputSelect>
-                <button @onclick="@(() => UpdateOrderStatus(order))">Update</button>
+                </div>
+                <button class="btn btn-secondary btn-block" @onclick="@(() => UpdateOrderStatus(order))">Update</button>
             </div>
     }
     <h1>Delivering orders</h1>
     @foreach (var order in deliveringOrders)
     {
             <div class="card m-1" style="width: 16rem;">
-                <h5 class="card-title">
-                    <span>@order.Name</span>
-                </h5>
+                <a href="@($"/restaurants/orders/detail/{order.Id}")">
+                    <h5 class="card-title">
+                        <span>@order.Name</span>
+                    </h5>
+                </a>
+                        <div class="input-group mb-3">
                                     <InputSelect @bind-Value="order.Status">
                     @foreach (var status in Enum.GetValues(typeof(DameChales.Common.Enums.OrderStatus)))
                     {
                                     <option value="@status">@status</option>
                     }
                         </InputSelect>
-                    <button @onclick="@(() => UpdateOrderStatus(order))">Update</button>
+                </div>
+                <button class="btn btn-secondary btn-block"  @onclick="@(() => UpdateOrderStatus(order))">Update</button>
             </div>
     }
     <h1>Delivered orders</h1>
     @foreach (var order in preparingOrders)
     {
         <div class="card m-1" style="width: 16rem;">
-            <h5 class="card-title">
-                <span>@order.Name</span>
-            </h5>
+                <a href="@($"/restaurants/orders/detail/{order.Id}")">
+                    <h5 class="card-title">
+                        <span>@order.Name</span>
+                    </h5>
+                </a>
+                                <div class="input-group mb-3">
                                 <InputSelect @bind-Value="order.Status">
                     @foreach (var status in Enum.GetValues(typeof(DameChales.Common.Enums.OrderStatus)))
                     {
                                 <option value="@status">@status</option>
                     }
                     </InputSelect>
-                    <button @onclick="@(() => UpdateOrderStatus(order))">Update</button>
+                </div>
+                <button class="btn btn-secondary btn-block" @onclick="@(() => UpdateOrderStatus(order))">Update</button>
         </div>
     }
     </div>
-
-
-
 </div>
