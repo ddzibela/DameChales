@@ -12,9 +12,17 @@ namespace DameChales.Web.App.Pages
         private FoodFacade FoodFacade { get; set; } = null!;
         private RestaurantFacade RestaurantFacade { get; set; } = null!;
         private ICollection<FoodListModel> Foods { get; set; } = new List<FoodListModel>();
+        [Parameter]
+        public Guid Id { get; init; }
         protected override async Task OnInitializedAsync()
         {
-            Foods = await FoodFacade.GetAllAsync();
+            if (Id == Guid.Empty)
+            {
+                Foods = await FoodFacade.GetAllAsync();
+            } else
+            {
+                Foods = await FoodFacade.GetByRestaurantIdAsync(Id);
+            }
 
             await base.OnInitializedAsync();
         }

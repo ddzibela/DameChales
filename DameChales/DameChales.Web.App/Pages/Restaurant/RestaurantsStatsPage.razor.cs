@@ -36,10 +36,10 @@ namespace DameChales.Web.App.Pages
 			}
 			profits = await restaurantFacade.GetEarningsAsync(Id);
 			//Can't do this asynchronously sadly
-			acceptedOrders = orderFacade.GetByStatusAsync(Id, Common.Enums.OrderStatus.Accepted).Result.Count();
-			preparingOrders = orderFacade.GetByStatusAsync(Id, Common.Enums.OrderStatus.Preparing).Result.Count();
-			deliveringOrders = orderFacade.GetByStatusAsync(Id, Common.Enums.OrderStatus.Delivering).Result.Count();
-			deliveredOrders = orderFacade.GetByStatusAsync(Id, Common.Enums.OrderStatus.Delivered).Result.Count();
+			acceptedOrders = orderFacade.GetByStatusAsync(Id, Common.Enums.OrderStatus.Accepted).Result.ToList().Count();
+			preparingOrders = orderFacade.GetByStatusAsync(Id, Common.Enums.OrderStatus.Preparing).Result.ToList().Count();
+			deliveringOrders = orderFacade.GetByStatusAsync(Id, Common.Enums.OrderStatus.Delivering).Result.ToList().Count();
+			deliveredOrders = orderFacade.GetByStatusAsync(Id, Common.Enums.OrderStatus.Delivered).Result.ToList().Count();
 			totalOrders = acceptedOrders + deliveredOrders + deliveringOrders + preparingOrders;
 
 			await base.OnInitializedAsync();

@@ -39,12 +39,12 @@
             <h4 class="card-title">
                 Staff only!
             </h4>
-            <a href=@($" /restaurants/")>
+            <a href=@($" /restaurants/orders/{Id}")>
                 <button class="btn btn-success mr-2">
                     Order mngmt
                 </button>
             </a>
-            <a href=@($" /restaurants/stats/{restaurantDetailModel.Id}")>
+            <a href=@($" /foods/{restaurantDetailModel.Id}")>
                     <button class="btn btn-info mr-2">>
                         Food mngmt
                     </button>
