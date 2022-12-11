@@ -5,14 +5,14 @@
 @using DameChales.Common.Models
 @using Microsoft.Extensions.Localization
 @inherits PageBase
-@inject IStringLocalizer<FoodListPageResources> FoodEditPageLocalizer
+@inject IStringLocalizer<RestaurantsDetailPageResources> Localizer
 
 	<div>
         <EditForm Model="@filterString">
             <DataAnnotationsValidator />
             <InputText @bind-Value="@filterString" class="form-control" />
             <button type="submit" class="btn btn-success mr-2" @onclick="@filter">
-                search
+                @Localizer["search"]
             </button>
         </EditForm>
 
@@ -41,22 +41,22 @@
             </h4>
             <a href=@($" /restaurants/orders/{Id}")>
                 <button class="btn btn-success mr-2">
-                    Order mngmt
+                    @Localizer["Order_management"]
                 </button>
             </a>
             <a href=@($" /foods/{restaurantDetailModel.Id}")>
-                    <button class="btn btn-info mr-2">>
-                        Food mngmt
+                    <button class="btn btn-info mr-2">
+                        @Localizer["Food_management"]
                     </button>
             </a>
             <a href=@($" /restaurants/stats/{restaurantDetailModel.Id}")>
-                    <button class="btn btn-warning mr-2">>
-                        Stats
+                    <button class="btn btn-warning mr-2">
+                        @Localizer["Stats"]
                     </button>
             </a>
             <a href=@($" /restaurants/edit/{restaurantDetailModel.Id}")>
-                    <button class="btn btn-danger mr-2">>
-                        Edit
+                    <button class="btn btn-danger mr-2">
+                        @Localizer["Edit"]
                     </button>
             </a>
         </div>
@@ -83,8 +83,7 @@
                             }
                         </p>
                             <button type="submit" class="btn btn-success mr-2" @onclick="() => AddToOrder(food)">
-                                >
-                                Order
+                                @Localizer["Order"]
                             </button>
                     </div>
                 </div>
@@ -105,7 +104,7 @@
                     </h5>
                     <div class="form-group">
                         <label class="w-100 font-weight-bold">
-                            @FoodEditPageLocalizer["Price_FormLabel"]
+                            @Localizer["Ammount"]
                             <InputNumber @bind-Value="@amount.Amount" class="form-control" />
                             <small class="form-text text-danger">
                                 <ValidationMessage For="@(() => amount.Amount)" />
@@ -114,14 +113,14 @@
                     </div>
                     <div class="form-group">
                             <label class="w-100 font-weight-bold">
-                            @FoodEditPageLocalizer["Price_FormLabel"]
+                            @Localizer["Food_Note"]
                                 <InputText @bind-Value="@amount.Note" class="form-control" />
                                 <small class="form-text text-danger">
                                     <ValidationMessage For="@(() => amount.Note)" />
                                 </small>
                             </label>
                     </div>
-                    <button class="btn btn-danger" @onclick="@(() => RemoveFromOrder(amount.Food))">@FoodEditPageLocalizer["Delete_Button"]</button>
+                    <button class="btn btn-danger" @onclick="@(() => RemoveFromOrder(amount.Food))">@Localizer["Delete_Button"]</button>
             </EditForm>
             </div>
         }
@@ -131,7 +130,7 @@
             <InputDateTime @bind-Value="@orderDetailModel.DeliveryTime" class="form-control" />
             <InputTextArea @bind-Value="@orderDetailModel.Note" class="form-control" />
             <button type="submit" class="btn btn-success" @onclick="PlaceOrder">
-                Order
+                @Localizer["Order"]
             </button>
         </EditForm>
         </div>

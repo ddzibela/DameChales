@@ -5,7 +5,8 @@
 @using DameChales.Common.Models
 @using Microsoft.Extensions.Localization
 @inherits PageBase
-@inject IStringLocalizer<FoodListPageResources> FoodListPageLocalizer
+@inject IStringLocalizer<RestaurantsListPageResources> FoodListPageLocalizer
+@inject IStringLocalizer<RestaurantsDetailPageResources> Localizer
 
 <div class="d-flex flex-row justify-content-between align-items-center mb-4">
     <h1>@FoodListPageLocalizer["Page_Title"]</h1>
@@ -27,7 +28,7 @@
             <DataAnnotationsValidator />
             <InputText @bind-Value="@filterString" class="form-control" />
             <button type="submit" class="btn btn-success mr-2" @onclick="@filter">
-                search
+                @Localizer["search"]
             </button>
         </EditForm>
 
