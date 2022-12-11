@@ -126,7 +126,22 @@
   <data name="Order" xml:space="preserve">
     <value />
   </data>
+  <data name="Order_Date" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Order_Food" xml:space="preserve">
+    <value />
+  </data>
   <data name="Order_management" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Order_Name" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Order_Note" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Order_Status" xml:space="preserve">
     <value />
   </data>
   <data name="search" xml:space="preserve">

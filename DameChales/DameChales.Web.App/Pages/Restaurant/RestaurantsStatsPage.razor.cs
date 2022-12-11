@@ -21,6 +21,8 @@ namespace DameChales.Web.App.Pages
 		[Parameter]
 		public Guid Id { get; set; } = Guid.Empty;
 
+		private List<OrderListModel> orderListModel { get; set; } = new List<OrderListModel>();
+
 		public double profits { get; set; }
 		public int totalOrders { get; set; }
 		public int acceptedOrders { get; set; }
@@ -35,12 +37,13 @@ namespace DameChales.Web.App.Pages
 				navigationManager.NavigateTo($"/restaurants");
 			}
 			profits = await restaurantFacade.GetEarningsAsync(Id);
-			//Can't do this asynchronously sadly
-			acceptedOrders = orderFacade.GetByStatusAsync(Id, Common.Enums.OrderStatus.Accepted).Result.ToList().Count();
-			preparingOrders = orderFacade.GetByStatusAsync(Id, Common.Enums.OrderStatus.Preparing).Result.ToList().Count();
-			deliveringOrders = orderFacade.GetByStatusAsync(Id, Common.Enums.OrderStatus.Delivering).Result.ToList().Count();
-			deliveredOrders = orderFacade.GetByStatusAsync(Id, Common.Enums.OrderStatus.Delivered).Result.ToList().Count();
-			totalOrders = acceptedOrders + deliveredOrders + deliveringOrders + preparingOrders;
+			orderListModel = await orderFacade.GetByRestaurantIdAsync(Id);
+
+			acceptedOrders = orderListModel.Where(x => x.Status == Common.Enums.OrderStatus.Accepted).Count();
+            preparingOrders = orderListModel.Where(x => x.Status == Common.Enums.OrderStatus.Preparing).Count();
+            deliveringOrders = orderListModel.Where(x => x.Status == Common.Enums.OrderStatus.Delivering).Count();
+            deliveredOrders = orderListModel.Where(x => x.Status == Common.Enums.OrderStatus.Delivered).Count();
+			totalOrders = orderListModel.Count;
 
 			await base.OnInitializedAsync();
 		}
