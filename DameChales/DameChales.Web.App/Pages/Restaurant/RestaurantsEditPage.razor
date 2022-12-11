@@ -6,7 +6,7 @@
 @using DameChales.Common.Models
 @using Microsoft.Extensions.Localization
 @inherits PageBase
-@inject IStringLocalizer<FoodListPageResources> FoodEditPageLocalizer
+@inject IStringLocalizer<RestaurantsEditPageResources> FoodEditPageLocalizer
 
 <EditForm Model="@restaurantDetailModel">
 	<DataAnnotationsValidator />
@@ -38,7 +38,7 @@
             <!--ADDRESS-->
             <div class="form-group">
                 <label class="w-100 font-weight-bold">
-                    @FoodEditPageLocalizer["Name_FormLabel"]
+                    @FoodEditPageLocalizer["Address_FormLabel"]
                     <InputText @bind-Value="@restaurantDetailModel.Address" class="form-control" />
                     <small class="form-text text-danger">
                         <ValidationMessage For="@(() => restaurantDetailModel.Address)" />
@@ -48,7 +48,7 @@
             <!--GPS-->
             <div class="form-group">
                 <label class="w-100 font-weight-bold">
-                    @FoodEditPageLocalizer["Name_FormLabel"]
+                    @FoodEditPageLocalizer["GPS_FormLabel"]
                     <InputText @bind-Value="@restaurantDetailModel.GPSCoordinates" class="form-control" />
                     <small class="form-text text-danger">
                         <ValidationMessage For="@(() => restaurantDetailModel.GPSCoordinates)" />

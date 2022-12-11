@@ -5,16 +5,55 @@
 @using DameChales.Common.Models
 @using Microsoft.Extensions.Localization
 @inherits PageBase
-@inject IStringLocalizer<FoodListPageResources> FoodListPageLocalizer
+@inject IStringLocalizer<RestaurantsDetailPageResources> Localizer
 
 
 <div class="d-flex flex-row justify-content-between align-items-center mb-4">
-    <h1>@FoodListPageLocalizer["Page_Title"]</h1>
+    <button class="btn btn-sucess">
+
+    </button>
 </div>
 
 <div class="d-flex flex-wrap">
-
-
+    <div class="card m-1">
+        <h5>
+            @Localizer["Name"]
+        </h5>
+        <p>
+            @orderModel.Name
+        </p>
+        <h5>
+            @Localizer["Order_Date"]
+        </h5>
+        <p>
+            @orderModel.DeliveryTime
+        </p>
+        <h5>
+            @Localizer["Note"]
+        </h5>
+        <p>
+            @orderModel.Note
+        </p>
+    </div>
+    <div class="card m-1" style="max-width: 20%">
+        <h5>
+            @Localizer["Order_Food"]
+        </h5>
+    @foreach(var food in orderModel.FoodAmounts)
+    {
+            <div class="card m-1">
+                <img class="card-img-top" src="@food.Food.PhotoURL" alt="Food image"/>
+                    <div class="card-body text-center">
+                        <h4 class="card-title">
+                            @{
+                                <span>@food.Food.Name</span><br />
+                                <span>@food.Amount X</span>
+                            }
+                        </h4>                     
+                    </div>
+            </div>
+    }
+    </div>
 
 
 </div>
