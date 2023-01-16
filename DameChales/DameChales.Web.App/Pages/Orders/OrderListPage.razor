@@ -15,7 +15,7 @@
 <div class="d-flex flex-wrap">
     <div>
     <h1>Accepted orders</h1>
-    @foreach (var order in acceptedOrders)
+    @foreach (var order in acceptedOrdersDetail)
     {
             <div class="card m-1" style="width: 16rem;">
                 <a href="@($"/restaurants/orders/detail/{order.Id}")">
@@ -23,19 +23,23 @@
                     <span>@order.Name</span>
                 </h5>
                 </a>
-                <div class="input-group mb-3">
-                    <InputSelect @bind-Value="order.Status" class="form-control">
-                        @foreach (var status in Enum.GetValues(typeof(DameChales.Common.Enums.OrderStatus)))
-                        {
-                            <option value="@status">@status</option>
-                        }
-                    </InputSelect>
-                </div>
-                <button class="btn btn-secondary btn-block"  @onclick="@(() => UpdateOrderStatus(order))">Update</button>
+                <EditForm Model="@order">
+                    <div class="input-group mb-3">
+                  
+                            <InputSelect @bind-Value="order.Status" class="form-control">
+                                @foreach (var status in Enum.GetValues(typeof(DameChales.Common.Enums.OrderStatus)))
+                                {
+                                    <option value="@status">@status</option>
+                                }
+                            </InputSelect>
+                  
+                    </div>
+                    <button class="btn btn-secondary btn-block"  @onclick="@(() => UpdateOrderStatus(order))">Update</button>
+                </EditForm>
             </div>
     }
     <h1>Preparing orders</h1>
-    @foreach (var order in preparingOrders)
+    @foreach (var order in preparingOrdersDetail)
     {
             <div class="card m-1" style="width: 16rem;">
                 <a href="@($"/restaurants/orders/detail/{order.Id}")">
@@ -43,8 +47,9 @@
                         <span>@order.Name</span>
                     </h5>
                 </a>
+                <EditForm Model="@order">
                 <div class="input-group mb-3">
-                <InputSelect @bind-Value="order.Status">
+                        <InputSelect @bind-Value="order.Status" class="form-control">
                     @foreach (var status in Enum.GetValues(typeof(DameChales.Common.Enums.OrderStatus)))
                     {
                         <option value="@status">@status</option>
@@ -53,10 +58,11 @@
                 </InputSelect>
                 </div>
                 <button class="btn btn-secondary btn-block" @onclick="@(() => UpdateOrderStatus(order))">Update</button>
+                </EditForm>
             </div>
     }
     <h1>Delivering orders</h1>
-    @foreach (var order in deliveringOrders)
+    @foreach (var order in deliveringOrdersDetail)
     {
             <div class="card m-1" style="width: 16rem;">
                 <a href="@($"/restaurants/orders/detail/{order.Id}")">
@@ -64,19 +70,21 @@
                         <span>@order.Name</span>
                     </h5>
                 </a>
-                        <div class="input-group mb-3">
-                                    <InputSelect @bind-Value="order.Status">
+                <EditForm Model="@order">
+                 <div class="input-group mb-3">
+                        <InputSelect @bind-Value="order.Status" class="form-control">
                     @foreach (var status in Enum.GetValues(typeof(DameChales.Common.Enums.OrderStatus)))
                     {
-                                    <option value="@status">@status</option>
+                       <option value="@status">@status</option>
                     }
-                        </InputSelect>
+                    </InputSelect>
                 </div>
-                <button class="btn btn-secondary btn-block"  @onclick="@(() => UpdateOrderStatus(order))">Update</button>
+                <button class="btn btn-secondary btn-block" @onclick="@(() => UpdateOrderStatus(order))">Update</button>
+                </EditForm>
             </div>
     }
     <h1>Delivered orders</h1>
-    @foreach (var order in preparingOrders)
+    @foreach (var order in deliveredOrdersDetail)
     {
         <div class="card m-1" style="width: 16rem;">
                 <a href="@($"/restaurants/orders/detail/{order.Id}")">
@@ -84,8 +92,9 @@
                         <span>@order.Name</span>
                     </h5>
                 </a>
-                                <div class="input-group mb-3">
-                                <InputSelect @bind-Value="order.Status">
+                <EditForm Model="@order">
+                 <div class="input-group mb-3">
+                    <InputSelect @bind-Value="order.Status" class="form-control">
                     @foreach (var status in Enum.GetValues(typeof(DameChales.Common.Enums.OrderStatus)))
                     {
                                 <option value="@status">@status</option>
@@ -93,7 +102,8 @@
                     </InputSelect>
                 </div>
                 <button class="btn btn-secondary btn-block" @onclick="@(() => UpdateOrderStatus(order))">Update</button>
-        </div>
+                </EditForm>
+            </div>
     }
     </div>
 </div>

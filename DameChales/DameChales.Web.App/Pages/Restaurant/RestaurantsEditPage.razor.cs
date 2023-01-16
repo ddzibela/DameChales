@@ -23,7 +23,7 @@ namespace DameChales.Web.App.Pages
         {
             if (Id != Guid.Empty)
             {
-                restaurantDetailModel = await RestaurantFacade!.GetByIdAsync(Id);
+                restaurantDetailModel = await RestaurantFacade.GetByIdAsync(Id);
             }
             await base.OnInitializedAsync();
         }
@@ -31,7 +31,7 @@ namespace DameChales.Web.App.Pages
         public async Task Save()
         {
             
-            await RestaurantFacade!.SaveAsync(restaurantDetailModel!);
+            await RestaurantFacade.SaveAsync(restaurantDetailModel);
             navigationManager.NavigateTo($"/restaurants");
         }
 

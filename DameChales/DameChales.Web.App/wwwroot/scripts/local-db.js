@@ -4,16 +4,16 @@ window.LocalDb = {
     Initialize: function () {
         db = new Dexie('damechales_database');
         db.version(1).stores({
-            recipes: 'id',
-            ingredients: 'id',
+            orders: 'id',
+            foods: 'id',
         });
     },
     GetAll: async function (tableName) {
         return await db.table(tableName).toArray();
     },
     GetById: async function (id) {
-        let recipe = await db.table(tableName).get(id);
-        return recipe;
+        let order = await db.table(tableName).get(id);
+        return order;
     },
     Insert: function (tableName, entity) {
         db.table(tableName).put(entity);

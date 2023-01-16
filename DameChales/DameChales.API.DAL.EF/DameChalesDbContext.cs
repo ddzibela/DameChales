@@ -24,15 +24,16 @@ namespace DameChales.API.DAL.EF
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<RestaurantEntity>()
-                .HasMany(restaurantEntity => restaurantEntity.Orders)
-                .WithOne(orderEntity => orderEntity.RestaurantEntity)
-                .OnDelete(DeleteBehavior.Cascade);
+            //modelBuilder.Entity<RestaurantEntity>()
+            //    .HasMany(restaurantEntity => restaurantEntity.Orders)
+            //    .WithOne(orderEntity => orderEntity.RestaurantEntity)
+            //    .OnDelete(DeleteBehavior.Cascade);
 
-            modelBuilder.Entity<RestaurantEntity>()
-                .HasMany(restaurantEntity => restaurantEntity.Foods)
-                .WithOne(foodEntity => foodEntity.RestaurantEntity)
-                .OnDelete(DeleteBehavior.Cascade);
+            //modelBuilder.Entity<RestaurantEntity>()
+            //    .HasMany(restaurantEntity => restaurantEntity.Foods)
+            //    .WithOne(foodEntity => foodEntity.RestaurantEntity)
+            //    .OnDelete(DeleteBehavior.Cascade);
+
 
             modelBuilder.Entity<FoodEntity>()
                 .HasMany(typeof(FoodAmountEntity))
@@ -42,6 +43,16 @@ namespace DameChales.API.DAL.EF
             modelBuilder.Entity<OrderEntity>()
                 .HasMany(typeof(FoodAmountEntity))
                 .WithOne(nameof(FoodAmountEntity.OrderEntity))
+                .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<RestaurantEntity>()
+                .HasMany(typeof(FoodEntity))
+                .WithOne(nameof(FoodEntity.RestaurantEntity))
+                .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<RestaurantEntity>()
+                .HasMany(typeof(OrderEntity))
+                .WithOne(nameof(OrderEntity.RestaurantEntity))
                 .OnDelete(DeleteBehavior.Cascade);
         }
 

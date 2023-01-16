@@ -71,7 +71,6 @@ namespace DameChales.API.BL.Facades
         {
             var restaurantEntity = mapper.Map<RestaurantEntity>(restaurantModel);
             var result = restaurantRepository.Update(restaurantEntity);
-
             return result;
         }
 

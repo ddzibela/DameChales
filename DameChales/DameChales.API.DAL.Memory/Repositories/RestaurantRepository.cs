@@ -63,7 +63,7 @@ namespace DameChales.API.DAL.Memory.Repositories
 
         public Guid? Update(RestaurantEntity restaurant)
         {
-            var restaurantExisting = foods.SingleOrDefault(e => e.Id == restaurant.Id);
+            var restaurantExisting = restaurants.SingleOrDefault(e => e.Id == restaurant.Id);
             if (restaurantExisting != null)
             {
                 mapper.Map(restaurant, restaurantExisting);

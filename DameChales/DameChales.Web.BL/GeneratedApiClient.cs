@@ -91,7 +91,8 @@ namespace DameChales.Web.BL
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "13.17.0.0 (NJsonSchema v10.8.0.0 (Newtonsoft.Json v13.0.0.0))")]
     public partial class FoodClient : IFoodClient
     {
-        private string _baseUrl = "https://app-iw5-2022-team-xkubic45-api.azurewebsites.net";
+        //private string _baseUrl = "https://app-iw5-2022-team-xkubic45-api.azurewebsites.net";
+        private string _baseUrl = "https://localhost:7186/";
         private System.Net.Http.HttpClient _httpClient;
         private System.Lazy<Newtonsoft.Json.JsonSerializerSettings> _settings;
 
@@ -983,7 +984,8 @@ namespace DameChales.Web.BL
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "13.17.0.0 (NJsonSchema v10.8.0.0 (Newtonsoft.Json v13.0.0.0))")]
     public partial class OrderClient : IOrderClient
     {
-        private string _baseUrl = "https://app-iw5-2022-team-xkubic45-api.azurewebsites.net";
+        //private string _baseUrl = "https://app-iw5-2022-team-xkubic45-api.azurewebsites.net";
+        private string _baseUrl = "https://localhost:7186/";
         private System.Net.Http.HttpClient _httpClient;
         private System.Lazy<Newtonsoft.Json.JsonSerializerSettings> _settings;
 
@@ -1888,7 +1890,8 @@ namespace DameChales.Web.BL
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "13.17.0.0 (NJsonSchema v10.8.0.0 (Newtonsoft.Json v13.0.0.0))")]
     public partial class RestaurantClient : IRestaurantClient
     {
-        private string _baseUrl = "https://app-iw5-2022-team-xkubic45-api.azurewebsites.net";
+        //private string _baseUrl = "https://app-iw5-2022-team-xkubic45-api.azurewebsites.net";
+        private string _baseUrl = "https://localhost:7186/";
         private System.Net.Http.HttpClient _httpClient;
         private System.Lazy<Newtonsoft.Json.JsonSerializerSettings> _settings;
 
