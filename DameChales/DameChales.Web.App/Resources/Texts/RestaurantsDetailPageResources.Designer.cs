@@ -117,6 +117,15 @@ namespace DameChales.Web.App.Resources.Texts {
         /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
+        public static string Name {
+            get {
+                return ResourceManager.GetString("Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
         public static string Order {
             get {
                 return ResourceManager.GetString("Order", resourceCulture);

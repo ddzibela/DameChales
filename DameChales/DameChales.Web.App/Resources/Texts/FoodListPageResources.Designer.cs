@@ -99,6 +99,15 @@ namespace DameChales.Web.App.Resources.Texts {
         /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
+        public static string Name {
+            get {
+                return ResourceManager.GetString("Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
         public static string Name_TableHeader {
             get {
                 return ResourceManager.GetString("Name_TableHeader", resourceCulture);
@@ -120,6 +129,15 @@ namespace DameChales.Web.App.Resources.Texts {
         public static string Page_Title {
             get {
                 return ResourceManager.GetString("Page_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string Price {
+            get {
+                return ResourceManager.GetString("Price", resourceCulture);
             }
         }
     }

@@ -74,7 +74,7 @@
 		<!--FOODS-->
 		<div style="float: left; width: 25%">
         <button @onclick="@OrderByName">
-            Name
+            @Localizer["Name"]
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down" viewBox="0 0 16 16">
                 @{
                     if (OrderByNameFlag)
@@ -88,7 +88,7 @@
             </svg>
         </button>
         <button @onclick="@OrderByPrice">
-            Price
+            @Localizer["Price"]
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down" viewBox="0 0 16 16">
                 @{
                     if (OrderByPriceFlag)

@@ -168,4 +168,7 @@
   <data name="Staff" xml:space="preserve">
     <value>Pro personál</value>
   </data>
+  <data name="Name" xml:space="preserve">
+    <value>Jméno</value>
+  </data>
 </root>

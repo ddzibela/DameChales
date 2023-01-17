@@ -14,6 +14,9 @@ namespace DameChales.Web.App.Pages
         private ICollection<FoodListModel> Foods { get; set; } = new List<FoodListModel>();
         [Parameter]
         public Guid Id { get; init; }
+        private bool OrderByNameFlag { get; set; } = false;
+        private bool OrderByPriceFlag { get; set; } = false;
+
         protected override async Task OnInitializedAsync()
         {
             if (Id == Guid.Empty)
@@ -25,6 +28,32 @@ namespace DameChales.Web.App.Pages
             }
 
             await base.OnInitializedAsync();
+        }
+
+        public void OrderByPrice()
+        {
+            OrderByPriceFlag = !OrderByPriceFlag;
+            if (OrderByPriceFlag)
+            {
+                Foods = Foods.OrderBy(x => x.Price).ToList();
+            }
+            else
+            {
+                Foods = Foods.OrderByDescending(x => x.Price).ToList();
+            }
+        }
+
+        public void OrderByName()
+        {
+            OrderByNameFlag = !OrderByNameFlag;
+            if (OrderByNameFlag)
+            {
+                Foods = Foods.OrderBy(x => x.Name).ToList();
+            }
+            else
+            {
+                Foods = Foods.OrderByDescending(x => x.Name).ToList();
+            }
         }
     }
 }
