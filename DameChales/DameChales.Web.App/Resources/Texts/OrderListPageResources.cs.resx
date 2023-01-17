@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -117,55 +117,22 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Food_management" xml:space="preserve">
-    <value>Správa jídel</value>
+  <data name="Accepted" xml:space="preserve">
+    <value>Přijaté objednávky</value>
   </data>
-  <data name="Food_Note" xml:space="preserve">
-    <value>Poznámka</value>
+  <data name="Delivered" xml:space="preserve">
+    <value>Doručené objednávky</value>
   </data>
-  <data name="Order" xml:space="preserve">
-    <value>Objednat</value>
+  <data name="Delivering" xml:space="preserve">
+    <value>Doručované objednávky</value>
   </data>
-  <data name="Order_management" xml:space="preserve">
-    <value>Správa objednávek</value>
+  <data name="Page_Title" xml:space="preserve">
+    <value>Objednávky</value>
   </data>
-  <data name="search" xml:space="preserve">
-    <value>Filtrovat</value>
+  <data name="Preparing" xml:space="preserve">
+    <value>Připravované objednávky</value>
   </data>
-  <data name="Stats" xml:space="preserve">
-    <value>Statistiky</value>
-  </data>
-  <data name="Order_Date" xml:space="preserve">
-    <value>Datum doručení</value>
-  </data>
-  <data name="Order_Food" xml:space="preserve">
-    <value>Jídla</value>
-  </data>
-  <data name="Order_Name" xml:space="preserve">
-    <value>Jméno</value>
-  </data>
-  <data name="Order_Note" xml:space="preserve">
-    <value>Poznámka</value>
-  </data>
-  <data name="Order_Status" xml:space="preserve">
-    <value>Stav</value>
-  </data>
-  <data name="Amount" xml:space="preserve">
-    <value>Počet</value>
-  </data>
-  <data name="Delete_Button" xml:space="preserve">
-    <value>Smazat</value>
-  </data>
-  <data name="Edit" xml:space="preserve">
-    <value>Upravit</value>
-  </data>
-  <data name="Order_Address" xml:space="preserve">
-    <value>Adresa</value>
-  </data>
-  <data name="Add" xml:space="preserve">
-    <value>Přidat do objednávky</value>
-  </data>
-  <data name="Staff" xml:space="preserve">
-    <value>Pro personál</value>
+  <data name="Update_Button" xml:space="preserve">
+    <value>Aktualizovat</value>
   </data>
 </root>

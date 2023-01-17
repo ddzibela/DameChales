@@ -5,35 +5,35 @@
 @using DameChales.Common.Models
 @using Microsoft.Extensions.Localization
 @inherits PageBase
-@inject IStringLocalizer<FoodListPageResources> FoodListPageLocalizer
+@inject IStringLocalizer<OrderStatsPageResources> OrderStatsPageLocalizer
 
 	<div>
 		<ul>
 			<li>
 				<!--Total orders-->
-			Total orders: @totalOrders
+			@OrderStatsPageLocalizer["Total_Orders"]: @totalOrders
 			<ul>
 					<li>
 						<!--Confirmed-->
-						confirmed @acceptedOrders
+					@OrderStatsPageLocalizer["Confirmed_Orders"]: @acceptedOrders
 					</li>
 					<li>
 						<!--Preparing-->
-						preparing @preparingOrders
+					@OrderStatsPageLocalizer["Preparing_Orders"]: @preparingOrders
 					</li>
 					<li>
 						<!--In delivery-->
-						in delivery @deliveringOrders
+					@OrderStatsPageLocalizer["InDelivery_Orders"]: @deliveringOrders
 					</li>
 					<li>
 						<!--Delivered-->
-						delivered @deliveredOrders
+					@OrderStatsPageLocalizer["Delivered_Orders"]: @deliveredOrders
 					</li>
 				</ul>
 			</li>
 			<li>
 				<!--profits-->
-				profits @profits
+			@OrderStatsPageLocalizer["Profit"]: @profits
 			</li>
 		</ul>
 	</div>

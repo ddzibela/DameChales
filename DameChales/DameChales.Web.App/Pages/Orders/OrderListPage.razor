@@ -5,16 +5,16 @@
 @using DameChales.Common.Models
 @using Microsoft.Extensions.Localization
 @inherits PageBase
-@inject IStringLocalizer<FoodListPageResources> FoodListPageLocalizer
+@inject IStringLocalizer<OrderListPageResources> OrderListPageLocalizer
 
 
 <div class="d-flex flex-row justify-content-between align-items-center mb-4">
-    <h1>@FoodListPageLocalizer["Page_Title"]</h1>
+    <h1>@OrderListPageLocalizer["Page_Title"]</h1>
 </div>
 
 <div class="d-flex flex-wrap">
     <div>
-    <h1>Accepted orders</h1>
+        <h1>@OrderListPageLocalizer["Accepted"]</h1>
     @foreach (var order in acceptedOrdersDetail)
     {
             <div class="card m-1" style="width: 16rem;">
@@ -29,16 +29,16 @@
                             <InputSelect @bind-Value="order.Status" class="form-control">
                                 @foreach (var status in Enum.GetValues(typeof(DameChales.Common.Enums.OrderStatus)))
                                 {
-                                    <option value="@status">@status</option>
+                                <option value="@status">@OrderListPageLocalizer[status.ToString()]</option>
                                 }
                             </InputSelect>
                   
                     </div>
-                    <button class="btn btn-secondary btn-block"  @onclick="@(() => UpdateOrderStatus(order))">Update</button>
+                    <button class="btn btn-secondary btn-block" @onclick="@(() => UpdateOrderStatus(order))">@OrderListPageLocalizer["Update_Button"]</button>
                 </EditForm>
             </div>
     }
-    <h1>Preparing orders</h1>
+        <h1>@OrderListPageLocalizer["Preparing"]</h1>
     @foreach (var order in preparingOrdersDetail)
     {
             <div class="card m-1" style="width: 16rem;">
@@ -52,16 +52,17 @@
                         <InputSelect @bind-Value="order.Status" class="form-control">
                     @foreach (var status in Enum.GetValues(typeof(DameChales.Common.Enums.OrderStatus)))
                     {
-                        <option value="@status">@status</option>
+  
+                                <option value="@status">@OrderListPageLocalizer[status.ToString()]</option>
                     }
                 
                 </InputSelect>
                 </div>
-                <button class="btn btn-secondary btn-block" @onclick="@(() => UpdateOrderStatus(order))">Update</button>
+                    <button class="btn btn-secondary btn-block" @onclick="@(() => UpdateOrderStatus(order))">@OrderListPageLocalizer["Update_Button"]</button>
                 </EditForm>
             </div>
     }
-    <h1>Delivering orders</h1>
+        <h1>@OrderListPageLocalizer["Delivering"]</h1>
     @foreach (var order in deliveringOrdersDetail)
     {
             <div class="card m-1" style="width: 16rem;">
@@ -75,15 +76,15 @@
                         <InputSelect @bind-Value="order.Status" class="form-control">
                     @foreach (var status in Enum.GetValues(typeof(DameChales.Common.Enums.OrderStatus)))
                     {
-                       <option value="@status">@status</option>
+                                <option value="@status">@OrderListPageLocalizer[status.ToString()]</option>
                     }
                     </InputSelect>
                 </div>
-                <button class="btn btn-secondary btn-block" @onclick="@(() => UpdateOrderStatus(order))">Update</button>
+                    <button class="btn btn-secondary btn-block" @onclick="@(() => UpdateOrderStatus(order))">@OrderListPageLocalizer["Update_Button"]</button>
                 </EditForm>
             </div>
     }
-    <h1>Delivered orders</h1>
+        <h1>@OrderListPageLocalizer["Delivered"]</h1>
     @foreach (var order in deliveredOrdersDetail)
     {
         <div class="card m-1" style="width: 16rem;">
@@ -97,11 +98,11 @@
                     <InputSelect @bind-Value="order.Status" class="form-control">
                     @foreach (var status in Enum.GetValues(typeof(DameChales.Common.Enums.OrderStatus)))
                     {
-                                <option value="@status">@status</option>
+                                <option value="@status">@OrderListPageLocalizer[status.ToString()]</option>
                     }
                     </InputSelect>
                 </div>
-                <button class="btn btn-secondary btn-block" @onclick="@(() => UpdateOrderStatus(order))">Update</button>
+                    <button class="btn btn-secondary btn-block" @onclick="@(() => UpdateOrderStatus(order))">@OrderListPageLocalizer["Update_Button"]</button>
                 </EditForm>
             </div>
     }
