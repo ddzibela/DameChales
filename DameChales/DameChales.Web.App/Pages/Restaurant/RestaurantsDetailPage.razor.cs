@@ -26,6 +26,8 @@ namespace DameChales.Web.App.Pages
         private OrderDetailModel orderDetailModel { get; set; } = GetNewOrderDetailModel();
         private RestaurantDetailModel? restaurantDetailModel { get; set; }
         public string filterString { get; set; } = string.Empty;
+        private bool OrderByNameFlag { get; set; } = false;
+        private bool OrderByPriceFlag { get; set; } = false;
 
 
         protected override async Task OnInitializedAsync()
@@ -99,6 +101,30 @@ namespace DameChales.Web.App.Pages
                 await orderFacade.SaveAsync(orderDetailModel);
                 await orderFacade.SaveAsync(orderDetailModel);
                 orderDetailModel = GetNewOrderDetailModel();
+            }
+        }
+
+        public void OrderByPrice()
+        {
+            OrderByPriceFlag = !OrderByPriceFlag;
+            if(OrderByPriceFlag)
+            {
+                foods = foods.OrderBy(x => x.Price).ToList();
+            } else
+            {
+                foods = foods.OrderByDescending(x => x.Price).ToList();
+            }
+        }
+
+        public void OrderByName()
+        {
+            OrderByNameFlag = !OrderByNameFlag;
+            if(OrderByNameFlag)
+            {
+                foods = foods.OrderBy(x =>x.Name).ToList();
+            } else
+            {
+                foods = foods.OrderByDescending(x =>x.Name).ToList();
             }
         }
     }
