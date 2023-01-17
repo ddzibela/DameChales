@@ -147,6 +147,7 @@ public class InMemoryDatabaseFixture : IDatabaseFixture
                 RestaurantGuid = RestaurantGuids[0],
                 DeliveryTime = DateTime.Now.AddHours(3),
                 Note = "Poznamka k objednavce.",
+                Address = "Adresa", 
                 Status = OrderStatus.Accepted
             });
         

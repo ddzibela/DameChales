@@ -75,6 +75,7 @@ public class FoodRepositoryTests
             DeliveryTime = DateTime.MinValue.AddMinutes(15),
             RestaurantGuid = restaurantId,
             Note = "Note",
+            Address = "address",
             Status = status,
             FoodAmounts = new List<FoodAmountEntity>()
             {
