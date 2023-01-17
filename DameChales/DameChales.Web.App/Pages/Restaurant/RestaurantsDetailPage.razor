@@ -111,7 +111,7 @@
                     <div class="form-group">
                         <label class="w-100 font-weight-bold">
                             @Localizer["Amount"]
-                        <InputNumber @bind-Value="@amount.Amount" class="form-control" ParsingErrorMessage=""/>
+                        <InputNumber type="number" step="1" @bind-Value="@amount.Amount" class="form-control" ParsingErrorMessage="" Min="1" oninput="validity.valid||(value='');" />
                         </label>
                         <label class="w-100 font-weight-bold">
                             @Localizer["Order_Note"]

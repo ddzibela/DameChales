@@ -83,6 +83,10 @@ namespace DameChales.API.DAL.Memory.Repositories
             if (orderEntityExisting is not null)
             {
                 orderEntityExisting.Status = entity.Status;
+                orderEntityExisting.Name = entity.Name;
+                orderEntityExisting.Address = entity.Address;
+                orderEntityExisting.DeliveryTime = entity.DeliveryTime;
+                orderEntityExisting.Note = entity.Note;
                 orderEntityExisting.FoodAmounts = GetFoodAmountsByOrderId(entity.Id);
                 UpdateFoodAmounts(entity, orderEntityExisting);
                 return orderEntityExisting.Id;

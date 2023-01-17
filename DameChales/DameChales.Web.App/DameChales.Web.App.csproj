@@ -45,6 +45,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>NavMenuResources.resx</DependentUpon>
     </Compile>
+    <Compile Update="Resources\Texts\OrderEditPageResources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>OrderEditPageResources.resx</DependentUpon>
+    </Compile>
     <Compile Update="Resources\Texts\OrderListPageResources.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -96,6 +101,10 @@
     <EmbeddedResource Update="Resources\Texts\RestaurantsDetailPageResources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>RestaurantsDetailPageResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Texts\OrderEditPageResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>OrderEditPageResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Update="Resources\Texts\RestaurantsEditPageResources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

@@ -32,17 +32,28 @@
         </p>
 
         <h5>
+            @Localizer["Order_Status"]
+        </h5>
+        <p>
+            @orderModel.Status
+        </p>
+
+        <h5>
             @Localizer["Order_Date"]
         </h5>
         <p>
             @orderModel.DeliveryTime
         </p>
         <h5>
-            @Localizer["Note"]
+            @Localizer["Order_Note"]
         </h5>
         <p>
             @orderModel.Note
         </p>
+
+        <a href="@($"/order/{orderModel.Id}")" class="btn btn-dark btn-block">
+            @Localizer["Edit"]
+        </a>
     </div>
     <div class="card m-1" style="max-width: 20%">
         <h5>
@@ -56,7 +67,7 @@
                         <h4 class="card-title">
                             @{
                                 <span>@food.Food.Name</span><br />
-                                <span>@food.Amount X</span>
+                                <span>@food.Amount x</span>
                             }
                         </h4>                     
                     </div>

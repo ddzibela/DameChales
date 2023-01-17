@@ -31,7 +31,7 @@
                     <label class="w-100 font-weight-bold">
                         @FoodEditPageLocalizer["Price_FormLabel"]
 
-                    <InputNumber @bind-Value="@Data.Price" class="form-control" ParsingErrorMessage="" />
+                    <InputNumber @bind-Value="@Data.Price" class="form-control" ParsingErrorMessage="" Min="0" oninput="validity.valid||(value='');" />
                     </label>
                 </div>
             <!--RESTAURANT-->

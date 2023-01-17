@@ -1,0 +1,118 @@
+﻿@page "/order/create"
+@page "/order/{Id:guid}"
+@namespace DameChales.Web.App.Pages
+@layout ListLayout
+@using DameChales.Web.App.Resources.Texts
+@using DameChales.Common.Models
+@using Microsoft.Extensions.Localization
+@inherits PageBase
+@inject IStringLocalizer<OrderEditPageResources> OrderEditPageLocalizer
+
+<h3 class="mb-4">@OrderEditPageLocalizer["Page_Title"]</h3>
+
+<EditForm Model="@orderDetailModel">
+	<DataAnnotationsValidator />
+	
+
+            <!--NAME-->
+            <div class="form-group">
+                <label class="w-100 font-weight-bold">
+                    @OrderEditPageLocalizer["Name_FormLabel"]
+                    <InputText @bind-Value="@orderDetailModel.Name" class="form-control" />
+                    <small class="form-text text-danger">
+                        <ValidationMessage For="@(() => orderDetailModel.Name)" />
+                    </small>
+                </label>
+            </div>
+
+            <!--ADDRESS-->
+            <div class="form-group">
+                <label class="w-100 font-weight-bold">
+                    @OrderEditPageLocalizer["Address_FormLabel"]
+                    <InputText @bind-Value="@orderDetailModel.Address" class="form-control" />
+                    <small class="form-text text-danger">
+                        <ValidationMessage For="@(() => orderDetailModel.Address)" />
+                    </small>
+                </label>
+            </div>
+
+            <!--NOTE-->
+            <div class="form-group">
+                <label class="w-100 font-weight-bold">
+                    @OrderEditPageLocalizer["Note_FormLabel"]
+                    <InputText @bind-Value="@orderDetailModel.Note" class="form-control" />
+                </label>
+            </div>
+
+            <!--DELIVERY TIME-->
+            <div class="form-group">
+                <label class="w-100 font-weight-bold">
+                    @OrderEditPageLocalizer["DeliveryTime_FormLabel"]
+                    <InputDateTime @bind-Value="@orderDetailModel.DeliveryTime" class="form-control" />
+                </label>
+            </div>
+
+            <!--STATUS-->
+            <div class="form-group">
+                <label class="w-100 font-weight-bold">
+                    @OrderEditPageLocalizer["Status_FormLabel"]
+                    <InputSelect @bind-Value="orderDetailModel.Status" class="form-control">
+                    @foreach (var status in Enum.GetValues(typeof(DameChales.Common.Enums.OrderStatus)))
+                    {
+                            <option value="@status">@OrderEditPageLocalizer[status.ToString()]</option>
+                    }
+                    </InputSelect>
+                </label>
+            </div>
+
+            <!--FOODS-->
+            <div class="form-group">
+                <label class="w-100 font-weight-bold">
+                    @OrderEditPageLocalizer["Food_FormLabel"]
+                    <div class="card-group w-75">
+                        @foreach (var food in orderDetailModel.FoodAmounts)
+                        {
+                    <div class="card col-sm-6 col-md-3">
+                                <img class="card-img-top" src="@food.Food.PhotoURL" alt="Food image" />
+                                <div class="card-body text-center">
+                                    <h5 class="card-title">
+                                        @{
+                                                        <span>@food.Food.Name</span>
+                                        }
+                                    </h5>
+                                    <p class="card-text">
+                                        @{
+                                                        @food.Food.Price
+                                        }
+                                    </p>
+
+                                    <label class="w-100 font-weight-bold">
+                                        @OrderEditPageLocalizer["Count"]
+                                        <InputNumber type="number" step="1" @bind-Value="@food.Amount" class="form-control" ParsingErrorMessage="" Min="1" oninput="validity.valid||(value='');" />
+
+                                    </label>
+
+                                </div>
+                            </div>
+
+                
+                        }
+                    </div>
+                </label>
+                <div>
+
+            <div class="d-flex justify-content-end mt-2 mb-2">
+                <button type="submit" class="btn btn-success mr-2" @onclick="@Save">
+                    @OrderEditPageLocalizer["Save_Button"]
+                </button>
+                @if (Id != Guid.Empty)
+                {
+                    <button class="btn btn-danger" @onclick="@Delete">@OrderEditPageLocalizer["Delete_Button"]</button>
+                }
+            </div>
+        </div>
+     </div>
+
+
+
+</EditForm>
