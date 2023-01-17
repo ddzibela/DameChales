@@ -50,9 +50,6 @@
                 <label class="w-100 font-weight-bold">
                     @FoodEditPageLocalizer["GPS_FormLabel"]
                     <InputText @bind-Value="@restaurantDetailModel.GPSCoordinates" class="form-control" />
-                    <small class="form-text text-danger">
-                        <ValidationMessage For="@(() => restaurantDetailModel.GPSCoordinates)" />
-                    </small>
                 </label>
             </div>
             <!--PHOTO-->
@@ -61,10 +58,6 @@
                     @FoodEditPageLocalizer["ImageUrl_FormLabel"]
                     <InputText @bind-Value="@restaurantDetailModel.PhotoURL" class="form-control" />
                 </label>
-
-                <small class="form-text text-danger">
-                    <ValidationMessage For="@(() => restaurantDetailModel.PhotoURL)" />
-                </small>
             </div>
         </div>
 

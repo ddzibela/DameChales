@@ -31,10 +31,7 @@
                     <label class="w-100 font-weight-bold">
                         @FoodEditPageLocalizer["Price_FormLabel"]
 
-                    <InputNumber @bind-Value="@Data.Price" class="form-control" />
-                        <small class="form-text text-danger">
-                            <ValidationMessage For="@(() => Data.Price)" />
-                        </small>
+                    <InputNumber @bind-Value="@Data.Price" class="form-control" ParsingErrorMessage="" />
                     </label>
                 </div>
             <!--RESTAURANT-->
@@ -47,9 +44,6 @@
                             <option value="@restaurant.Id">@restaurant.Name</option>
                         }
                     </InputSelect>
-                    <small class="form-text text-danger">
-                        <ValidationMessage For="@(() => Data.RestaurantGuid)" />
-                    </small>
                 </label>
             </div>
             <!--ALERGENS-->
@@ -99,9 +93,6 @@
                     <label class="w-100 font-weight-bold">
                         @FoodEditPageLocalizer["Description_FormLabel"]
                         <InputTextArea @bind-Value="@Data.Description" class="form-control" />
-                        <small class="form-text text-danger">
-                            <ValidationMessage For="@(() => Data.Description)" />
-                        </small>
                     </label>
                 </div>
             </div>
@@ -112,10 +103,6 @@
                     @FoodEditPageLocalizer["ImageUrl_FormLabel"]
                     <InputText @bind-Value="@Data.PhotoURL" class="form-control" />
                 </label>
-
-                <small class="form-text text-danger">
-                    <ValidationMessage For="@(() => Data.PhotoURL)" />
-                </small>
             </div>
         </div>
 

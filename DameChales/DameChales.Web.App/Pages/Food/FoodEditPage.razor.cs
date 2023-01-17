@@ -25,7 +25,6 @@ namespace DameChales.Web.App.Pages
 
         [Parameter]
         public Guid Id { get; init; }
-
         private ICollection<RestaurantListModel> Restaurants { get; set; } = new List<RestaurantListModel>();
 
         private RestaurantDetailModel RestaurantToFood { get; set; } = null!;
@@ -44,16 +43,22 @@ namespace DameChales.Web.App.Pages
 
         public async Task Save()
         {
-            await FoodFacade.SaveAsync(Data);
-            navigationManager.NavigateTo($"/foods");
+            if (Data.Name != "")
+            {
+                await FoodFacade.SaveAsync(Data);
+                navigationManager.NavigateTo($"/foods");
+            }
+
         }
 
         public async Task Delete()
         {
-            await FoodFacade.DeleteAsync(Id);
-            navigationManager.NavigateTo($"/foods");
+            if (Data.Name != "")
+            {
+                await FoodFacade.DeleteAsync(Id);
+                navigationManager.NavigateTo($"/foods");
+            }
         }
-
         private static FoodDetailModel GetNewFoodDetailModel() 
             => new()
             {

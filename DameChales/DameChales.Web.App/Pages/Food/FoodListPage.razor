@@ -37,7 +37,9 @@
                                         <span>@food.Name</span>
                     }
                 </h5>
-
+                <a href="@($"/restaurants/{food.RestaurantGuid}")" class="btn btn-dark btn-block">
+                    @FoodListPageLocalizer["GoToRestaurant_Button"]
+                </a>
                 <a href="@($"/food/{food.Id}")" class="btn btn-dark btn-block">
                         @FoodListPageLocalizer["EditFood_Button"]
                     </a>

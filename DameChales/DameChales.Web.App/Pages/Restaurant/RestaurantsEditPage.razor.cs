@@ -30,15 +30,20 @@ namespace DameChales.Web.App.Pages
 
         public async Task Save()
         {
-            
-            await RestaurantFacade.SaveAsync(restaurantDetailModel);
-            navigationManager.NavigateTo($"/restaurants");
+            if (restaurantDetailModel.Name != "" && restaurantDetailModel.Description != "" && restaurantDetailModel.Address != "")
+            {
+                await RestaurantFacade.SaveAsync(restaurantDetailModel);
+                navigationManager.NavigateTo($"/restaurants");
+            }
         }
 
         public async Task Delete()
         {
-            await RestaurantFacade.DeleteAsync(Id);
-            navigationManager.NavigateTo($"/restaurants");
+            if (restaurantDetailModel.Name != "" && restaurantDetailModel.Description != "" && restaurantDetailModel.Address != "")
+            {
+                await RestaurantFacade.DeleteAsync(Id);
+                navigationManager.NavigateTo($"/restaurants");
+            }
         }
 
         private static RestaurantDetailModel GetNewRestaurantDetailModel()

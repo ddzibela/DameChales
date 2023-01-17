@@ -18,4 +18,37 @@
     <ProjectReference Include="..\DameChales.Common\DameChales.Common.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Update="Resources\Texts\FoodDetailModelResources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>FoodDetailModelResources.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Texts\OrderDetailModelResources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>OrderDetailModelResources.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Texts\RestaurantDetailModelResources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>RestaurantDetailModelResources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Resources\Texts\OrderDetailModelResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>OrderDetailModelResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Texts\RestaurantDetailModelResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>RestaurantDetailModelResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Texts\FoodDetailModelResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>FoodDetailModelResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
 </Project>

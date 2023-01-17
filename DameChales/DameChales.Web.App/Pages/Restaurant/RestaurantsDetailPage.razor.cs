@@ -51,6 +51,7 @@ namespace DameChales.Web.App.Pages
                 Status = Common.Enums.OrderStatus.Accepted,
                 RestaurantGuid = Guid.Empty,
                 FoodAmounts = new List<OrderFoodAmountDetailModel>(),
+                Address = string.Empty
             };
     
         public async Task filter()
@@ -93,10 +94,12 @@ namespace DameChales.Web.App.Pages
     
         public async Task PlaceOrder()
         {
-            
-            await orderFacade.SaveAsync(orderDetailModel);
-            await orderFacade.SaveAsync(orderDetailModel);
-            orderDetailModel = GetNewOrderDetailModel();
+            if (orderDetailModel.Name != "" && orderDetailModel.Address != "")
+            {
+                await orderFacade.SaveAsync(orderDetailModel);
+                await orderFacade.SaveAsync(orderDetailModel);
+                orderDetailModel = GetNewOrderDetailModel();
+            }
         }
     }
 }

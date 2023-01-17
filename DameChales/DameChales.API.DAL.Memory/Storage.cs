@@ -127,7 +127,7 @@ namespace DameChales.API.DAL.Memory
                 Id = restaurantGuids[0],
                 Name = "SkvelaRestaurace",
                 Description = "Mame nejlepsi vajicka",
-                LogoURL = "https://m.facebook.com/eggotruckbrno/",
+                LogoURL = "https://th.bing.com/th/id/OIP.76j0R8uoEKFeowOuZ2f_DAHaE8?pid=ImgDet&rs=1",
                 Address = "Dvořákova 12, Brno, Czech Republic",
                 GPSCoordinates = "49.195942, 16.611404",
                 Orders = new List<OrderEntity>(),

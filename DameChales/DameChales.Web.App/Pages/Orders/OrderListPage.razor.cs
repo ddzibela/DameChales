@@ -85,7 +85,8 @@ namespace DameChales.Web.App.Pages
                 Name = string.Empty,
                 Note = string.Empty,
                 DeliveryTime = DateTime.MinValue,
-                Status = Common.Enums.OrderStatus.Accepted
+                Status = Common.Enums.OrderStatus.Accepted,
+                Address = string.Empty
             };
     }
 }
