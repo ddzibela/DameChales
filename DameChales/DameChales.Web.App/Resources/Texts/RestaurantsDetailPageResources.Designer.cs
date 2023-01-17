@@ -63,9 +63,36 @@ namespace DameChales.Web.App.Resources.Texts {
         /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
+        public static string Add {
+            get {
+                return ResourceManager.GetString("Add", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
         public static string Amount {
             get {
                 return ResourceManager.GetString("Amount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string Delete_Button {
+            get {
+                return ResourceManager.GetString("Delete_Button", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string Edit {
+            get {
+                return ResourceManager.GetString("Edit", resourceCulture);
             }
         }
         
@@ -93,6 +120,15 @@ namespace DameChales.Web.App.Resources.Texts {
         public static string Order {
             get {
                 return ResourceManager.GetString("Order", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string Order_Address {
+            get {
+                return ResourceManager.GetString("Order_Address", resourceCulture);
             }
         }
         
@@ -156,6 +192,15 @@ namespace DameChales.Web.App.Resources.Texts {
         public static string search {
             get {
                 return ResourceManager.GetString("search", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string Staff {
+            get {
+                return ResourceManager.GetString("Staff", resourceCulture);
             }
         }
         

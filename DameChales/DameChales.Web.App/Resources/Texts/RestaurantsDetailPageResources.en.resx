@@ -153,4 +153,19 @@
   <data name="Amount" xml:space="preserve">
     <value>Amount</value>
   </data>
+  <data name="Delete_Button" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="Order_Address" xml:space="preserve">
+    <value>Address</value>
+  </data>
+  <data name="Add" xml:space="preserve">
+    <value>Add to order</value>
+  </data>
+  <data name="Staff" xml:space="preserve">
+    <value>Staff only</value>
+  </data>
 </root>

@@ -117,55 +117,22 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Food_management" xml:space="preserve">
-    <value>Správa jídel</value>
+  <data name="Confirmed_Orders" xml:space="preserve">
+    <value>Confirmed</value>
   </data>
-  <data name="Food_Note" xml:space="preserve">
-    <value>Poznámka</value>
+  <data name="Delivered_Orders" xml:space="preserve">
+    <value>Delivered</value>
   </data>
-  <data name="Order" xml:space="preserve">
-    <value>Objednat</value>
+  <data name="InDelivery_Orders" xml:space="preserve">
+    <value>In delivery</value>
   </data>
-  <data name="Order_management" xml:space="preserve">
-    <value>Správa objednávek</value>
+  <data name="Preparing_Orders" xml:space="preserve">
+    <value>Preparing</value>
   </data>
-  <data name="search" xml:space="preserve">
-    <value>Filtrovat</value>
+  <data name="Profit" xml:space="preserve">
+    <value>Profits</value>
   </data>
-  <data name="Stats" xml:space="preserve">
-    <value>Statistiky</value>
-  </data>
-  <data name="Order_Date" xml:space="preserve">
-    <value>Datum doručení</value>
-  </data>
-  <data name="Order_Food" xml:space="preserve">
-    <value>Jídla</value>
-  </data>
-  <data name="Order_Name" xml:space="preserve">
-    <value>Jméno</value>
-  </data>
-  <data name="Order_Note" xml:space="preserve">
-    <value>Poznámka</value>
-  </data>
-  <data name="Order_Status" xml:space="preserve">
-    <value>Stav</value>
-  </data>
-  <data name="Amount" xml:space="preserve">
-    <value>Počet</value>
-  </data>
-  <data name="Delete_Button" xml:space="preserve">
-    <value>Smazat</value>
-  </data>
-  <data name="Edit" xml:space="preserve">
-    <value>Upravit</value>
-  </data>
-  <data name="Order_Address" xml:space="preserve">
-    <value>Adresa</value>
-  </data>
-  <data name="Add" xml:space="preserve">
-    <value>Přidat do objednávky</value>
-  </data>
-  <data name="Staff" xml:space="preserve">
-    <value>Pro personál</value>
+  <data name="Total_Orders" xml:space="preserve">
+    <value>Total orders</value>
   </data>
 </root>

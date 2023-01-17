@@ -107,6 +107,7 @@ namespace DameChales.API.DAL.Memory
                 RestaurantGuid = restaurantGuids[0],
                 RestaurantEntity = Restaurants.Single(f => f.Id == restaurantGuids[0]),
                 DeliveryTime = DateTime.Now.AddHours(1),
+                Address = "Božetěchova 2, Brno, Czech Republic",
                 Note = "Poznamka k objednavce.",
                 Status = OrderStatus.Accepted,
                 FoodAmounts = new List<FoodAmountEntity>

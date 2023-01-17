@@ -13,11 +13,12 @@ namespace DameChales.API.DAL.Common.Entities
         public required DateTime DeliveryTime { get; set; }
         public required string Name { get; set; }
         public required string? Note { get; set; }
+        public required string Address { get; set; }
         public required OrderStatus Status { get; set; }
 
         public ICollection<FoodAmountEntity> FoodAmounts { get; set; } = new List<FoodAmountEntity>();
 
-        public OrderEntity(string name, Guid id, Guid restaurantId, DateTime deliveryTime, string note, OrderStatus status, List<FoodAmountEntity> foodAmounts) :
+        public OrderEntity(string name, Guid id, Guid restaurantId, DateTime deliveryTime, string note, string address,OrderStatus status, List<FoodAmountEntity> foodAmounts) :
             base(id)
         {
             Name = name;
@@ -25,12 +26,13 @@ namespace DameChales.API.DAL.Common.Entities
             RestaurantGuid = restaurantId;
             DeliveryTime = deliveryTime;
             Note = note;
+            Address = address;
             Status = status;
             FoodAmounts = foodAmounts;
         }
 
         public OrderEntity() :
-            this(string.Empty,Guid.Empty, Guid.Empty, DateTime.MinValue, string.Empty, OrderStatus.Accepted, new List<FoodAmountEntity>())
+            this(string.Empty,Guid.Empty, Guid.Empty, DateTime.MinValue, string.Empty, string.Empty, OrderStatus.Accepted, new List<FoodAmountEntity>())
         {
         }
 
