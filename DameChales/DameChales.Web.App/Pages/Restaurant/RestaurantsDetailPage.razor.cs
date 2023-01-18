@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Reflection;
 using System.Runtime.CompilerServices;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 using DameChales.Common.Models;
 using DameChales.Web.BL.Facades;
 using Microsoft.AspNetCore.Components;
@@ -58,14 +60,13 @@ namespace DameChales.Web.App.Pages
     
         public async Task filter()
         {
+            foods = await foodFacade.GetByRestaurantIdAsync(Id);
             if (filterString == string.Empty)
             {
-                foods = await foodFacade.GetByRestaurantIdAsync(Id);
                 return;
             }
-            foods.Clear();
-
-            foods = (ICollection<FoodListModel>)foodFacade.GetByNameAsync(filterString).Result.Where(x => x.Id == Id);
+            foods = await foodFacade.GetByNameAsync( filterString );
+            foods = foods.Where(x => x.RestaurantGuid == Id).ToList();
         }
 
         public void AddToOrder(FoodListModel food)
