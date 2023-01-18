@@ -14,20 +14,20 @@ namespace DameChales.Web.App.Pages
     public partial class RestaurantsDetailPage
     {
         [Inject]
-        private NavigationManager navigationManager { get; set; } = null!;
+        private NavigationManager NavigationManager { get; set; } = null!;
         [Inject]
-        private FoodFacade foodFacade { get; set; } = null!;
+        private FoodFacade FoodFacade { get; set; } = null!;
         [Inject]
-        private RestaurantFacade restaurantFacade { get; set; } = null!;
+        private RestaurantFacade RestaurantFacade { get; set; } = null!;
         [Inject]
-        private OrderFacade orderFacade { get; set; } = null!;
+        private OrderFacade OrderFacade { get; set; } = null!;
         [Parameter]
         public Guid Id { get; set; } = Guid.Empty;
 
-        private ICollection<FoodListModel> foods { get; set; } = new List<FoodListModel>();
-        private OrderDetailModel orderDetailModel { get; set; } = GetNewOrderDetailModel();
-        private RestaurantDetailModel? restaurantDetailModel { get; set; }
-        public string filterString { get; set; } = string.Empty;
+        private ICollection<FoodListModel> Foods { get; set; } = new List<FoodListModel>();
+        private OrderDetailModel OrderDetailModel { get; set; } = GetNewOrderDetailModel();
+        private RestaurantDetailModel? RestaurantDetailModel { get; set; }
+        public string FilterString { get; set; } = string.Empty;
         private bool OrderByNameFlag { get; set; } = false;
         private bool OrderByPriceFlag { get; set; } = false;
 
@@ -36,11 +36,11 @@ namespace DameChales.Web.App.Pages
         {
             if (Id == Guid.Empty)
             {
-                navigationManager.NavigateTo($"/restaurants");
+                NavigationManager.NavigateTo($"/restaurants");
             }
-            restaurantDetailModel = await restaurantFacade.GetByIdAsync( Id );
-            orderDetailModel.RestaurantGuid = Id;
-            foods = await foodFacade.GetByRestaurantIdAsync( Id );
+            RestaurantDetailModel = await RestaurantFacade.GetByIdAsync( Id );
+            OrderDetailModel.RestaurantGuid = Id;
+            Foods = await FoodFacade.GetByRestaurantIdAsync( Id );
 
             await base.OnInitializedAsync();
         }
@@ -60,18 +60,18 @@ namespace DameChales.Web.App.Pages
     
         public async Task filter()
         {
-            foods = await foodFacade.GetByRestaurantIdAsync(Id);
-            if (filterString == string.Empty)
+            Foods = await FoodFacade.GetByRestaurantIdAsync(Id);
+            if (FilterString == string.Empty)
             {
                 return;
             }
-            foods = await foodFacade.GetByNameAsync( filterString );
-            foods = foods.Where(x => x.RestaurantGuid == Id).ToList();
+            Foods = await FoodFacade.GetByNameAsync( FilterString );
+            Foods = Foods.Where(x => x.RestaurantGuid == Id).ToList();
         }
 
         public void AddToOrder(FoodListModel food)
         {
-            if (orderDetailModel.FoodAmounts.Where(x => x.Food.Id == food.Id).Count() > 0)
+            if (OrderDetailModel.FoodAmounts.Where(x => x.Food.Id == food.Id).Count() > 0)
             {
                 return;
             }
@@ -83,25 +83,25 @@ namespace DameChales.Web.App.Pages
                 Food = food,
             };
 
-            orderDetailModel.FoodAmounts.Add(orderAmount);
+            OrderDetailModel.FoodAmounts.Add(orderAmount);
         }
 
         public void RemoveFromOrder(FoodListModel food)
         {
-            var itemToRemove = orderDetailModel.FoodAmounts.SingleOrDefault(x => x.Food.Id == food.Id);
+            var itemToRemove = OrderDetailModel.FoodAmounts.SingleOrDefault(x => x.Food.Id == food.Id);
             if (itemToRemove != null)
             {
-                orderDetailModel.FoodAmounts.Remove(itemToRemove);
+                OrderDetailModel.FoodAmounts.Remove(itemToRemove);
             }
         }
     
         public async Task PlaceOrder()
         {
-            if (orderDetailModel.Name != "" && orderDetailModel.Address != "")
+            if (OrderDetailModel.Name != "" && OrderDetailModel.Address != "")
             {
-                await orderFacade.SaveAsync(orderDetailModel);
-                await orderFacade.SaveAsync(orderDetailModel);
-                orderDetailModel = GetNewOrderDetailModel();
+                await OrderFacade.SaveAsync(OrderDetailModel);
+                await OrderFacade.SaveAsync(OrderDetailModel);
+                OrderDetailModel = GetNewOrderDetailModel();
             }
         }
 
@@ -110,10 +110,10 @@ namespace DameChales.Web.App.Pages
             OrderByPriceFlag = !OrderByPriceFlag;
             if(OrderByPriceFlag)
             {
-                foods = foods.OrderBy(x => x.Price).ToList();
+                Foods = Foods.OrderBy(x => x.Price).ToList();
             } else
             {
-                foods = foods.OrderByDescending(x => x.Price).ToList();
+                Foods = Foods.OrderByDescending(x => x.Price).ToList();
             }
         }
 
@@ -122,10 +122,10 @@ namespace DameChales.Web.App.Pages
             OrderByNameFlag = !OrderByNameFlag;
             if(OrderByNameFlag)
             {
-                foods = foods.OrderBy(x =>x.Name).ToList();
+                Foods = Foods.OrderBy(x =>x.Name).ToList();
             } else
             {
-                foods = foods.OrderByDescending(x =>x.Name).ToList();
+                Foods = Foods.OrderByDescending(x =>x.Name).ToList();
             }
         }
     }
