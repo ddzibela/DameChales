@@ -136,8 +136,14 @@ void UseFoodEndpoints(RouteGroupBuilder routeGroupBuilder)
 
     //get by name
     foodEndpoints.MapGet("name/{regex}", (string regex, IFoodFacade foodFacade) => foodFacade.GetByName(regex));
+    foodEndpoints.MapGet("restaurant/{id:guid}/name/{regex}", (Guid id, string regex, IFoodFacade foodFacade) => foodFacade.GetByName(id, regex));
+
+    //get by description
+    foodEndpoints.MapGet("desc/{regex}", (string regex, IFoodFacade foodFacade) => foodFacade.GetByDescription(regex));
+    foodEndpoints.MapGet("restaurant/{id:guid}/desc/{regex}", (Guid id, string regex, IFoodFacade foodFacade) => foodFacade.GetByDescription(id, regex));
 
     //get without alergens example - /api/food/restaurant/{someId}/noalergnes/{1_2_7_11}
+    foodEndpoints.MapGet("noalergens/{alergensstr}", (Guid id, string alergensstr, IFoodFacade foodFacade) => foodFacade.GetWithoutAlergens(id, new HashSet<Alergens>().StringToEnumSet(typeof(Alergens), alergensstr)));
     foodEndpoints.MapGet("restaurant/{id:guid}/noalergens/{alergensstr}", (Guid id, string alergensstr, IFoodFacade foodFacade) => foodFacade.GetWithoutAlergens(id, new HashSet<Alergens>().StringToEnumSet(typeof(Alergens), alergensstr)));
 
     foodEndpoints.MapPost("", (FoodDetailModel food, IFoodFacade foodFacade) => foodFacade.Create(food));
