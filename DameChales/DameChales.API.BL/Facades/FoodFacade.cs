@@ -30,6 +30,10 @@ namespace DameChales.API.BL.Facades
         {
             return mapper.Map<List<FoodListModel>>(foodRepository.GetWithoutAlergens(restaurantId, alergens));
         }
+        public List<FoodListModel> GetWithoutAlergens(HashSet<Alergens> alergens)
+        {
+            return mapper.Map<List<FoodListModel>>(foodRepository.GetWithoutAlergens(alergens));
+        }
 
         public List<FoodListModel> GetByRestaurantId(Guid id)
         {
@@ -39,6 +43,10 @@ namespace DameChales.API.BL.Facades
         public List<FoodListModel> GetByName(string name)
         {
             return mapper.Map<List<FoodListModel>>(foodRepository.GetByName(name));
+        }
+        public List<FoodListModel> GetByName(Guid restaurantId, string name)
+        {
+            return mapper.Map<List<FoodListModel>>(foodRepository.GetByName(restaurantId, name));
         }
 
         public FoodDetailModel? GetById(Guid id)
@@ -71,5 +79,17 @@ namespace DameChales.API.BL.Facades
         {
             foodRepository.Remove(id);
         }
+
+
+        public List<FoodListModel> GetByDescription(Guid restaurantId, string name)
+        {
+            return mapper.Map<List<FoodListModel>>(foodRepository.GetByDescription(restaurantId,name));
+        }
+
+        public List<FoodListModel> GetByDescription(string name)
+        {
+            return mapper.Map<List<FoodListModel>>(foodRepository.GetByDescription(name));
+        }
+
     }
 }

@@ -9,6 +9,10 @@ namespace DameChales.API.DAL.Common.Repositories
     {
         IList<FoodEntity> GetByRestaurantId(Guid id);
         IList<FoodEntity> GetWithoutAlergens(Guid id, HashSet<Alergens> alergens);
+        IList<FoodEntity> GetWithoutAlergens(HashSet<Alergens> alergens);
         IList<FoodEntity> GetByName(string name);
+        IList<FoodEntity> GetByName(Guid id, string name);
+        IList<FoodEntity> GetByDescription(Guid restaurantId, string name);
+        IList<FoodEntity> GetByDescription(string name);
     }
 }

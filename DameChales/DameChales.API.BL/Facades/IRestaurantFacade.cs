@@ -11,6 +11,7 @@ namespace DameChales.API.BL.Facades
         RestaurantDetailModel? GetByFoodId(Guid id);
         RestaurantDetailModel? GetById(Guid id);
         List<RestaurantListModel>? GetByName(string name);
+        List<RestaurantListModel>? GetByDescription(string description);
         List<RestaurantListModel>? GetByAddress(string address);
         double GetEarnings(Guid id);
         Guid CreateOrUpdate(RestaurantDetailModel restaurantModel);
