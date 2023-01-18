@@ -33,12 +33,4 @@ namespace DameChales.API.DAL.Common.Entities
 
         }
     }
-
-    public class RestaurantMapperProfile : Profile
-    {
-        public RestaurantMapperProfile()
-        {
-            CreateMap<RestaurantEntity, RestaurantEntity>();
-        }
-    }
 }

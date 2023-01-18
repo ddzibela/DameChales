@@ -33,12 +33,4 @@ namespace DameChales.API.DAL.Common.Entities
         }
 
     }
-
-    public class FoodEntityMapperProfile : Profile
-    {
-        public FoodEntityMapperProfile()
-        {
-            CreateMap<FoodEntity, FoodEntity>();
-        }
-    }
 }

@@ -38,11 +38,4 @@ namespace DameChales.API.DAL.Common.Entities
 
     }
 
-    public class OrderEntityMapperProfile : Profile
-    {
-        public OrderEntityMapperProfile()
-        {
-            CreateMap<OrderEntity, OrderEntity>();
-        }
-    }
 }
