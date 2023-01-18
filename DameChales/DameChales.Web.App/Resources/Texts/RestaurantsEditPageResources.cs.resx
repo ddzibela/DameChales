@@ -126,16 +126,73 @@
   <data name="Description_FormLabel" xml:space="preserve">
     <value>Popis</value>
   </data>
+  <data name="Eggs" xml:space="preserve">
+    <value>Eggs</value>
+  </data>
+  <data name="Fish" xml:space="preserve">
+    <value>Fish</value>
+  </data>
+  <data name="Gluten" xml:space="preserve">
+    <value>Gluten</value>
+  </data>
   <data name="GPS_FormLabel" xml:space="preserve">
     <value>GPS Souřadnice</value>
   </data>
   <data name="ImageUrl_FormLabel" xml:space="preserve">
     <value>URL Obrázku</value>
   </data>
+  <data name="ImageUrl_FormLabel1" xml:space="preserve">
+    <value>Image URL</value>
+  </data>
+  <data name="Lupin" xml:space="preserve">
+    <value>Lupin</value>
+  </data>
+  <data name="Milk" xml:space="preserve">
+    <value>Milk</value>
+  </data>
+  <data name="Molluscs" xml:space="preserve">
+    <value>Molluscs</value>
+  </data>
+  <data name="Mustard" xml:space="preserve">
+    <value>Mustard</value>
+  </data>
   <data name="Name_FormLabel" xml:space="preserve">
     <value>Název</value>
   </data>
+  <data name="Name_FormLabel1" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="Nuts" xml:space="preserve">
+    <value>Nuts</value>
+  </data>
+  <data name="Page_Title" xml:space="preserve">
+    <value>Foods</value>
+  </data>
+  <data name="Peanuts" xml:space="preserve">
+    <value>Peanuts</value>
+  </data>
+  <data name="Price_FormLabel" xml:space="preserve">
+    <value>Price</value>
+  </data>
+  <data name="RemoveFood_Button" xml:space="preserve">
+    <value>Remove</value>
+  </data>
+  <data name="RestaurantName_FormLabel" xml:space="preserve">
+    <value>Restaurant name</value>
+  </data>
   <data name="Save_Button" xml:space="preserve">
     <value>Uložit</value>
+  </data>
+  <data name="Save_Button1" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="Sesame" xml:space="preserve">
+    <value>Sesame</value>
+  </data>
+  <data name="Soy" xml:space="preserve">
+    <value>Soy</value>
+  </data>
+  <data name="SulphurDioxide" xml:space="preserve">
+    <value>Sulphur dioxide</value>
   </data>
 </root>

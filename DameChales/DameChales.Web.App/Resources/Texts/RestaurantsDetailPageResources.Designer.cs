@@ -79,6 +79,24 @@ namespace DameChales.Web.App.Resources.Texts {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Celer.
+        /// </summary>
+        public static string Celery {
+            get {
+                return ResourceManager.GetString("Celery", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Korýši.
+        /// </summary>
+        public static string Crustaceans {
+            get {
+                return ResourceManager.GetString("Crustaceans", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
         public static string Delete_Button {
@@ -93,6 +111,24 @@ namespace DameChales.Web.App.Resources.Texts {
         public static string Edit {
             get {
                 return ResourceManager.GetString("Edit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vejce.
+        /// </summary>
+        public static string Eggs {
+            get {
+                return ResourceManager.GetString("Eggs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ryby.
+        /// </summary>
+        public static string Fish {
+            get {
+                return ResourceManager.GetString("Fish", resourceCulture);
             }
         }
         
@@ -115,11 +151,65 @@ namespace DameChales.Web.App.Resources.Texts {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Lepek.
+        /// </summary>
+        public static string Gluten {
+            get {
+                return ResourceManager.GetString("Gluten", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lupina.
+        /// </summary>
+        public static string Lupin {
+            get {
+                return ResourceManager.GetString("Lupin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mléko.
+        /// </summary>
+        public static string Milk {
+            get {
+                return ResourceManager.GetString("Milk", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Měkkýši.
+        /// </summary>
+        public static string Molluscs {
+            get {
+                return ResourceManager.GetString("Molluscs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hořčice.
+        /// </summary>
+        public static string Mustard {
+            get {
+                return ResourceManager.GetString("Mustard", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
         public static string Name {
             get {
                 return ResourceManager.GetString("Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ořechy.
+        /// </summary>
+        public static string Nuts {
+            get {
+                return ResourceManager.GetString("Nuts", resourceCulture);
             }
         }
         
@@ -196,11 +286,38 @@ namespace DameChales.Web.App.Resources.Texts {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Arašidy.
+        /// </summary>
+        public static string Peanuts {
+            get {
+                return ResourceManager.GetString("Peanuts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
         public static string search {
             get {
                 return ResourceManager.GetString("search", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sezam.
+        /// </summary>
+        public static string Sesame {
+            get {
+                return ResourceManager.GetString("Sesame", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sója.
+        /// </summary>
+        public static string Soy {
+            get {
+                return ResourceManager.GetString("Soy", resourceCulture);
             }
         }
         
@@ -219,6 +336,15 @@ namespace DameChales.Web.App.Resources.Texts {
         public static string Stats {
             get {
                 return ResourceManager.GetString("Stats", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Oxid siřičitý a siřičitany.
+        /// </summary>
+        public static string SulphurDioxide {
+            get {
+                return ResourceManager.GetString("SulphurDioxide", resourceCulture);
             }
         }
     }

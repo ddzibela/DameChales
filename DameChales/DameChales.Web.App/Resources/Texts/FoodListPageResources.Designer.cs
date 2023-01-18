@@ -63,6 +63,15 @@ namespace DameChales.Web.App.Resources.Texts {
         /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
+        public static string Celery {
+            get {
+                return ResourceManager.GetString("Celery", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
         public static string CreateNewRecipe_Button {
             get {
                 return ResourceManager.GetString("CreateNewRecipe_Button", resourceCulture);
@@ -72,9 +81,45 @@ namespace DameChales.Web.App.Resources.Texts {
         /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
+        public static string Crustaceans {
+            get {
+                return ResourceManager.GetString("Crustaceans", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
         public static string EditFood_Button {
             get {
                 return ResourceManager.GetString("EditFood_Button", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string Eggs {
+            get {
+                return ResourceManager.GetString("Eggs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string Fish {
+            get {
+                return ResourceManager.GetString("Fish", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string Gluten {
+            get {
+                return ResourceManager.GetString("Gluten", resourceCulture);
             }
         }
         
@@ -93,6 +138,42 @@ namespace DameChales.Web.App.Resources.Texts {
         public static string Image_TableHeader {
             get {
                 return ResourceManager.GetString("Image_TableHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string Lupin {
+            get {
+                return ResourceManager.GetString("Lupin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string Milk {
+            get {
+                return ResourceManager.GetString("Milk", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string Molluscs {
+            get {
+                return ResourceManager.GetString("Molluscs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string Mustard {
+            get {
+                return ResourceManager.GetString("Mustard", resourceCulture);
             }
         }
         
@@ -126,6 +207,15 @@ namespace DameChales.Web.App.Resources.Texts {
         /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
+        public static string Nuts {
+            get {
+                return ResourceManager.GetString("Nuts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
         public static string Page_Title {
             get {
                 return ResourceManager.GetString("Page_Title", resourceCulture);
@@ -135,9 +225,45 @@ namespace DameChales.Web.App.Resources.Texts {
         /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
+        public static string Peanuts {
+            get {
+                return ResourceManager.GetString("Peanuts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
         public static string Price {
             get {
                 return ResourceManager.GetString("Price", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string Sesame {
+            get {
+                return ResourceManager.GetString("Sesame", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string Soy {
+            get {
+                return ResourceManager.GetString("Soy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string SulphurDioxide {
+            get {
+                return ResourceManager.GetString("SulphurDioxide", resourceCulture);
             }
         }
     }

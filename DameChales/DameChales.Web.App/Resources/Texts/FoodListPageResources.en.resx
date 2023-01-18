@@ -144,4 +144,46 @@
   <data name="Price" xml:space="preserve">
     <value>Price</value>
   </data>
+  <data name="Celery" xml:space="preserve">
+    <value>Celery</value>
+  </data>
+  <data name="Crustaceans" xml:space="preserve">
+    <value>Crustaceans</value>
+  </data>
+  <data name="Eggs" xml:space="preserve">
+    <value>Eggs</value>
+  </data>
+  <data name="Fish" xml:space="preserve">
+    <value>Fish</value>
+  </data>
+  <data name="Gluten" xml:space="preserve">
+    <value>Gluten</value>
+  </data>
+  <data name="Lupin" xml:space="preserve">
+    <value>Lupin</value>
+  </data>
+  <data name="Milk" xml:space="preserve">
+    <value>Milk</value>
+  </data>
+  <data name="Molluscs" xml:space="preserve">
+    <value>Molluscs</value>
+  </data>
+  <data name="Mustard" xml:space="preserve">
+    <value>Mustard</value>
+  </data>
+  <data name="Nuts" xml:space="preserve">
+    <value>Nuts</value>
+  </data>
+  <data name="Peanuts" xml:space="preserve">
+    <value>Peanuts</value>
+  </data>
+  <data name="Sesame" xml:space="preserve">
+    <value>Sesame</value>
+  </data>
+  <data name="Soy" xml:space="preserve">
+    <value>Soy</value>
+  </data>
+  <data name="SulphurDioxide" xml:space="preserve">
+    <value>Sulphur dioxide</value>
+  </data>
 </root>

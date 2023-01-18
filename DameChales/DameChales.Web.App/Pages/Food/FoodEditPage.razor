@@ -68,7 +68,7 @@
 
                             <div class="form-check form-check-inline">
                                 <input type="checkbox" class="form-check-input" @onchange="eventArgs => { CheckboxClicked(alergen, eventArgs.Value); }" checked="@isChecked" />
-                                @alergen
+                                @FoodEditPageLocalizer[alergen.ToString()]
                             </div>
                         }
 

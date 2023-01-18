@@ -144,4 +144,46 @@
   <data name="Price" xml:space="preserve">
     <value>Cena</value>
   </data>
+  <data name="Celery" xml:space="preserve">
+    <value>Celer</value>
+  </data>
+  <data name="Crustaceans" xml:space="preserve">
+    <value>Korýši</value>
+  </data>
+  <data name="Eggs" xml:space="preserve">
+    <value>Vejce</value>
+  </data>
+  <data name="Fish" xml:space="preserve">
+    <value>Ryby</value>
+  </data>
+  <data name="Gluten" xml:space="preserve">
+    <value>Lepek</value>
+  </data>
+  <data name="Lupin" xml:space="preserve">
+    <value>Lupina</value>
+  </data>
+  <data name="Milk" xml:space="preserve">
+    <value>Mléko</value>
+  </data>
+  <data name="Molluscs" xml:space="preserve">
+    <value>Měkkýši</value>
+  </data>
+  <data name="Mustard" xml:space="preserve">
+    <value>Hořčice</value>
+  </data>
+  <data name="Nuts" xml:space="preserve">
+    <value>Ořechy</value>
+  </data>
+  <data name="Peanuts" xml:space="preserve">
+    <value>Arašidy</value>
+  </data>
+  <data name="Sesame" xml:space="preserve">
+    <value>Sezam</value>
+  </data>
+  <data name="Soy" xml:space="preserve">
+    <value>Sója</value>
+  </data>
+  <data name="SulphurDioxide" xml:space="preserve">
+    <value>Oxid siřičitý a siřičitany</value>
+  </data>
 </root>
