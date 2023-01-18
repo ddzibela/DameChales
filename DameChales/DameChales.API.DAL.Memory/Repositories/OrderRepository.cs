@@ -126,7 +126,7 @@ namespace DameChales.API.DAL.Memory.Repositories
                 }
                 else
                 {
-                    foodAmountEntity = foodAmounts.Single(t => t.Id == orderUpdateFoodModel.Id);
+                    foodAmountEntity = foodAmounts.Single(t => (t.Id == orderUpdateFoodModel.Id && t.OrderGuid == orderUpdateFoodModel.OrderGuid));
                 }
 #pragma warning restore CS8073 // The result of the expression is always the same since a value of this type is never equal to 'null'
 
