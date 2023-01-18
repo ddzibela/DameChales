@@ -227,7 +227,7 @@
                     <div class="form-group">
                         <label class="w-100 font-weight-bold">
                             @Localizer["Order_Date"]
-                            <InputDateTime @bind-Value="@OrderDetailModel.DeliveryTime" class="form-control" />
+                           <input type="datetime-local" class="form-control" @bind="@OrderDetailModel.DeliveryTime">
                         </label>
                     </div>
 

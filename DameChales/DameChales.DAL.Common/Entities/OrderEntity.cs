@@ -24,7 +24,6 @@ namespace DameChales.API.DAL.Common.Entities
             Name = name;
             DeliveryTime = deliveryTime;
             RestaurantGuid = restaurantId;
-            DeliveryTime = deliveryTime;
             Note = note;
             Address = address;
             Status = status;
