@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text.RegularExpressions;
 using AutoMapper;
 using DameChales.API.DAL.Common.Entities;
@@ -116,6 +117,12 @@ namespace DameChales.API.DAL.Memory.Repositories
         public bool Exists(Guid id)
         {
             return restaurants.Any(e => e.Id == id);
+        }
+
+        public IList<RestaurantEntity> GetByDescription(string description)
+        {
+            var descRegex = new Regex(description);
+            return restaurants.Where(e => descRegex.IsMatch(e.Description)).ToList();
         }
     }
 

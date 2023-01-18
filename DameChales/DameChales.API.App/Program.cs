@@ -199,8 +199,9 @@ void UseRestaurantEndpoints(RouteGroupBuilder routeGroupBuilder)
     restaurantEndpoints.MapGet("address/{regex}", (string regex, IRestaurantFacade restaurantFacade) => restaurantFacade.GetByAddress(regex));
     //get by food id
     restaurantEndpoints.MapGet("food/{id:guid}", (Guid id, IRestaurantFacade restaurantFacade) => restaurantFacade.GetByFoodId(id));
-
-
+    //get by description regex
+    restaurantEndpoints.MapGet("desc/{regex}", (string regex, IRestaurantFacade restaurantFacade) => restaurantFacade.GetByDescription(regex));
+    
     //get earnings
     restaurantEndpoints.MapGet("earnings/{id:guid}", (Guid id, IRestaurantFacade restaurantFacade) => restaurantFacade.GetEarnings(id));
 

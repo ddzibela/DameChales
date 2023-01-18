@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using AutoMapper;
 using DameChales.API.DAL.Common.Entities;
 using DameChales.API.DAL.Common.Repositories;
@@ -77,6 +78,12 @@ namespace DameChales.API.BL.Facades
         public void Delete(Guid id)
         {
             restaurantRepository.Remove(id);
+        }
+
+        public List<RestaurantListModel>? GetByDescription(string description)
+        {
+            var restaurantEntity = restaurantRepository.GetByDescription(description);
+            return mapper.Map<List<RestaurantListModel>>(restaurantEntity);
         }
     }
 }
