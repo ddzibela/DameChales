@@ -20,7 +20,7 @@
             @Localizer["Name"]
         </h5>
         <p>
-            @orderModel.Name
+            @OrderModel.Name
         </p>
 
 
@@ -28,30 +28,30 @@
             @Localizer["Order_Address"]
         </h5>
         <p>
-            @orderModel.Address
+            @OrderModel.Address
         </p>
 
         <h5>
             @Localizer["Order_Status"]
         </h5>
         <p>
-            @orderModel.Status
+            @OrderModel.Status
         </p>
 
         <h5>
             @Localizer["Order_Date"]
         </h5>
         <p>
-            @orderModel.DeliveryTime
+            @OrderModel.DeliveryTime
         </p>
         <h5>
             @Localizer["Order_Note"]
         </h5>
         <p>
-            @orderModel.Note
+            @OrderModel.Note
         </p>
 
-        <a href="@($"/order/{orderModel.Id}")" class="btn btn-dark btn-block">
+        <a href="@($"/order/{OrderModel.Id}")" class="btn btn-dark btn-block">
             @Localizer["Edit"]
         </a>
     </div>
@@ -59,7 +59,7 @@
         <h5>
             @Localizer["Order_Food"]
         </h5>
-    @foreach(var food in orderModel.FoodAmounts)
+    @foreach(var food in OrderModel.FoodAmounts)
     {
             <div class="card m-1">
                 <img class="card-img-top" src="@food.Food.PhotoURL" alt="Food image"/>

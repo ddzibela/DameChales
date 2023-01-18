@@ -9,21 +9,21 @@ namespace DameChales.Web.App.Pages
     public partial class OrderDetailPage
     {
         [Inject]
-        private OrderFacade orderFacade { get; set; }
+        private OrderFacade OrderFacade { get; set; }
         [Inject]
-        private NavigationManager navigationManager { get; set; } = null!;
+        private NavigationManager NavigationManager { get; set; } = null!;
         [Parameter]
         public Guid Id { get; set; }
 
-        public OrderDetailModel orderModel { get; set; }
+        public OrderDetailModel? OrderModel { get; set; }
         
         protected override async Task OnInitializedAsync()
         {
             if (Id == Guid.Empty)
             {
-                navigationManager.NavigateTo("/restaurants");
+                NavigationManager.NavigateTo("/restaurants");
             }
-            orderModel = await orderFacade.GetByIdAsync(Id);
+            OrderModel = await OrderFacade.GetByIdAsync(Id);
             
             await base.OnInitializedAsync();
         }

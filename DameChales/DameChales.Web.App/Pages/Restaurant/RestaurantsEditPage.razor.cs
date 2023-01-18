@@ -9,12 +9,12 @@ namespace DameChales.Web.App.Pages
     public partial class RestaurantsEditPage
     {
         [Inject]
-        private NavigationManager navigationManager { get; set; } = null!;
+        private NavigationManager NavigationManager { get; set; } = null!;
         
         [Inject]
         private RestaurantFacade? RestaurantFacade { get; set; } = null;
 
-        private RestaurantDetailModel? restaurantDetailModel { get; set; } = GetNewRestaurantDetailModel();
+        private RestaurantDetailModel? RestaurantDetailModel { get; set; } = GetNewRestaurantDetailModel();
 
         [Parameter]
         public Guid Id { get; init; }
@@ -23,26 +23,26 @@ namespace DameChales.Web.App.Pages
         {
             if (Id != Guid.Empty)
             {
-                restaurantDetailModel = await RestaurantFacade.GetByIdAsync(Id);
+                RestaurantDetailModel = await RestaurantFacade.GetByIdAsync(Id);
             }
             await base.OnInitializedAsync();
         }
 
         public async Task Save()
         {
-            if (restaurantDetailModel.Name != "" && restaurantDetailModel.Description != "" && restaurantDetailModel.Address != "")
+            if (RestaurantDetailModel.Name != "" && RestaurantDetailModel.Description != "" && RestaurantDetailModel.Address != "")
             {
-                await RestaurantFacade.SaveAsync(restaurantDetailModel);
-                navigationManager.NavigateTo($"/restaurants");
+                await RestaurantFacade.SaveAsync(RestaurantDetailModel);
+                NavigationManager.NavigateTo($"/restaurants");
             }
         }
 
         public async Task Delete()
         {
-            if (restaurantDetailModel.Name != "" && restaurantDetailModel.Description != "" && restaurantDetailModel.Address != "")
+            if (RestaurantDetailModel.Name != "" && RestaurantDetailModel.Description != "" && RestaurantDetailModel.Address != "")
             {
                 await RestaurantFacade.DeleteAsync(Id);
-                navigationManager.NavigateTo($"/restaurants");
+                NavigationManager.NavigateTo($"/restaurants");
             }
         }
 

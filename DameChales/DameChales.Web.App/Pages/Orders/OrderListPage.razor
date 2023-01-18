@@ -15,7 +15,7 @@
 <div class="d-flex flex-wrap">
     <div>
         <h1>@OrderListPageLocalizer["Accepted"]</h1>
-    @foreach (var order in acceptedOrdersDetail)
+    @foreach (var order in AcceptedOrdersDetail)
     {
             <div class="card m-1" style="width: 16rem;">
                 <a href="@($"/restaurants/orders/detail/{order.Id}")">
@@ -39,7 +39,7 @@
             </div>
     }
         <h1>@OrderListPageLocalizer["Preparing"]</h1>
-    @foreach (var order in preparingOrdersDetail)
+    @foreach (var order in PreparingOrdersDetail)
     {
             <div class="card m-1" style="width: 16rem;">
                 <a href="@($"/restaurants/orders/detail/{order.Id}")">
@@ -63,7 +63,7 @@
             </div>
     }
         <h1>@OrderListPageLocalizer["Delivering"]</h1>
-    @foreach (var order in deliveringOrdersDetail)
+    @foreach (var order in DeliveringOrdersDetail)
     {
             <div class="card m-1" style="width: 16rem;">
                 <a href="@($"/restaurants/orders/detail/{order.Id}")">
@@ -85,7 +85,7 @@
             </div>
     }
         <h1>@OrderListPageLocalizer["Delivered"]</h1>
-    @foreach (var order in deliveredOrdersDetail)
+    @foreach (var order in DeliveredOrdersDetail)
     {
         <div class="card m-1" style="width: 16rem;">
                 <a href="@($"/restaurants/orders/detail/{order.Id}")">

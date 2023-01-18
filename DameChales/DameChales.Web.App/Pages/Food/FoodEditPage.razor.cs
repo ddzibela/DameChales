@@ -13,7 +13,7 @@ namespace DameChales.Web.App.Pages
     public partial class FoodEditPage
     {
         [Inject]
-        private NavigationManager navigationManager { get; set; } = null!;
+        private NavigationManager NavigationManager { get; set; } = null!;
 
         [Inject]
         private RestaurantFacade RestaurantFacade { get; set; } = null!;
@@ -46,7 +46,7 @@ namespace DameChales.Web.App.Pages
             if (Data.Name != "")
             {
                 await FoodFacade.SaveAsync(Data);
-                navigationManager.NavigateTo($"/foods");
+                NavigationManager.NavigateTo($"/foods");
             }
 
         }
@@ -56,7 +56,7 @@ namespace DameChales.Web.App.Pages
             if (Data.Name != "")
             {
                 await FoodFacade.DeleteAsync(Id);
-                navigationManager.NavigateTo($"/foods");
+                NavigationManager.NavigateTo($"/foods");
             }
         }
         private static FoodDetailModel GetNewFoodDetailModel() 

@@ -12,60 +12,60 @@ namespace DameChales.Web.App.Pages
     public partial class OrderListPage
     {
         [Inject]
-        private OrderFacade orderFacade { get; set; }
+        private OrderFacade OrderFacade { get; set; }
         [Inject]
-        private NavigationManager navigationManager { get; set; } = null!;
+        private NavigationManager NavigationManager { get; set; } = null!;
         [Parameter]
         public Guid Id { get; set; }
 
-        private IList<OrderListModel> allOrders { get; set; } = new List<OrderListModel>();
-        private IList<OrderListModel> acceptedOrders { get; set; } = new List<OrderListModel>();
-        private IList<OrderListModel> preparingOrders { get; set; } = new List<OrderListModel>();
-        private IList<OrderListModel> deliveringOrders { get; set; } = new List<OrderListModel>();
-        private IList<OrderListModel> deliveredOrders { get; set; } = new List<OrderListModel>();
+        private IList<OrderListModel> AllOrders { get; set; } = new List<OrderListModel>();
+        private IList<OrderListModel> AcceptedOrders { get; set; } = new List<OrderListModel>();
+        private IList<OrderListModel> PreparingOrders { get; set; } = new List<OrderListModel>();
+        private IList<OrderListModel> DeliveringOrders { get; set; } = new List<OrderListModel>();
+        private IList<OrderListModel> DeliveredOrders { get; set; } = new List<OrderListModel>();
 
-        private OrderDetailModel tmp { get; set; } = GetNewOrderDetailModel();
-        private IList<OrderDetailModel> acceptedOrdersDetail { get; set; } = new List<OrderDetailModel>();
-        private IList<OrderDetailModel> preparingOrdersDetail { get; set; } = new List<OrderDetailModel>();
+        private OrderDetailModel Tmp { get; set; } = GetNewOrderDetailModel();
+        private IList<OrderDetailModel> AcceptedOrdersDetail { get; set; } = new List<OrderDetailModel>();
+        private IList<OrderDetailModel> PreparingOrdersDetail { get; set; } = new List<OrderDetailModel>();
 
-        private IList<OrderDetailModel> deliveringOrdersDetail { get; set; } = new List<OrderDetailModel>();
-        private IList<OrderDetailModel> deliveredOrdersDetail { get; set; } = new List<OrderDetailModel>();
+        private IList<OrderDetailModel> DeliveringOrdersDetail { get; set; } = new List<OrderDetailModel>();
+        private IList<OrderDetailModel> DeliveredOrdersDetail { get; set; } = new List<OrderDetailModel>();
 
         protected override async Task OnInitializedAsync()
         {
             if (Id == Guid.Empty)
             {
-                navigationManager.NavigateTo("/restaurants");
+                NavigationManager.NavigateTo("/restaurants");
             }
-            allOrders = await orderFacade.GetByRestaurantIdAsync(Id);
+            AllOrders = await OrderFacade.GetByRestaurantIdAsync(Id);
             
-            acceptedOrders = allOrders.Where(x => x.Status == Common.Enums.OrderStatus.Accepted).ToList();
-            preparingOrders = allOrders.Where(x => x.Status == Common.Enums.OrderStatus.Preparing).ToList();
-            deliveringOrders = allOrders.Where(x => x.Status == Common.Enums.OrderStatus.Delivering).ToList();
-            deliveredOrders = allOrders.Where(x => x.Status == Common.Enums.OrderStatus.Delivered).ToList();
+            AcceptedOrders = AllOrders.Where(x => x.Status == Common.Enums.OrderStatus.Accepted).ToList();
+            PreparingOrders = AllOrders.Where(x => x.Status == Common.Enums.OrderStatus.Preparing).ToList();
+            DeliveringOrders = AllOrders.Where(x => x.Status == Common.Enums.OrderStatus.Delivering).ToList();
+            DeliveredOrders = AllOrders.Where(x => x.Status == Common.Enums.OrderStatus.Delivered).ToList();
 
-            foreach (var order in acceptedOrders)
+            foreach (var order in AcceptedOrders)
             {
-                tmp = await orderFacade.GetByIdAsync(order.Id);
-                acceptedOrdersDetail.Add(tmp);
+                Tmp = await OrderFacade.GetByIdAsync(order.Id);
+                AcceptedOrdersDetail.Add(Tmp);
             }
 
-            foreach (var order in preparingOrders)
+            foreach (var order in PreparingOrders)
             {
-                tmp = await orderFacade.GetByIdAsync(order.Id);
-                preparingOrdersDetail.Add(tmp);
+                Tmp = await OrderFacade.GetByIdAsync(order.Id);
+                PreparingOrdersDetail.Add(Tmp);
             }
 
-            foreach (var order in deliveringOrders)
+            foreach (var order in DeliveringOrders)
             {
-                tmp = await orderFacade.GetByIdAsync(order.Id);
-                deliveringOrdersDetail.Add(tmp);
+                Tmp = await OrderFacade.GetByIdAsync(order.Id);
+                DeliveringOrdersDetail.Add(Tmp);
             }
 
-            foreach (var order in deliveredOrders)
+            foreach (var order in DeliveredOrders)
             {
-                tmp = await orderFacade.GetByIdAsync(order.Id);
-                deliveredOrdersDetail.Add(tmp);
+                Tmp = await OrderFacade.GetByIdAsync(order.Id);
+                DeliveredOrdersDetail.Add(Tmp);
             }
 
             await base.OnInitializedAsync();
@@ -73,8 +73,8 @@ namespace DameChales.Web.App.Pages
 
         public async Task UpdateOrderStatus(OrderDetailModel order)
         {
-            await orderFacade.SaveAsync(order);
-            navigationManager.NavigateTo($"/restaurants/orders/{order.RestaurantGuid}", true);
+            await OrderFacade.SaveAsync(order);
+            NavigationManager.NavigateTo($"/restaurants/orders/{order.RestaurantGuid}", true);
         }
 
         private static OrderDetailModel GetNewOrderDetailModel()

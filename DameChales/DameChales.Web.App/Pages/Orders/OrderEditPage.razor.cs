@@ -10,17 +10,17 @@ namespace DameChales.Web.App.Pages
     public partial class OrderEditPage
     {
         [Inject]
-        private NavigationManager navigationManager { get; set; } = null!;
+        private NavigationManager NavigationManager { get; set; } = null!;
         
         [Inject]
         private OrderFacade? OrderFacade { get; set; } = null;
 
         [Inject]
-        private FoodFacade foodFacade { get; set; } = null!;
+        private FoodFacade FoodFacade { get; set; } = null!;
 
-        private OrderDetailModel? orderDetailModel { get; set; } = GetNewOrderDetailModel();
+        private OrderDetailModel? OrderDetailModel { get; set; } = GetNewOrderDetailModel();
 
-        private ICollection<FoodListModel> foods { get; set; } = new List<FoodListModel>();
+        private ICollection<FoodListModel> Foods { get; set; } = new List<FoodListModel>();
 
         [Parameter]
         public Guid Id { get; init; }
@@ -29,26 +29,26 @@ namespace DameChales.Web.App.Pages
         {
             if (Id != Guid.Empty)
             {
-                orderDetailModel = await OrderFacade.GetByIdAsync(Id);
+                OrderDetailModel = await OrderFacade.GetByIdAsync(Id);
             }
-            foods = await foodFacade.GetByRestaurantIdAsync(orderDetailModel.RestaurantGuid);
+            Foods = await FoodFacade.GetByRestaurantIdAsync(OrderDetailModel.RestaurantGuid);
             await base.OnInitializedAsync();
         }
 
         public async Task Save()
         {
-            if (orderDetailModel.Name != "" && orderDetailModel.Address != "") { 
-                await OrderFacade.SaveAsync(orderDetailModel);
-                navigationManager.NavigateTo($"/restaurants/orders/{orderDetailModel.RestaurantGuid}");
+            if (OrderDetailModel.Name != "" && OrderDetailModel.Address != "") { 
+                await OrderFacade.SaveAsync(OrderDetailModel);
+                NavigationManager.NavigateTo($"/restaurants/orders/{OrderDetailModel.RestaurantGuid}");
             }
         }
 
         public async Task Delete()
         {
-            if (orderDetailModel.Name != "" && orderDetailModel.Address != "")
+            if (OrderDetailModel.Name != "" && OrderDetailModel.Address != "")
             {
                 await OrderFacade.DeleteAsync(Id);
-                navigationManager.NavigateTo($"/restaurants/orders/{orderDetailModel.RestaurantGuid}");
+                NavigationManager.NavigateTo($"/restaurants/orders/{OrderDetailModel.RestaurantGuid}");
             }
         }
 

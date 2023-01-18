@@ -26,10 +26,10 @@
 </div>
 
 
- <EditForm Model="@filterString">
+ <EditForm Model="@FilterString">
     <DataAnnotationsValidator />
     <div class="input-group pb-2">
-        <InputText @bind-Value="@filterString" class="form-control" aria-describedby="basic-addon2" />
+        <InputText @bind-Value="@FilterString" class="form-control" aria-describedby="basic-addon2" />
         <div class="input-group-btn">
             <button type="submit" class="btn btn-success" @onclick="@filter">
                 @Localizer["search"]
@@ -39,7 +39,7 @@
 </EditForm>
 
 <div class="d-flex flex-wrap">
-    @foreach (var restaurant in model)
+    @foreach (var restaurant in RestaurantListModel)
     {
         <a href="@($" /restaurants/{restaurant.Id}")">
         <div class="card m-1" style="width: 16rem;">

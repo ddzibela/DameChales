@@ -10,7 +10,7 @@
 
 <h3 class="mb-4">@OrderEditPageLocalizer["Page_Title"]</h3>
 
-<EditForm Model="@orderDetailModel">
+<EditForm Model="@OrderDetailModel">
 	<DataAnnotationsValidator />
 	
 
@@ -18,9 +18,9 @@
             <div class="form-group">
                 <label class="w-100 font-weight-bold">
                     @OrderEditPageLocalizer["Name_FormLabel"]
-                    <InputText @bind-Value="@orderDetailModel.Name" class="form-control" />
+                    <InputText @bind-Value="@OrderDetailModel.Name" class="form-control" />
                     <small class="form-text text-danger">
-                        <ValidationMessage For="@(() => orderDetailModel.Name)" />
+                        <ValidationMessage For="@(() => OrderDetailModel.Name)" />
                     </small>
                 </label>
             </div>
@@ -29,9 +29,9 @@
             <div class="form-group">
                 <label class="w-100 font-weight-bold">
                     @OrderEditPageLocalizer["Address_FormLabel"]
-                    <InputText @bind-Value="@orderDetailModel.Address" class="form-control" />
+                    <InputText @bind-Value="@OrderDetailModel.Address" class="form-control" />
                     <small class="form-text text-danger">
-                        <ValidationMessage For="@(() => orderDetailModel.Address)" />
+                        <ValidationMessage For="@(() => OrderDetailModel.Address)" />
                     </small>
                 </label>
             </div>
@@ -40,7 +40,7 @@
             <div class="form-group">
                 <label class="w-100 font-weight-bold">
                     @OrderEditPageLocalizer["Note_FormLabel"]
-                    <InputText @bind-Value="@orderDetailModel.Note" class="form-control" />
+                    <InputText @bind-Value="@OrderDetailModel.Note" class="form-control" />
                 </label>
             </div>
 
@@ -48,7 +48,7 @@
             <div class="form-group">
                 <label class="w-100 font-weight-bold">
                     @OrderEditPageLocalizer["DeliveryTime_FormLabel"]
-                    <InputDateTime @bind-Value="@orderDetailModel.DeliveryTime" class="form-control" />
+                    <InputDateTime @bind-Value="@OrderDetailModel.DeliveryTime" class="form-control" />
                 </label>
             </div>
 
@@ -56,7 +56,7 @@
             <div class="form-group">
                 <label class="w-100 font-weight-bold">
                     @OrderEditPageLocalizer["Status_FormLabel"]
-                    <InputSelect @bind-Value="orderDetailModel.Status" class="form-control">
+                    <InputSelect @bind-Value="OrderDetailModel.Status" class="form-control">
                     @foreach (var status in Enum.GetValues(typeof(DameChales.Common.Enums.OrderStatus)))
                     {
                             <option value="@status">@OrderEditPageLocalizer[status.ToString()]</option>
@@ -70,7 +70,7 @@
                 <label class="w-100 font-weight-bold">
                     @OrderEditPageLocalizer["Food_FormLabel"]
                     <div class="card-group w-75">
-                        @foreach (var food in orderDetailModel.FoodAmounts)
+                        @foreach (var food in OrderDetailModel.FoodAmounts)
                         {
                     <div class="card col-sm-6 col-md-3">
                                 <img class="card-img-top" src="@food.Food.PhotoURL" alt="Food image" />

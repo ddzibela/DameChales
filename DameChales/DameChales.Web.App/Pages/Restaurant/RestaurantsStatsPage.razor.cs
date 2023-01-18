@@ -11,39 +11,39 @@ namespace DameChales.Web.App.Pages
 	public partial class RestaurantsStatsPage
     {
 		[Inject]
-		private NavigationManager navigationManager { get; set; } = null!;
+		private NavigationManager NavigationManager { get; set; } = null!;
 		[Inject]
-		private FoodFacade foodFacade { get; set; } = null!;
+		private FoodFacade FoodFacade { get; set; } = null!;
 		[Inject]
-		private RestaurantFacade restaurantFacade { get; set; } = null!;
+		private RestaurantFacade RestaurantFacade { get; set; } = null!;
 		[Inject]
-		private OrderFacade orderFacade { get; set; } = null!;
+		private OrderFacade OrderFacade { get; set; } = null!;
 		[Parameter]
 		public Guid Id { get; set; } = Guid.Empty;
 
-		private List<OrderListModel> orderListModel { get; set; } = new List<OrderListModel>();
+		private List<OrderListModel> OrderListModel { get; set; } = new List<OrderListModel>();
 
-		public double profits { get; set; }
-		public int totalOrders { get; set; }
-		public int acceptedOrders { get; set; }
-		public int preparingOrders { get; set; }
-		public int deliveringOrders { get; set; }
-		public int deliveredOrders { get; set; }
+		public double Profits { get; set; }
+		public int TotalOrders { get; set; }
+		public int AcceptedOrders { get; set; }
+		public int PreparingOrders { get; set; }
+		public int DeliveringOrders { get; set; }
+		public int DeliveredOrders { get; set; }
 
 		protected override async Task OnInitializedAsync()
 		{
 			if (Id == Guid.Empty)
 			{
-				navigationManager.NavigateTo($"/restaurants");
+				NavigationManager.NavigateTo($"/restaurants");
 			}
-			profits = await restaurantFacade.GetEarningsAsync(Id);
-			orderListModel = await orderFacade.GetByRestaurantIdAsync(Id);
+			Profits = await RestaurantFacade.GetEarningsAsync(Id);
+			OrderListModel = await OrderFacade.GetByRestaurantIdAsync(Id);
 
-			acceptedOrders = orderListModel.Where(x => x.Status == Common.Enums.OrderStatus.Accepted).Count();
-            preparingOrders = orderListModel.Where(x => x.Status == Common.Enums.OrderStatus.Preparing).Count();
-            deliveringOrders = orderListModel.Where(x => x.Status == Common.Enums.OrderStatus.Delivering).Count();
-            deliveredOrders = orderListModel.Where(x => x.Status == Common.Enums.OrderStatus.Delivered).Count();
-			totalOrders = orderListModel.Count;
+			AcceptedOrders = OrderListModel.Where(x => x.Status == Common.Enums.OrderStatus.Accepted).Count();
+            PreparingOrders = OrderListModel.Where(x => x.Status == Common.Enums.OrderStatus.Preparing).Count();
+            DeliveringOrders = OrderListModel.Where(x => x.Status == Common.Enums.OrderStatus.Delivering).Count();
+            DeliveredOrders = OrderListModel.Where(x => x.Status == Common.Enums.OrderStatus.Delivered).Count();
+			TotalOrders = OrderListModel.Count;
 
 			await base.OnInitializedAsync();
 		}

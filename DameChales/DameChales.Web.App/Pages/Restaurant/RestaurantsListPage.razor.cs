@@ -9,28 +9,28 @@ namespace DameChales.Web.App.Pages
 	public partial class RestaurantsListPage
 	{
 		[Inject]
-		private RestaurantFacade? facade { get; set; } = null;
+		private RestaurantFacade? Facade { get; set; } = null;
 		
-		private IList<RestaurantListModel> model = new List<RestaurantListModel>();
+		private IList<RestaurantListModel> RestaurantListModel = new List<RestaurantListModel>();
 
-		public string filterString { get; set; } = string.Empty;
+		public string FilterString { get; set; } = string.Empty;
 
 		protected override async Task OnInitializedAsync()
 		{
-			model = await facade!.GetAllAsync();
+			RestaurantListModel = await Facade!.GetAllAsync();
 			await base.OnInitializedAsync();
 		}
 
 		public async Task filter()
 		{
-			if (filterString == string.Empty)
+			if (FilterString == string.Empty)
 			{
-                model = await facade!.GetAllAsync();
+                RestaurantListModel = await Facade!.GetAllAsync();
 				return;
             }
 
-            model = await facade.GetByNameAsync(filterString);
-			model = (IList<RestaurantListModel>)model.Concat(await facade.GetByAddressAsync(filterString));
+            RestaurantListModel = await Facade.GetByNameAsync(FilterString);
+			RestaurantListModel = (IList<RestaurantListModel>)RestaurantListModel.Concat(await Facade.GetByAddressAsync(FilterString));
 		}
 
 	}

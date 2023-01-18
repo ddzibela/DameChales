@@ -8,7 +8,7 @@
 @inherits PageBase
 @inject IStringLocalizer<RestaurantsEditPageResources> FoodEditPageLocalizer
 
-<EditForm Model="@restaurantDetailModel">
+<EditForm Model="@RestaurantDetailModel">
 	<DataAnnotationsValidator />
 	
     <div class="row">
@@ -17,9 +17,9 @@
             <div class="form-group">
                 <label class="w-100 font-weight-bold">
                     @FoodEditPageLocalizer["Name_FormLabel"]
-                    <InputText @bind-Value="@restaurantDetailModel.Name" class="form-control" />
+                    <InputText @bind-Value="@RestaurantDetailModel.Name" class="form-control" />
                     <small class="form-text text-danger">
-                        <ValidationMessage For="@(() => restaurantDetailModel.Name)" />
+                        <ValidationMessage For="@(() => RestaurantDetailModel.Name)" />
                     </small>
                 </label>
             </div>
@@ -28,9 +28,9 @@
                 <div class="form-group">
                     <label class="w-100 font-weight-bold">
                         @FoodEditPageLocalizer["Description_FormLabel"]
-                        <InputTextArea @bind-Value="@restaurantDetailModel.Description" class="form-control" />
+                        <InputTextArea @bind-Value="@RestaurantDetailModel.Description" class="form-control" />
                         <small class="form-text text-danger">
-                            <ValidationMessage For="@(() => restaurantDetailModel.Description)" />
+                            <ValidationMessage For="@(() => RestaurantDetailModel.Description)" />
                         </small>
                     </label>
                 </div>
@@ -39,9 +39,9 @@
             <div class="form-group">
                 <label class="w-100 font-weight-bold">
                     @FoodEditPageLocalizer["Address_FormLabel"]
-                    <InputText @bind-Value="@restaurantDetailModel.Address" class="form-control" />
+                    <InputText @bind-Value="@RestaurantDetailModel.Address" class="form-control" />
                     <small class="form-text text-danger">
-                        <ValidationMessage For="@(() => restaurantDetailModel.Address)" />
+                        <ValidationMessage For="@(() => RestaurantDetailModel.Address)" />
                     </small>
                 </label>
             </div>
@@ -49,21 +49,21 @@
             <div class="form-group">
                 <label class="w-100 font-weight-bold">
                     @FoodEditPageLocalizer["GPS_FormLabel"]
-                    <InputText @bind-Value="@restaurantDetailModel.GPSCoordinates" class="form-control" />
+                    <InputText @bind-Value="@RestaurantDetailModel.GPSCoordinates" class="form-control" />
                 </label>
             </div>
             <!--PHOTO-->
             <div class="form-group mb-0">
                 <label class="w-100 font-weight-bold mb-0">
                     @FoodEditPageLocalizer["ImageUrl_FormLabel"]
-                    <InputText @bind-Value="@restaurantDetailModel.PhotoURL" class="form-control" />
+                    <InputText @bind-Value="@RestaurantDetailModel.PhotoURL" class="form-control" />
                 </label>
             </div>
         </div>
 
         <div class="col-md-4">
             <div class="bg-warning rounded overflow-hidden h-100 d-flex">
-                <img src="@restaurantDetailModel.PhotoURL" class="m-auto" style="max-width: 100%; max-height: 100%;" />
+                <img src="@RestaurantDetailModel.PhotoURL" class="m-auto" style="max-width: 100%; max-height: 100%;" />
             </div>
         </div>
      </div>
