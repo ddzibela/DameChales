@@ -4,6 +4,8 @@ using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using DameChales.Common.Enums;
+using DameChales.Common.Extensions;
 using DameChales.Common.Models;
 using DameChales.Web.BL.Facades;
 using Microsoft.AspNetCore.Components;
@@ -30,6 +32,7 @@ namespace DameChales.Web.App.Pages
         public string FilterString { get; set; } = string.Empty;
         private bool OrderByNameFlag { get; set; } = false;
         private bool OrderByPriceFlag { get; set; } = false;
+        private HashSet<Alergens> Alergens { get; set; } = new HashSet<Alergens>();
 
 
         protected override async Task OnInitializedAsync()
@@ -58,15 +61,21 @@ namespace DameChales.Web.App.Pages
                 Address = string.Empty
             };
     
-        public async Task filter()
+        public async Task Filter()
         {
             Foods = await FoodFacade.GetByRestaurantIdAsync(Id);
-            if (FilterString == string.Empty)
+            var AlergensStr = Alergens.EnumSetToString();
+            if (FilterString == string.Empty && AlergensStr == string.Empty)
             {
                 return;
+            } else if (FilterString == string.Empty && AlergensStr != string.Empty)
+            {
+                FilterString = ".*";
             }
-            Foods = await FoodFacade.GetByNameAsync( FilterString );
-            Foods = Foods.Where(x => x.RestaurantGuid == Id).ToList();
+            var a = await FoodFacade.GetByNameAsync(FilterString);
+            a = a.Where(x => x.RestaurantGuid == Id).ToList();
+            var b = await FoodFacade.GetWithoutAlergensAsync(Id, AlergensStr);
+            Foods = a.Intersect(b).ToList();
         }
 
         public void AddToOrder(FoodListModel food)

@@ -3,17 +3,55 @@
 @layout ListLayout
 @using DameChales.Web.App.Resources.Texts
 @using DameChales.Common.Models
+@using DameChales.Common
 @using Microsoft.Extensions.Localization
 @inherits PageBase
 @inject IStringLocalizer<RestaurantsDetailPageResources> Localizer
 
 	<div>
+        <!--Search-->
         <EditForm Model="@FilterString">
+        <!--ALERGENS-->
+        <div class="form-group">
+
+            @foreach (var alergen in Enum.GetNames(typeof(Common.Enums.Alergens)))
+            {
+
+                Common.Enums.Alergens a = (Common.Enums.Alergens)Enum.Parse(typeof(Common.Enums.Alergens), alergen);
+                bool isChecked = false;
+
+                @if (Alergens.Contains(a))
+                {
+                    isChecked = true;
+
+                }
+
+                <div class="form-check form-check-inline">
+                    <input type="checkbox" class="form-check-input" @onchange="eventArgs => { CheckboxClicked(alergen, eventArgs.Value); }" checked="@isChecked" />
+                    @alergen
+                </div>
+            }
+
+            @functions {
+        void CheckboxClicked(string alergenStr, object checkedValue)
+        {
+                if ((bool)checkedValue)
+                {
+                    Alergens.Add((Common.Enums.Alergens)Enum.Parse(typeof(Common.Enums.Alergens), alergenStr));
+                }
+                else
+                {
+
+                    Alergens.Remove((Common.Enums.Alergens)Enum.Parse(typeof(Common.Enums.Alergens), alergenStr));
+                }
+        }
+            }
+        </div>
             <DataAnnotationsValidator />
             <div class="input-group pb-2">
                 <InputText @bind-Value="@FilterString" class="form-control" aria-describedby="basic-addon2" />
                 <div class="input-group-btn">
-                    <button type="submit" class="btn btn-success" @onclick="@filter">
+                    <button type="submit" class="btn btn-success" @onclick="@Filter">
                         @Localizer["search"]
                     </button>
                 </div>
@@ -73,6 +111,7 @@
 		</div>
 		<!--FOODS-->
 		<div style="float: left; width: 25%">
+            <!--Order By x buttons-->
         <button @onclick="@OrderByName">
             @Localizer["Name"]
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down" viewBox="0 0 16 16">
