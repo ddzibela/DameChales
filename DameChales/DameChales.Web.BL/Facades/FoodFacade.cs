@@ -44,7 +44,7 @@ namespace DameChales.Web.BL.Facades
         {
             var foodsAll = await base.GetAllAsync();
 
-            var foodsFromApi = await apiClient.NameAsync(name);
+            var foodsFromApi = await apiClient.NameGetAsync(name);
             foodsAll.AddRange(foodsFromApi);
 
             return foodsAll;
@@ -64,7 +64,7 @@ namespace DameChales.Web.BL.Facades
         {
             var foodsAll = await base.GetAllAsync();
 
-            var foodsFromApi = await apiClient.NoalergensAsync(id, alergensstr);
+            var foodsFromApi = await apiClient.NoalergensGetAsync(id, alergensstr);
             foodsAll.AddRange(foodsFromApi);
 
             return foodsAll;

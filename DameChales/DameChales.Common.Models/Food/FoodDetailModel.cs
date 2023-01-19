@@ -20,7 +20,7 @@ namespace DameChales.Common.Models
 
         [Required(ErrorMessageResourceName = nameof(FoodDetailModelResources.Price_Required_ErrorMessage), ErrorMessageResourceType = typeof(FoodDetailModelResources))]
         public required double Price { get; set; }
-        public Guid? RestaurantGuid { get; set; }
+        public Guid RestaurantGuid { get; set; }
         public ICollection<Alergens> alergens { get; set; } = new HashSet<Alergens>();
     }
 }
