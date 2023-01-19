@@ -186,4 +186,7 @@
   <data name="SulphurDioxide" xml:space="preserve">
     <value>Oxid siřičitý a siřičitany</value>
   </data>
+  <data name="search" xml:space="preserve">
+    <value>Filtrovat</value>
+  </data>
 </root>

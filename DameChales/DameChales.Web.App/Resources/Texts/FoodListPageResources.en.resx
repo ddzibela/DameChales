@@ -186,4 +186,7 @@
   <data name="SulphurDioxide" xml:space="preserve">
     <value>Sulphur dioxide</value>
   </data>
+  <data name="search" xml:space="preserve">
+    <value>Filter</value>
+  </data>
 </root>

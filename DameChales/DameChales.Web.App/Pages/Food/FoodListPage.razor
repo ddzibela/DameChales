@@ -4,6 +4,7 @@
 @layout ListLayout
 @using DameChales.Web.App.Resources.Texts
 @using DameChales.Common.Models
+@using DameChales.Common
 @using Microsoft.Extensions.Localization
 @inherits PageBase
 @inject IStringLocalizer<FoodListPageResources> FoodListPageLocalizer
@@ -24,6 +25,60 @@
         </OnlineStatusIndicator>
     </div>
 </div>
+
+<!--FILTER-->
+<!--Search-->
+<EditForm Model="@FilterString">
+
+    <h5 class="card-title">@FoodListPageLocalizer["Filter"]</h5>
+    <!--ALERGENS-->
+    <div class="form-group">
+
+        @foreach (var alergen in Enum.GetNames(typeof(Common.Enums.Alergens)))
+        {
+
+            Common.Enums.Alergens a = (Common.Enums.Alergens)Enum.Parse(typeof(Common.Enums.Alergens), alergen);
+            bool isChecked = false;
+
+            @if (Alergens.Contains(a))
+            {
+                isChecked = true;
+
+            }
+
+            <div class="form-check form-check-inline">
+                <input type="checkbox" class="form-check-input" @onchange="eventArgs => { CheckboxClicked(alergen, eventArgs.Value); }" checked="@isChecked" />
+                @FoodListPageLocalizer[alergen.ToString()]
+            </div>
+        }
+
+        @functions {
+        void CheckboxClicked(string alergenStr, object checkedValue)
+        {
+            if ((bool)checkedValue)
+            {
+                Alergens.Add((Common.Enums.Alergens)Enum.Parse(typeof(Common.Enums.Alergens), alergenStr));
+            }
+            else
+            {
+
+                Alergens.Remove((Common.Enums.Alergens)Enum.Parse(typeof(Common.Enums.Alergens), alergenStr));
+            }
+        }
+        }
+
+        <div class="text-right">
+            <button type="submit" class="btn btn-success" @onclick="@Filter">
+                @FoodListPageLocalizer["search"]
+            </button>
+        </div>
+    </div>
+
+</EditForm>
+
+<hr class="mt-1 py-20" />
+
+<!--END OF FILTER-->
 
 <button @onclick="@OrderByName">
     @FoodListPageLocalizer["Name"]
@@ -67,6 +122,12 @@
                         <span>@food.Name</span>
                     }
                 </h5>
+
+                <h6 class="card-title">
+                    @{
+                        <span>@food.Price</span>
+                    }
+                </h6>
                 <a href="@($"/restaurants/{food.RestaurantGuid}")" class="btn btn-dark btn-block">
                     @FoodListPageLocalizer["GoToRestaurant_Button"]
                 </a>

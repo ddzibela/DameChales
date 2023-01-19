@@ -10,7 +10,6 @@ using DameChales.Common.Models;
 using DameChales.Web.BL.Facades;
 using Microsoft.AspNetCore.Components;
 using static System.Runtime.InteropServices.JavaScript.JSType;
-
 using System.Globalization;
 
 namespace DameChales.Web.App.Pages

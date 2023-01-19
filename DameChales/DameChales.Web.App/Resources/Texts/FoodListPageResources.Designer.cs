@@ -243,6 +243,15 @@ namespace DameChales.Web.App.Resources.Texts {
         /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
+        public static string search {
+            get {
+                return ResourceManager.GetString("search", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
         public static string Sesame {
             get {
                 return ResourceManager.GetString("Sesame", resourceCulture);

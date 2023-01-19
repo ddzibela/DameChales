@@ -11,8 +11,8 @@
 	<div>
 
     <!--FILTER-->
-        <!--Search-->
-        <EditForm Model="@FilterString">
+    <!--Search-->
+    <EditForm Model="@FilterString">
 
         <h5 class="card-title">@Localizer["Filter"]</h5>
         <!--ALERGENS-->
@@ -50,17 +50,15 @@
                 }
         }
             }
-        </div>
-            <DataAnnotationsValidator />
-            <div class="input-group pb-2">
-                <InputText @bind-Value="@FilterString" class="form-control" aria-describedby="basic-addon2" />
-                <div class="input-group-btn">
-                    <button type="submit" class="btn btn-success" @onclick="@Filter">
-                        @Localizer["search"]
-                    </button>
-                </div>
+
+            <div class="text-right">
+                <button type="submit" class="btn btn-success" @onclick="@Filter">
+                    @Localizer["search"]
+                </button>
             </div>
-        </EditForm>
+        </div>
+
+    </EditForm>
 
     <hr class="mt-1 py-20" />
 
