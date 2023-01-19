@@ -73,8 +73,7 @@ namespace DameChales.Web.App.Pages
             {
                 FilterString = ".*";
             }
-            var a = await FoodFacade.GetByNameAsync(FilterString);
-            a = a.Where(x => x.RestaurantGuid == Id).ToList();
+            var a = await FoodFacade.GetByNameAsync(Id, FilterString);
             var b = await FoodFacade.GetWithoutAlergensAsync(Id, AlergensStr);
             Foods = a.Intersect(b).ToList();
         }
