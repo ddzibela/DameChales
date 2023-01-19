@@ -97,6 +97,13 @@ namespace DameChales.API.DAL.Memory.Repositories
                 foodInStorage.Id == entity.Id);
             if (foodExisting != null)
             {
+
+                foodExisting.Name = entity.Name;
+                foodExisting.Price = entity.Price;
+                foodExisting.RestaurantGuid = entity.RestaurantGuid;
+                foodExisting.alergens = entity.alergens;
+                foodExisting.Description = entity.Description;
+                foodExisting.PhotoURL = entity.PhotoURL;
                 mapper.Map(entity, foodExisting);
             }
 

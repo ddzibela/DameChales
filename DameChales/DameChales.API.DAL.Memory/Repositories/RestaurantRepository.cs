@@ -67,6 +67,11 @@ namespace DameChales.API.DAL.Memory.Repositories
             var restaurantExisting = restaurants.SingleOrDefault(e => e.Id == restaurant.Id);
             if (restaurantExisting != null)
             {
+                restaurantExisting.Name = restaurant.Name;
+                restaurantExisting.Description = restaurant.Description;
+                restaurantExisting.Address = restaurant.Address;
+                restaurantExisting.GPSCoordinates = restaurant.GPSCoordinates;
+                restaurant.LogoURL = restaurant.LogoURL;
                 mapper.Map(restaurant, restaurantExisting);
             }
 

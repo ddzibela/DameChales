@@ -11,6 +11,7 @@ using Newtonsoft.Json;
 using DameChales.API.BL.Facades;
 using DameChales.API.DAL.Common.Entities;
 using Xunit;
+using System.Linq;
 
 namespace DameChales.API.App.EndToEndTests
 {
@@ -184,7 +185,7 @@ namespace DameChales.API.App.EndToEndTests
         [Fact]
         public async Task UpdateOrder_Test()
         {
-            var httpContent = new StringContent("{\r\n  \"id\": \"e184748d-b151-4129-83f9-f2ac2486fa55\",\r\n  \"restaurantGuid\": \"75970373-0afa-4c9b-9bc3-2655f3c1efe0\",\r\n  \"name\": \"Dominik Petrik\",\r\n  \"note\": \"Poznamka k objednavce.\",\r\n  \"deliveryTime\": \"2022-12-10T18:14:46.1585993+01:00\",\r\n  \"status\": 0,\r\n  \"foodAmounts\": [\r\n    {\r\n      \"id\": \"67ecbe97-ba81-490d-9f9a-11c4832b4e94\",\r\n      \"amount\": 1,\r\n      \"note\": \"poznamka\",\r\n      \"food\": {\r\n        \"id\": \"96103111-393b-46b8-8b4f-ec82212cffbf\",\r\n        \"name\": \"Vajicka s orechy\",\r\n        \"photoURL\": \"https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Chicken_egg_2009-06-04.jpg/428px-Chicken_egg_2009-06-04.jpg\",\r\n        \"price\": 150\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"3b9f8a14-b6ed-4701-ab35-b05096c2fccf\",\r\n      \"amount\": 2,\r\n      \"note\": \"\",\r\n      \"food\": {\r\n        \"id\": \"82bff672-382c-49e9-aca2-52dd028414a3\",\r\n        \"name\": \"Cibule na slehacce\",\r\n        \"photoURL\": \"https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Onion_on_White.JPG/480px-Onion_on_White.JPG\",\r\n        \"price\": 100.5\r\n      }\r\n    }\r\n  ]\r\n}");
+            var httpContent = new StringContent("{\r\n  \"id\": \"e184748d-b151-4129-83f9-f2ac2486fa55\",\r\n  \"restaurantGuid\": \"75970373-0afa-4c9b-9bc3-2655f3c1efe0\",\r\n  \"name\": \"Matej Macek\",\r\n  \"note\": \"Poznamka k objednavce.\",\r\n  \"deliveryTime\": \"2023-01-19T10:44:29.2394548+01:00\",\r\n  \"status\": 0,\r\n  \"address\": \"Božetěchova 2, Brno, Czech Republic\",\r\n  \"foodAmounts\": [\r\n    {\r\n      \"id\": \"67ecbe97-ba81-490d-9f9a-11c4832b4e94\",\r\n      \"amount\": 2,\r\n      \"note\": \"poznamka\",\r\n      \"food\": {\r\n        \"id\": \"96103111-393b-46b8-8b4f-ec82212cffbf\",\r\n        \"name\": \"Vajicka s orechy\",\r\n        \"photoURL\": \"https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Chicken_egg_2009-06-04.jpg/428px-Chicken_egg_2009-06-04.jpg\",\r\n        \"price\": 150,\r\n        \"restaurantGuid\": \"75970373-0afa-4c9b-9bc3-2655f3c1efe0\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"3b9f8a14-b6ed-4701-ab35-b05096c2fccf\",\r\n      \"amount\": 2,\r\n      \"note\": \"\",\r\n      \"food\": {\r\n        \"id\": \"82bff672-382c-49e9-aca2-52dd028414a3\",\r\n        \"name\": \"Cibule na slehacce\",\r\n        \"photoURL\": \"https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Onion_on_White.JPG/480px-Onion_on_White.JPG\",\r\n        \"price\": 100.5,\r\n        \"restaurantGuid\": \"75970373-0afa-4c9b-9bc3-2655f3c1efe0\"\r\n      }\r\n    }\r\n  ]\r\n}");
             httpContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
 
 
@@ -192,12 +193,20 @@ namespace DameChales.API.App.EndToEndTests
 
             response.EnsureSuccessStatusCode();
 
+            var updatedOrder = await client.Value.GetAsync("/api/order/e184748d-b151-4129-83f9-f2ac2486fa55");
+
+            var json = await updatedOrder.Content.ReadAsStringAsync();
+            var order = JsonConvert.DeserializeObject<OrderEntity>(json);
+
+            Assert.Equal("Matej Macek", order.Name);
+            Assert.Equal(2, order.FoodAmounts.ToArray()[0].Amount);
+
         }
 
         [Fact]
         public async Task PostAndDeleteOrder_Test()
         {
-            var httpContent = new StringContent("{\r\n  \"id\": \"e184748d-b151-4129-83f9-f2ac2486fa51\",\r\n  \"restaurantGuid\": \"75970373-0afa-4c9b-9bc3-2655f3c1efe0\",\r\n  \"name\": \"Dominik Petrik\",\r\n  \"note\": \"Poznamka k objednavce.\",\r\n  \"deliveryTime\": \"2022-12-10T18:14:46.1585993+01:00\",\r\n  \"status\": 0,\r\n  \"foodAmounts\": [\r\n    {\r\n      \"id\": \"67ecbe97-ba81-490d-9f9a-11c4832b4e94\",\r\n      \"amount\": 1,\r\n      \"note\": \"poznamka\",\r\n      \"food\": {\r\n        \"id\": \"96103111-393b-46b8-8b4f-ec82212cffbf\",\r\n        \"name\": \"Vajicka s orechy\",\r\n        \"photoURL\": \"https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Chicken_egg_2009-06-04.jpg/428px-Chicken_egg_2009-06-04.jpg\",\r\n        \"price\": 150\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"3b9f8a14-b6ed-4701-ab35-b05096c2fccf\",\r\n      \"amount\": 2,\r\n      \"note\": \"\",\r\n      \"food\": {\r\n        \"id\": \"82bff672-382c-49e9-aca2-52dd028414a3\",\r\n        \"name\": \"Cibule na slehacce\",\r\n        \"photoURL\": \"https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Onion_on_White.JPG/480px-Onion_on_White.JPG\",\r\n        \"price\": 100.5\r\n      }\r\n    }\r\n  ]\r\n}");
+            var httpContent = new StringContent("{\r\n  \"id\": \"e184748d-b151-4129-83f9-f2ac2486fa55\",\r\n  \"restaurantGuid\": \"75970373-0afa-4c9b-9bc3-2655f3c1efe0\",\r\n  \"name\": \"Matej Macek\",\r\n  \"note\": \"Poznamka k objednavce.\",\r\n  \"deliveryTime\": \"2023-01-19T10:44:29.2394548+01:00\",\r\n  \"status\": 0,\r\n  \"address\": \"Božetěchova 2, Brno, Czech Republic\",\r\n  \"foodAmounts\": [\r\n    {\r\n      \"id\": \"67ecbe97-ba81-490d-9f9a-11c4832b4e94\",\r\n      \"amount\": 2,\r\n      \"note\": \"poznamka\",\r\n      \"food\": {\r\n        \"id\": \"96103111-393b-46b8-8b4f-ec82212cffbf\",\r\n        \"name\": \"Vajicka s orechy\",\r\n        \"photoURL\": \"https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Chicken_egg_2009-06-04.jpg/428px-Chicken_egg_2009-06-04.jpg\",\r\n        \"price\": 150,\r\n        \"restaurantGuid\": \"75970373-0afa-4c9b-9bc3-2655f3c1efe0\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"3b9f8a14-b6ed-4701-ab35-b05096c2fccf\",\r\n      \"amount\": 2,\r\n      \"note\": \"\",\r\n      \"food\": {\r\n        \"id\": \"82bff672-382c-49e9-aca2-52dd028414a3\",\r\n        \"name\": \"Cibule na slehacce\",\r\n        \"photoURL\": \"https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Onion_on_White.JPG/480px-Onion_on_White.JPG\",\r\n        \"price\": 100.5,\r\n        \"restaurantGuid\": \"75970373-0afa-4c9b-9bc3-2655f3c1efe0\"\r\n      }\r\n    }\r\n  ]\r\n}");
             httpContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
 
 
@@ -217,7 +226,7 @@ namespace DameChales.API.App.EndToEndTests
         [Fact]
         public async Task UpsertAndDeleteOrder_Test()
         {
-            var httpContent = new StringContent("{\r\n  \"id\": \"e184748d-b151-4129-83f9-f2ac2486fa51\",\r\n  \"restaurantGuid\": \"75970373-0afa-4c9b-9bc3-2655f3c1efe0\",\r\n  \"name\": \"Dominik Petrik\",\r\n  \"note\": \"Poznamka k objednavce.\",\r\n  \"deliveryTime\": \"2022-12-10T18:14:46.1585993+01:00\",\r\n  \"status\": 0,\r\n  \"foodAmounts\": [\r\n    {\r\n      \"id\": \"67ecbe97-ba81-490d-9f9a-11c4832b4e94\",\r\n      \"amount\": 1,\r\n      \"note\": \"poznamka\",\r\n      \"food\": {\r\n        \"id\": \"96103111-393b-46b8-8b4f-ec82212cffbf\",\r\n        \"name\": \"Vajicka s orechy\",\r\n        \"photoURL\": \"https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Chicken_egg_2009-06-04.jpg/428px-Chicken_egg_2009-06-04.jpg\",\r\n        \"price\": 150\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"3b9f8a14-b6ed-4701-ab35-b05096c2fccf\",\r\n      \"amount\": 2,\r\n      \"note\": \"\",\r\n      \"food\": {\r\n        \"id\": \"82bff672-382c-49e9-aca2-52dd028414a3\",\r\n        \"name\": \"Cibule na slehacce\",\r\n        \"photoURL\": \"https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Onion_on_White.JPG/480px-Onion_on_White.JPG\",\r\n        \"price\": 100.5\r\n      }\r\n    }\r\n  ]\r\n}");
+            var httpContent = new StringContent("{\r\n  \"id\": \"e184748d-b151-4129-83f9-f2ac2486fa55\",\r\n  \"restaurantGuid\": \"75970373-0afa-4c9b-9bc3-2655f3c1efe0\",\r\n  \"name\": \"Matej Macek\",\r\n  \"note\": \"Poznamka k objednavce.\",\r\n  \"deliveryTime\": \"2023-01-19T10:44:29.2394548+01:00\",\r\n  \"status\": 0,\r\n  \"address\": \"Božetěchova 2, Brno, Czech Republic\",\r\n  \"foodAmounts\": [\r\n    {\r\n      \"id\": \"67ecbe97-ba81-490d-9f9a-11c4832b4e94\",\r\n      \"amount\": 2,\r\n      \"note\": \"poznamka\",\r\n      \"food\": {\r\n        \"id\": \"96103111-393b-46b8-8b4f-ec82212cffbf\",\r\n        \"name\": \"Vajicka s orechy\",\r\n        \"photoURL\": \"https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Chicken_egg_2009-06-04.jpg/428px-Chicken_egg_2009-06-04.jpg\",\r\n        \"price\": 150,\r\n        \"restaurantGuid\": \"75970373-0afa-4c9b-9bc3-2655f3c1efe0\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"3b9f8a14-b6ed-4701-ab35-b05096c2fccf\",\r\n      \"amount\": 2,\r\n      \"note\": \"\",\r\n      \"food\": {\r\n        \"id\": \"82bff672-382c-49e9-aca2-52dd028414a3\",\r\n        \"name\": \"Cibule na slehacce\",\r\n        \"photoURL\": \"https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Onion_on_White.JPG/480px-Onion_on_White.JPG\",\r\n        \"price\": 100.5,\r\n        \"restaurantGuid\": \"75970373-0afa-4c9b-9bc3-2655f3c1efe0\"\r\n      }\r\n    }\r\n  ]\r\n}");
             httpContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
 
 
