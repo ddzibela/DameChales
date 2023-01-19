@@ -7,9 +7,9 @@ using Xunit;
 
 namespace DameChales.API.DAL.IntegrationTests;
 
-public class FoodRepositoryTests
+public class OrderRepositoryTests
 {
-    public FoodRepositoryTests()
+    public OrderRepositoryTests()
     {
         dbFixture = new InMemoryDatabaseFixture();
     }
