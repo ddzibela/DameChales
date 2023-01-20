@@ -7,6 +7,7 @@
 @using Microsoft.Extensions.Localization
 @inherits PageBase
 @inject IStringLocalizer<RestaurantsDetailPageResources> Localizer
+@inject IStringLocalizer<FoodEditPageResources> FoodEditPageLocalizer
 
 	<div>
 
@@ -20,7 +21,6 @@
 
             @foreach (var alergen in Enum.GetNames(typeof(Common.Enums.Alergens)))
             {
-
                 Common.Enums.Alergens a = (Common.Enums.Alergens)Enum.Parse(typeof(Common.Enums.Alergens), alergen);
                 bool isChecked = false;
 
@@ -50,6 +50,8 @@
                 }
         }
             }
+        </div>
+            <!--END ALERGENS-->
             <div class="input-group-pb2">
             <InputText @bind-Value="@FilterString" class="form-control" aria-describedby="basic-addon2" />
             <div class="input-group-btn">
@@ -58,7 +60,6 @@
                 </button>
                 </div>
             </div>
-        </div>
 
     </EditForm>
 

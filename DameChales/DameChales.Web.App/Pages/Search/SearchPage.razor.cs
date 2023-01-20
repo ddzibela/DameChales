@@ -44,5 +44,10 @@ namespace DameChales.Web.App.Pages
             if (FoodFilter == null) { return; }
             Foods = await FoodFilter.Filter(FoodNameFilter, FoodDescriptionFilter, Alergens.EnumSetToString());
         }
+
+        public async Task FilterRestaurants()
+        {
+
+        }
     }
 }
