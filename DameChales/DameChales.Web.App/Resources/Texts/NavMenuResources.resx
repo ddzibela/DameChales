@@ -132,4 +132,7 @@
   <data name="Restaurants_Label" xml:space="preserve">
     <value />
   </data>
+  <data name="Search_Label" xml:space="preserve">
+    <value></value>
+  </data>
 </root>

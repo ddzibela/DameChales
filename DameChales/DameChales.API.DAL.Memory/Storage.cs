@@ -60,7 +60,7 @@ namespace DameChales.API.DAL.Memory
                 Price = 150,
                 RestaurantGuid = restaurantGuids[0],
                 RestaurantEntity = Restaurants.Single(e => e.Id == restaurantGuids[0]),
-                alergens = new HashSet<Alergens>() { Alergens.Nuts }
+                alergens = new HashSet<Alergens>() { Alergens.Nuts, Alergens.Eggs }
             }); 
 
             Foods.Add(new FoodEntity

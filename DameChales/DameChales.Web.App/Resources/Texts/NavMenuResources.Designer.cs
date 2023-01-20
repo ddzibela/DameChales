@@ -104,5 +104,14 @@ namespace DameChales.Web.App.Resources.Texts {
                 return ResourceManager.GetString("Restaurants_Label", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string Search_Label {
+            get {
+                return ResourceManager.GetString("Search_Label", resourceCulture);
+            }
+        }
     }
 }
