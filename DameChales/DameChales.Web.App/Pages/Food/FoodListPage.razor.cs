@@ -5,6 +5,7 @@ using DameChales.Web.BL.Facades;
 using DameChales.Common.Enums;
 using DameChales.Common.Extensions;
 using Microsoft.AspNetCore.Components;
+using DameChales.Web.App.Shared;
 
 namespace DameChales.Web.App.Pages
 {
@@ -16,6 +17,7 @@ namespace DameChales.Web.App.Pages
         private ICollection<FoodListModel> Foods { get; set; } = new List<FoodListModel>();
         [Parameter]
         public Guid Id { get; init; }
+        private FoodFilter? FoodFilter { get; set; } = null;
         private bool OrderByNameFlag { get; set; } = false;
         private bool OrderByPriceFlag { get; set; } = false;
         public string FilterString { get; set; } = string.Empty;
@@ -23,6 +25,7 @@ namespace DameChales.Web.App.Pages
 
         protected override async Task OnInitializedAsync()
         {
+            FoodFilter = new FoodFilter(FoodFacade);
             if (Id == Guid.Empty)
             {
                 Foods = await FoodFacade.GetAllAsync();
@@ -36,9 +39,8 @@ namespace DameChales.Web.App.Pages
 
         public async Task Filter()
         {
-            Foods = await FoodFacade.GetAllAsync();
-            var AlergensStr = Alergens.EnumSetToString();
-            Foods = await FoodFacade.GetWithoutAlergensAsync(AlergensStr);
+            if (FoodFilter == null) { return; }
+            Foods = await FoodFilter.Filter(FilterString, string.Empty, Alergens.EnumSetToString());
         }
 
         public void OrderByPrice()

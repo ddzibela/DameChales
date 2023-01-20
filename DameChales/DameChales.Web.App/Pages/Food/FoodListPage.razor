@@ -66,14 +66,15 @@
             }
         }
         }
-
-        <div class="text-right">
-            <button type="submit" class="btn btn-success" @onclick="@Filter">
-                @FoodListPageLocalizer["search"]
-            </button>
-        </div>
+        <div class="input-group-pb2">
+            <InputText @bind-Value="@FilterString" class="form-control" aria-describedby="basic-addon2" />
+            <div class="input-group-btn">
+                <button type="submit" class="btn btn-success" @onclick="@Filter">
+                    @FoodListPageLocalizer["search"]
+                </button>
+                </div>
+            </div>
     </div>
-
 </EditForm>
 
 <hr class="mt-1 py-20" />

@@ -11,6 +11,7 @@ using DameChales.Web.BL.Facades;
 using Microsoft.AspNetCore.Components;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 using System.Globalization;
+using DameChales.Web.App.Shared;
 
 namespace DameChales.Web.App.Pages
 {
@@ -27,6 +28,8 @@ namespace DameChales.Web.App.Pages
         [Parameter]
         public Guid Id { get; set; } = Guid.Empty;
 
+        private FoodFilter? FoodFilter { get; set; } = null;
+
         private ICollection<FoodListModel> Foods { get; set; } = new List<FoodListModel>();
         private OrderDetailModel OrderDetailModel { get; set; } = GetNewOrderDetailModel();
         private RestaurantDetailModel? RestaurantDetailModel { get; set; }
@@ -38,6 +41,8 @@ namespace DameChales.Web.App.Pages
 
         protected override async Task OnInitializedAsync()
         {
+            FoodFilter = new FoodFilter(FoodFacade);
+
             if (Id == Guid.Empty)
             {
                 NavigationManager.NavigateTo($"/restaurants");
@@ -64,18 +69,8 @@ namespace DameChales.Web.App.Pages
     
         public async Task Filter()
         {
-            Foods = await FoodFacade.GetByRestaurantIdAsync(Id);
-            var AlergensStr = Alergens.EnumSetToString();
-            if (FilterString == string.Empty && AlergensStr == string.Empty)
-            {
-                return;
-            } else if (FilterString == string.Empty && AlergensStr != string.Empty)
-            {
-                FilterString = ".*";
-            }
-            var a = await FoodFacade.GetByNameAsync(Id, FilterString);
-            var b = await FoodFacade.GetWithoutAlergensAsync(Id, AlergensStr);
-            Foods = a.Intersect(b).ToList();
+            if (FoodFilter == null) { return; }
+            Foods = await FoodFilter.Filter(Id, FilterString, string.Empty, Alergens.EnumSetToString());
         }
 
         public void AddToOrder(FoodListModel food)

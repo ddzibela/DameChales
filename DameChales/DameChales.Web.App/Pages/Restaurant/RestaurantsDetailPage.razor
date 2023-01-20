@@ -50,11 +50,13 @@
                 }
         }
             }
-
-            <div class="text-right">
+            <div class="input-group-pb2">
+            <InputText @bind-Value="@FilterString" class="form-control" aria-describedby="basic-addon2" />
+            <div class="input-group-btn">
                 <button type="submit" class="btn btn-success" @onclick="@Filter">
                     @Localizer["search"]
                 </button>
+                </div>
             </div>
         </div>
 
