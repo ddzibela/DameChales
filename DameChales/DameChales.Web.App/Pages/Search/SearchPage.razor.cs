@@ -12,42 +12,18 @@ using Microsoft.AspNetCore.Components;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 using System.Globalization;
 using DameChales.Web.App.Shared;
+using DameChales.Common;
 
 namespace DameChales.Web.App.Pages
 {
     public partial class SearchPage
     {
-        [Inject]
-        private FoodFacade FoodFacade { get; set; } = null!;
-        [Inject]
-        private RestaurantFacade RestaurantFacade { get; set; } = null!;
-        private ICollection<FoodListModel> Foods { get; set; } = new List<FoodListModel>();
-        private ICollection<RestaurantListModel> Restaurants { get; set; } = new List<RestaurantListModel>();
-        private HashSet<Alergens> Alergens { get; set; } = new HashSet<Alergens> { };
-
+        public RestaurantFilter? RestaurantFilter { get; set; } = null;
         private FoodFilter? FoodFilter { get; set; } = null;
-        //filter strings
-        private string FoodNameFilter { get; set; } = string.Empty;
-        private string FoodDescriptionFilter { get; set; } = string.Empty;
-        private string RestaurantNameFilter { get; set; } = string.Empty;
-        private string RestaurantAddressFilter { get; set; } = string.Empty;
-        //order by flags
 
         protected override async Task OnInitializedAsync()
         {
-            FoodFilter = new FoodFilter(FoodFacade);
             await base.OnInitializedAsync();
-        }
-
-        public async Task FilterFood()
-        {
-            if (FoodFilter == null) { return; }
-            Foods = await FoodFilter.Filter(FoodNameFilter, FoodDescriptionFilter, Alergens.EnumSetToString());
-        }
-
-        public async Task FilterRestaurants()
-        {
-
         }
     }
 }

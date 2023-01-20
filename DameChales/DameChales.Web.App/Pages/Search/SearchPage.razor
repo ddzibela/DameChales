@@ -2,6 +2,7 @@
 @namespace DameChales.Web.App.Pages
 @layout ListLayout
 @using DameChales.Web.App.Resources.Texts
+@using DameChales.Web.App.Shared
 @using DameChales.Common.Models
 @using DameChales.Common
 @using Microsoft.Extensions.Localization
@@ -11,87 +12,56 @@
 @inject IStringLocalizer<FoodEditPageResources> FoodEditPageLocalizer
 @inject IStringLocalizer<RestaurantsEditPageResources> RestaurantEditPageLocalizer
 
-<EditForm Model="@FoodNameFilter">
+<FoodFilter @ref="FoodFilter" SearchCallback=@( () => StateHasChanged()) Id="Guid.Empty"/>
 
-    <h5 class="card-title">@FoodLocalizer["Filter"]</h5>
-    <div class="form-group">
-    <!--ALERGENS-->
+<RestaurantFilter @ref="RestaurantFilter" SearchCallback=@( () => StateHasChanged())/>
 
-        @foreach (var alergen in Enum.GetNames(typeof(Common.Enums.Alergens)))
-        {
-
-            Common.Enums.Alergens a = (Common.Enums.Alergens)Enum.Parse(typeof(Common.Enums.Alergens), alergen);
-            bool isChecked = false;
-
-            @if (Alergens.Contains(a))
-            {
-                isChecked = true;
-
-            }
-
-                <div class="form-check form-check-inline">
-                    <input type="checkbox" class="form-check-input" @onchange="eventArgs => { CheckboxClicked(alergen, eventArgs.Value); }" checked="@isChecked" />
-                @FoodLocalizer[alergen.ToString()]
+@if (FoodFilter != null)
+{
+    foreach (var food in FoodFilter.Foods)
+    {
+        <a href="@($" /restaurants/{food.RestaurantGuid}")">
+            <div class="card m-1" style="width: 16rem;">
+                <img class="card-img-top" src="@food.PhotoURL" alt="Card image cap">
+                <div class="card-body text-center">
+                    <h5 class="card-title">
+                        @{
+                            <span>@food.Name</span>
+                        }
+                    </h5>
+                    <p class="card-text">
+                        @{
+                            @food.Description
+                        }
+                    </p>
                 </div>
-        }
+            </div>
+        </a>
+    }
+}
 
-        @functions {
-        void CheckboxClicked(string alergenStr, object checkedValue)
-        {
-            if ((bool)checkedValue)
-            {
-                Alergens.Add((Common.Enums.Alergens)Enum.Parse(typeof(Common.Enums.Alergens), alergenStr));
-            }
-            else
-            {
 
-                Alergens.Remove((Common.Enums.Alergens)Enum.Parse(typeof(Common.Enums.Alergens), alergenStr));
-            }
-        }
-        }
-        <div class="input-group-pb2">
-            <div style="float: left; width: 45%">
-            <label class="w-100 font-weight-bold">
-                @FoodEditPageLocalizer["Name_FormLabel"]
-                <InputText @bind-Value="@FoodNameFilter" class="form-control" aria-describedby="basic-addon2" />
-            </label>
+@if (RestaurantFilter != null)
+{
+    foreach (var restaurant in RestaurantFilter.RestaurantList)
+    {
+        <a href="@($" /restaurants/{restaurant.Id}")">
+            <div class="card m-1" style="width: 16rem;">
+                <img class="card-img-top" src="@restaurant.PhotoURL" alt="Card image cap">
+                <div class="card-body text-center">
+                    <h5 class="card-title">
+                        @{
+                            <span>@restaurant.Name</span>
+                        }
+                    </h5>
+                    <p class="card-text">
+                        @{
+                            @restaurant.Description
+                        }
+                    </p>
+                </div>
             </div>
-            <div style="float: left; width: 50%">
-            <label class="w-100 font-weight-bold">
-                @FoodEditPageLocalizer["Description_FormLabel"]
-                <InputTextArea @bind-Value="FoodDescriptionFilter" class="form-control" aria-describedby="basic-addon2" />
-            </label>
-            </div>
-            <div class="input-group-btn">
-                <button type="submit" class="btn btn-success" @onclick="@FilterFood">
-                    @FoodLocalizer["search"]
-                </button>
-            </div>
-            </div>
-    </div>
-</EditForm>
+        </a>
+    }
+}
 
-<EditForm Model="@RestaurantNameFilter">
-
-    <h5 class="card-title">@FoodLocalizer["Filter"]</h5>
-        <div class="input-group-pb2">
-            <div style="float: left; width: 45%">
-            <label class="w-100 font-weight-bold">
-                @RestaurantEditPageLocalizer["Name_FormLabel"]
-                <InputText @bind-Value="@RestaurantNameFilter" class="form-control" aria-describedby="basic-addon2" />
-            </label>
-            </div>
-            <div style="float: left; width: 50%">
-            <label class="w-100 font-weight-bold">
-                @RestaurantEditPageLocalizer["Address_FormLabel"]
-                <InputTextArea @bind-Value="FoodDescriptionFilter" class="form-control" aria-describedby="basic-addon2" />
-            </label>
-            </div>
-            <div class="input-group-btn">
-                <button type="submit" class="btn btn-success" @onclick="@FilterRestaurants">
-                    @FoodLocalizer["search"]
-                </button>
-            </div>
-            </div>
-
-</EditForm>

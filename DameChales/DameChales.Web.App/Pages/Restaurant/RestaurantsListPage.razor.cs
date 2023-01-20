@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using DameChales.Common.Models;
+using DameChales.Web.App.Shared;
 using DameChales.Web.BL.Facades;
 using Microsoft.AspNetCore.Components;
 
@@ -13,7 +14,7 @@ namespace DameChales.Web.App.Pages
 		
 		private IList<RestaurantListModel> RestaurantListModel = new List<RestaurantListModel>();
 
-		public string FilterString { get; set; } = string.Empty;
+		public RestaurantFilter RestaurantFilter { get; set; }
 
 		protected override async Task OnInitializedAsync()
 		{
@@ -21,16 +22,10 @@ namespace DameChales.Web.App.Pages
 			await base.OnInitializedAsync();
 		}
 
-		public async Task filter()
+		public void Filter()
 		{
-			if (FilterString == string.Empty)
-			{
-                RestaurantListModel = await Facade!.GetAllAsync();
-				return;
-            }
-
-            RestaurantListModel = await Facade.GetByNameAsync(FilterString);
-			RestaurantListModel = (IList<RestaurantListModel>)RestaurantListModel.Concat(await Facade.GetByAddressAsync(FilterString));
+			RestaurantListModel.Clear();
+			RestaurantListModel = RestaurantFilter.RestaurantList;
 		}
 
 	}

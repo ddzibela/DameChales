@@ -3,6 +3,7 @@
 @namespace DameChales.Web.App.Pages
 @layout ListLayout
 @using DameChales.Web.App.Resources.Texts
+@using DameChales.Web.App.Shared
 @using DameChales.Common.Models
 @using DameChales.Common
 @using Microsoft.Extensions.Localization
@@ -28,54 +29,7 @@
 
 <!--FILTER-->
 <!--Search-->
-<EditForm Model="@FilterString">
-
-    <h5 class="card-title">@FoodListPageLocalizer["Filter"]</h5>
-    <!--ALERGENS-->
-    <div class="form-group">
-
-        @foreach (var alergen in Enum.GetNames(typeof(Common.Enums.Alergens)))
-        {
-
-            Common.Enums.Alergens a = (Common.Enums.Alergens)Enum.Parse(typeof(Common.Enums.Alergens), alergen);
-            bool isChecked = false;
-
-            @if (Alergens.Contains(a))
-            {
-                isChecked = true;
-
-            }
-
-            <div class="form-check form-check-inline">
-                <input type="checkbox" class="form-check-input" @onchange="eventArgs => { CheckboxClicked(alergen, eventArgs.Value); }" checked="@isChecked" />
-                @FoodListPageLocalizer[alergen.ToString()]
-            </div>
-        }
-
-        @functions {
-        void CheckboxClicked(string alergenStr, object checkedValue)
-        {
-            if ((bool)checkedValue)
-            {
-                Alergens.Add((Common.Enums.Alergens)Enum.Parse(typeof(Common.Enums.Alergens), alergenStr));
-            }
-            else
-            {
-
-                Alergens.Remove((Common.Enums.Alergens)Enum.Parse(typeof(Common.Enums.Alergens), alergenStr));
-            }
-        }
-        }
-        <div class="input-group-pb2">
-            <InputText @bind-Value="@FilterString" class="form-control" aria-describedby="basic-addon2" />
-            <div class="input-group-btn">
-                <button type="submit" class="btn btn-success" @onclick="@Filter">
-                    @FoodListPageLocalizer["search"]
-                </button>
-                </div>
-            </div>
-    </div>
-</EditForm>
+<FoodFilter @ref="FoodFilter" SearchCallback="@( () => Filter())" Id="Id"/>
 
 <hr class="mt-1 py-20" />
 

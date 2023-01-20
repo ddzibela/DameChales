@@ -2,6 +2,7 @@
 @namespace DameChales.Web.App.Pages
 @layout ListLayout
 @using DameChales.Web.App.Resources.Texts
+@using DameChales.Web.App.Shared
 @using DameChales.Common.Models
 @using DameChales.Common
 @using Microsoft.Extensions.Localization
@@ -11,61 +12,7 @@
 
 	<div>
 
-    <!--FILTER-->
-    <!--Search-->
-    <EditForm Model="@FilterString">
-
-        <h5 class="card-title">@Localizer["Filter"]</h5>
-        <!--ALERGENS-->
-        <div class="form-group">
-
-            @foreach (var alergen in Enum.GetNames(typeof(Common.Enums.Alergens)))
-            {
-                Common.Enums.Alergens a = (Common.Enums.Alergens)Enum.Parse(typeof(Common.Enums.Alergens), alergen);
-                bool isChecked = false;
-
-                @if (Alergens.Contains(a))
-                {
-                    isChecked = true;
-
-                }
-
-                <div class="form-check form-check-inline">
-                    <input type="checkbox" class="form-check-input" @onchange="eventArgs => { CheckboxClicked(alergen, eventArgs.Value); }" checked="@isChecked" />
-                    @Localizer[alergen.ToString()]
-                </div>
-            }
-
-            @functions {
-        void CheckboxClicked(string alergenStr, object checkedValue)
-        {
-                if ((bool)checkedValue)
-                {
-                    Alergens.Add((Common.Enums.Alergens)Enum.Parse(typeof(Common.Enums.Alergens), alergenStr));
-                }
-                else
-                {
-
-                    Alergens.Remove((Common.Enums.Alergens)Enum.Parse(typeof(Common.Enums.Alergens), alergenStr));
-                }
-        }
-            }
-        </div>
-            <!--END ALERGENS-->
-            <div class="input-group-pb2">
-            <InputText @bind-Value="@FilterString" class="form-control" aria-describedby="basic-addon2" />
-            <div class="input-group-btn">
-                <button type="submit" class="btn btn-success" @onclick="@Filter">
-                    @Localizer["search"]
-                </button>
-                </div>
-            </div>
-
-    </EditForm>
-
-    <hr class="mt-1 py-20" />
-
-    <!--END OF FILTER-->
+    <FoodFilter @ref="FoodFilter" SearchCallback="@( () => Filter())" Id="Id" />
 
 		<!--RESTAURANT INFO-->
 		<div style="float: left; width: 30%">

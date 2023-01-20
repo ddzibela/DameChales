@@ -16,7 +16,7 @@ namespace DameChales.Web.App.Pages
         private RestaurantFacade RestaurantFacade { get; set; } = null!;
         private ICollection<FoodListModel> Foods { get; set; } = new List<FoodListModel>();
         [Parameter]
-        public Guid Id { get; init; }
+        public Guid Id { get; init; } = Guid.Empty;
         private FoodFilter? FoodFilter { get; set; } = null;
         private bool OrderByNameFlag { get; set; } = false;
         private bool OrderByPriceFlag { get; set; } = false;
@@ -25,7 +25,6 @@ namespace DameChales.Web.App.Pages
 
         protected override async Task OnInitializedAsync()
         {
-            FoodFilter = new FoodFilter(FoodFacade);
             if (Id == Guid.Empty)
             {
                 Foods = await FoodFacade.GetAllAsync();
@@ -37,10 +36,10 @@ namespace DameChales.Web.App.Pages
             await base.OnInitializedAsync();
         }
 
-        public async Task Filter()
+        public void Filter()
         {
-            if (FoodFilter == null) { return; }
-            Foods = await FoodFilter.Filter(FilterString, string.Empty, Alergens.EnumSetToString());
+            Foods.Clear();
+            Foods = FoodFilter.Foods;
         }
 
         public void OrderByPrice()

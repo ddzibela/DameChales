@@ -2,6 +2,7 @@
 @namespace DameChales.Web.App.Pages
 @layout ListLayout
 @using DameChales.Web.App.Resources.Texts
+@using DameChales.Web.App.Shared
 @using DameChales.Common.Models
 @using Microsoft.Extensions.Localization
 @inherits PageBase
@@ -25,18 +26,7 @@
     </div>
 </div>
 
-
- <EditForm Model="@FilterString">
-    <DataAnnotationsValidator />
-    <div class="input-group pb-2">
-        <InputText @bind-Value="@FilterString" class="form-control" aria-describedby="basic-addon2" />
-        <div class="input-group-btn">
-            <button type="submit" class="btn btn-success" @onclick="@filter">
-                @Localizer["search"]
-            </button>
-        </div>
-    </div>
-</EditForm>
+<RestaurantFilter @ref="RestaurantFilter" SearchCallback="@( () => Filter())"/>
 
 <div class="d-flex flex-wrap">
     @foreach (var restaurant in RestaurantListModel)

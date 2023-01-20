@@ -1,0 +1,34 @@
+﻿@namespace DameChales.Web.App.Shared
+@using DameChales.Web.App.Resources.Texts
+@using DameChales.Common.Models
+@using DameChales.Common
+@using Microsoft.Extensions.Localization
+@inject IStringLocalizer<RestaurantsDetailPageResources> RestaurantLocalizer
+@inject IStringLocalizer<FoodListPageResources> FoodLocalizer
+@inject IStringLocalizer<FoodEditPageResources> FoodEditPageLocalizer
+@inject IStringLocalizer<RestaurantsEditPageResources> RestaurantEditPageLocalizer
+
+<EditForm Model="@NameFilter">
+
+    <h5 class="card-title">@FoodLocalizer["Filter"]</h5>
+        <div class="input-group-pb2">
+            <div style="float: left; width: 45%">
+            <label class="w-100 font-weight-bold">
+                @RestaurantEditPageLocalizer["Name_FormLabel"]
+                <InputText @bind-Value="@NameFilter" class="form-control" aria-describedby="basic-addon2" />
+            </label>
+            </div>
+            <div style="float: left; width: 50%">
+            <label class="w-100 font-weight-bold">
+                @RestaurantEditPageLocalizer["Address_FormLabel"]
+                <InputTextArea @bind-Value="@AddressFilter" class="form-control" aria-describedby="basic-addon2" />
+            </label>
+            </div>
+            <div class="input-group-btn">
+                <button type="submit" class="btn btn-success" @onclick="@Filter">
+                @FoodLocalizer["search"]
+                </button>
+            </div>
+            </div>
+
+</EditForm>
