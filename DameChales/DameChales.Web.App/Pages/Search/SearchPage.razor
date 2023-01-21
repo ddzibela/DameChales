@@ -51,10 +51,10 @@
 <hr class="mt-1 py-20" />
 
 <div class="d-flex flex-wrap">
-    @if (RestaurantFilter != null && ( RestaurantFilter.Model.NameFilter != string.Empty || RestaurantFilter.Model.AddressFilter != string.Empty))
+    @if (RestaurantFilter != null && ( RestaurantFilter.Model.NameFilter != string.Empty || RestaurantFilter.Model.AddressFilter != string.Empty || RestaurantFilter.Model.DescriptionFilter != string.Empty))
     {
 
-    foreach (var restaurant in RestaurantFilter.RestaurantList)
+        foreach (var restaurant in RestaurantFilter.RestaurantList)
     {
         <div class="card m-1" style="width: 16rem;">
             <a href="@($" /restaurants/{restaurant.Id}")">

@@ -35,9 +35,9 @@ namespace DameChales.Web.App.Shared
                 RestaurantList = await RestaurantFacade.GetByAddressAsync(Model.AddressFilter);
             }
 
-            if (Model.NameFilter == string.Empty && Model.AddressFilter == string.Empty && Model.DescriptionFilter != string.Empty)
-            {
-                RestaurantList = await RestaurantFacade.GetByDescAsync(Model.DescriptionFilter);
+			if (Model.NameFilter == string.Empty && Model.AddressFilter == string.Empty && Model.DescriptionFilter != string.Empty)
+			{
+				RestaurantList = await RestaurantFacade.GetByDescAsync(Model.DescriptionFilter);
             }
 
             if (Model.NameFilter == string.Empty && Model.AddressFilter != string.Empty && Model.DescriptionFilter != string.Empty)
