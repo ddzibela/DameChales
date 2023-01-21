@@ -17,39 +17,45 @@
 <hr class="mt-1 py-20" />
 
 <div class="d-flex flex-wrap">
-@if (FoodFilter != null)
-{
-    foreach (var food in FoodFilter.Foods)
+    @if (FoodFilter != null && (FoodFilter.Model.NameRegex != string.Empty || FoodFilter.Model.DescRegex != string.Empty || FoodFilter.Model.AlergensString != string.Empty))
     {
-        <div class="card m-1" style="width: 16rem;">
-            <a href="@($" /restaurants/{food.RestaurantGuid}")">
-                <img class="card-img-top" src="@food.PhotoURL" alt="Card image cap">
-                <div class="card-body text-center">
-                    <h5 class="card-title">
-                        @{
+        foreach (var food in FoodFilter.Foods)
+        {
+            <div class="card m-1" style="width: 16rem;">
+                <a href="@($" /restaurants/{food.RestaurantGuid}")">
+                    <img class="card-img-top" src="@food.PhotoURL" alt="Card image cap">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">
+                            @{
                                     <span>@food.Name</span>
-                        }
-                    </h5>
-                    <p class="card-text">
-                        @{
+                            }
+                        </h5>
+                        <p class="card-text">
+                            @{
                                     @food.Description
-                        }
-                    </p>
-                </div>
-           
-            </a>
-        </div>
+                            }
+                        </p>
+                    </div>
+
+                </a>
+            </div>
+        }
     }
-}
+    
 </div>
+
+
 
 <RestaurantFilter @ref="RestaurantFilter" SearchCallback=@( () => StateHasChanged()) />
 
 <hr class="mt-1 py-20" />
 
 <div class="d-flex flex-wrap">
-@if (RestaurantFilter != null)
-{
+    @if (RestaurantFilter != null && ( RestaurantFilter.Model.NameFilter != string.Empty || RestaurantFilter.Model.AddressFilter != string.Empty))
+    {
+
+
+
     foreach (var restaurant in RestaurantFilter.RestaurantList)
     {
         <div class="card m-1" style="width: 16rem;">
@@ -58,18 +64,18 @@
                 <div class="card-body text-center">
                     <h5 class="card-title">
                         @{
-                                    <span>@restaurant.Name</span>
+                                        <span>@restaurant.Name</span>
                         }
                     </h5>
                     <p class="card-text">
                         @{
-                                    @restaurant.Description
+                                        @restaurant.Description
                         }
                     </p>
                 </div>
             </a>
         </div>
-    }
+    } 
 }
 </div>
 

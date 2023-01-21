@@ -18,9 +18,8 @@ namespace DameChales.Web.App.Pages
 {
     public partial class SearchPage
     {
-        public RestaurantFilter? RestaurantFilter { get; set; } = null;
+        private RestaurantFilter? RestaurantFilter { get; set; } = null;
         private FoodFilter? FoodFilter { get; set; } = null;
-
         protected override async Task OnInitializedAsync()
         {
             await base.OnInitializedAsync();
