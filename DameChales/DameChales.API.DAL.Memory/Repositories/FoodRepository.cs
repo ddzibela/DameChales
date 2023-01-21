@@ -42,7 +42,7 @@ namespace DameChales.API.DAL.Memory.Repositories
         public IList<FoodEntity> GetByName(Guid id, string name)
         {   
             var restaurantFoods = GetByRestaurantId(id);
-            var nameRegex = new Regex(name);
+            var nameRegex = new Regex("(?i)" + name);
             return restaurantFoods.Where(e => nameRegex.IsMatch(e.Name)).ToList();
         }
 
@@ -51,19 +51,19 @@ namespace DameChales.API.DAL.Memory.Repositories
         /// </summary>
         public IList<FoodEntity> GetByName(string name)
         {
-            var nameRegex = new Regex(name);
+            var nameRegex = new Regex("(?i)" + name);
             return foods.Where(e => nameRegex.IsMatch(e.Name)).ToList();
         }
 
         public IList<FoodEntity> GetByDescription(Guid id, string name)
         {
             var restaurantFoods = GetByRestaurantId(id);
-            var nameRegex = new Regex(name);
+            var nameRegex = new Regex("(?i)" + name);
             return restaurantFoods.Where(e => nameRegex.IsMatch(e.Description)).ToList();
         }
         public IList<FoodEntity> GetByDescription(string name)
         {
-            var nameRegex = new Regex(name);
+            var nameRegex = new Regex("(?i)" + name);
             return foods.Where(e => nameRegex.IsMatch(e.Description)).ToList();
         }
 

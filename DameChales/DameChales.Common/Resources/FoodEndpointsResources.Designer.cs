@@ -72,7 +72,8 @@ namespace DameChales.Common.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Food with name &apos;{0}&apos; not found.
         /// </summary>
-        public static string GetByName_NotFounGetByName_NotFound {
+        public static string 
+            _NotFounGetByName_NotFound {
             get {
                 return ResourceManager.GetString("GetByName_NotFounGetByName_NotFound", resourceCulture);
             }

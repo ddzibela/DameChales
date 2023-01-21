@@ -46,13 +46,13 @@ namespace DameChales.API.DAL.Memory.Repositories
 
         public IList<RestaurantEntity> GetByName(string name)
         {
-            var nameRegex = new Regex(name);
+            var nameRegex = new Regex("(?i)" + name);
             return restaurants.Where(e => nameRegex.IsMatch(e.Name)).ToList();
         }
 
         public IList<RestaurantEntity> GetByAddress(string address)
         {
-            var addressRegex = new Regex(address);
+            var addressRegex = new Regex("(?i)" + address);
             return restaurants.Where(e => addressRegex.IsMatch(e.Address)).ToList();
         }
 
