@@ -55,7 +55,7 @@ namespace DameChales.Web.BL.Facades
 
         public async Task<List<FoodListModel>> GetByDescAsync(Guid id, string desc)
         {
-            return (List<FoodListModel>)await apiClient.NameGetAsync(id, desc);
+            return (List<FoodListModel>)await apiClient.DescGetAsync(id, desc);
         }
 
         public async Task<List<FoodListModel>> GetByRestaurantIdAsync(Guid id)

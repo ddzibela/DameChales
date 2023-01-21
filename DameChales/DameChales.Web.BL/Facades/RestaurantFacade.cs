@@ -71,6 +71,11 @@ namespace DameChales.Web.BL.Facades
             return await apiClient.FoodAsync(id);
         }
 
+        public async Task<List<RestaurantListModel>> GetByDescAsync(string desc)
+        {
+            return (List<RestaurantListModel>)await apiClient.DescAsync(desc);
+        }
+
         public async Task<List<RestaurantListModel>> GetByAddressAsync(string address)
         {
             var foodsAll = await base.GetAllAsync();

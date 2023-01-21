@@ -21,6 +21,10 @@
                 @RestaurantEditPageLocalizer["Address_FormLabel"]
                 <InputText @bind-Value="@Model.AddressFilter" class="form-control" aria-describedby="basic-addon2" />
             </label>
+            <label class="w-100 font-weight-bold">
+                @RestaurantEditPageLocalizer["Description_FormLabel"]
+                <InputText @bind-Value="@Model.DescriptionFilter" class="form-control" aria-describedby="basic-addon2" />
+            </label>
             </div>
             <div class="input-group-btn">
             <button type="submit" class="btn btn-success  mb-2" @onclick="@Filter">
