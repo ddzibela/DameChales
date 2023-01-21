@@ -13,27 +13,33 @@ namespace DameChales.Web.App.Shared
 		[Parameter]
 		public EventCallback SearchCallback { get; set; }
 		public IList<RestaurantListModel> RestaurantList { get; private set; }
-		private string NameFilter = string.Empty;
-		private string AddressFilter = string.Empty;
+
+		public class FormModel
+		{
+			public string NameFilter = string.Empty;
+			public string AddressFilter = string.Empty;
+		}
+
+		public FormModel Model { get; set; } = new FormModel();	
 
 		public async Task Filter()
 		{
-			if (NameFilter == string.Empty && AddressFilter == string.Empty)
+			if (Model.NameFilter == string.Empty && Model.AddressFilter == string.Empty)
 			{
 				RestaurantList = await RestaurantFacade.GetAllAsync();
 			}
-			if (NameFilter != string.Empty && AddressFilter == string.Empty)
+			if (Model.NameFilter != string.Empty && Model.AddressFilter == string.Empty)
 			{
-				RestaurantList = await RestaurantFacade.GetByNameAsync(NameFilter);
+				RestaurantList = await RestaurantFacade.GetByNameAsync(Model.NameFilter);
 			}
-			if (NameFilter == string.Empty && AddressFilter != string.Empty)
+			if (Model.NameFilter == string.Empty && Model.AddressFilter != string.Empty)
 			{
-				RestaurantList =  await RestaurantFacade.GetByAddressAsync(AddressFilter);
+				RestaurantList =  await RestaurantFacade.GetByAddressAsync(Model.AddressFilter);
 			}
-			if (NameFilter != string.Empty && AddressFilter != string.Empty)
+			if (Model.NameFilter != string.Empty && Model.AddressFilter != string.Empty)
 			{
-				var a = await RestaurantFacade.GetByNameAsync(NameFilter);
-				var b = await RestaurantFacade.GetByAddressAsync(AddressFilter);
+				var a = await RestaurantFacade.GetByNameAsync(Model.NameFilter);
+				var b = await RestaurantFacade.GetByAddressAsync(Model.AddressFilter);
 				RestaurantList = a.Intersect(b).ToList();
 			}
 			await SearchCallback.InvokeAsync();

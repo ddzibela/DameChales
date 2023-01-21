@@ -9,7 +9,7 @@
 @inject IStringLocalizer<FoodEditPageResources> FoodEditPageLocalizer
 @inject IStringLocalizer<RestaurantsEditPageResources> RestaurantEditPageLocalizer
 
-<EditForm Model="@NameRegex">
+<EditForm Model="@Model">
 
     <h5 class="card-title">@FoodEditPageLocalizer["Filter"]</h5>
     
@@ -17,11 +17,11 @@
         <div class="input-group">
             <label class="w-100 font-weight-bold">
                 @FoodEditPageLocalizer["Name_FormLabel"]
-                <InputText @bind-Value="NameRegex" class="form-control input-sm" aria-describedby="basic-addon2" />
+                <InputText @bind-Value="Model.NameRegex" class="form-control input-sm" aria-describedby="basic-addon2" />
             </label>
             <label class="w-100 font-weight-bold">
                 @FoodEditPageLocalizer["Description_FormLabel"]
-                <InputText @bind-Value="DescRegex" class="form-control input-sm" aria-describedby="basic-addon2" />
+                <InputText @bind-Value="Model.DescRegex" class="form-control input-sm" aria-describedby="basic-addon2" />
             </label>
         </div>
 

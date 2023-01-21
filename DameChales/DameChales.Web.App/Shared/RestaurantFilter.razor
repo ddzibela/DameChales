@@ -8,18 +8,18 @@
 @inject IStringLocalizer<FoodEditPageResources> FoodEditPageLocalizer
 @inject IStringLocalizer<RestaurantsEditPageResources> RestaurantEditPageLocalizer
 
-<EditForm Model="@NameFilter">
+<EditForm Model="@Model">
 
     <h5 class="card-title">@RestaurantEditPageLocalizer["Filter"]</h5>
         <div class="input-group-pb2">
             <div class="input-group">
             <label class="w-100 font-weight-bold">
                 @RestaurantEditPageLocalizer["Name_FormLabel"]
-                <InputText @bind-Value="@NameFilter" class="form-control" aria-describedby="basic-addon2" />
+                <InputText @bind-Value="@Model.NameFilter" class="form-control" aria-describedby="basic-addon2" />
             </label>
             <label class="w-100 font-weight-bold">
                 @RestaurantEditPageLocalizer["Address_FormLabel"]
-                <InputText @bind-Value="@AddressFilter" class="form-control" aria-describedby="basic-addon2" />
+                <InputText @bind-Value="@Model.AddressFilter" class="form-control" aria-describedby="basic-addon2" />
             </label>
             </div>
             <div class="input-group-btn">

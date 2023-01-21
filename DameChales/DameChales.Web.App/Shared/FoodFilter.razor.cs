@@ -14,10 +14,15 @@ namespace DameChales.Web.App.Shared
         public EventCallback SearchCallback { get; set; }
         [Parameter]
         public Guid Id { get; set; }
-        private string NameRegex = string.Empty;
-        private string DescRegex = string.Empty;
-        private string AlergensString = string.Empty;
-		private HashSet<Alergens> Alergens { get; set; } = new HashSet<Alergens> { };
+
+        public class FormModel
+        {
+            public string NameRegex = string.Empty;
+            public string DescRegex = string.Empty;
+            public string AlergensString = string.Empty;
+        }
+        public FormModel Model { get; set; } = new FormModel();
+        private HashSet<Alergens> Alergens { get; set; } = new HashSet<Alergens> { };
 
 		public IList<FoodListModel> Foods { get; private set; } = new List<FoodListModel>();
 
@@ -36,70 +41,70 @@ namespace DameChales.Web.App.Shared
         public async Task FilterNoId()
         {
             Foods.Clear();
-            AlergensString = Alergens.EnumSetToString();
+            Model.AlergensString = Alergens.EnumSetToString();
             var ret = new List<FoodListModel>();
             var name = new List<FoodListModel>();
             var desc = new List<FoodListModel>();
             var alergens = new List<FoodListModel>();
 
-            if (NameRegex == string.Empty && DescRegex == string.Empty && AlergensString == string.Empty)
+            if (Model.NameRegex == string.Empty && Model.DescRegex == string.Empty && Model.AlergensString == string.Empty)
             {
                 Foods = await FoodFacade.GetAllAsync();
                 await SearchCallback.InvokeAsync();
                 return;
             }
-            if (NameRegex == string.Empty && DescRegex == string.Empty && AlergensString != string.Empty)
+            if (Model.NameRegex == string.Empty && Model.DescRegex == string.Empty && Model.AlergensString != string.Empty)
             {
-                Foods = await FoodFacade.GetWithoutAlergensAsync(AlergensString);
+                Foods = await FoodFacade.GetWithoutAlergensAsync(Model.AlergensString);
                 await SearchCallback.InvokeAsync();
                 return;
             }
-            if (NameRegex == string.Empty && DescRegex != string.Empty && AlergensString != string.Empty)
+            if (Model.NameRegex == string.Empty && Model.DescRegex != string.Empty && Model.AlergensString != string.Empty)
             {
-                desc = await FoodFacade.GetByDescAsync(DescRegex);
-                alergens = await FoodFacade.GetWithoutAlergensAsync(AlergensString);
+                desc = await FoodFacade.GetByDescAsync(Model.DescRegex);
+                alergens = await FoodFacade.GetWithoutAlergensAsync(Model.AlergensString);
                 ret = desc.Intersect(alergens).ToList();
                 Foods = ret;
                 await SearchCallback.InvokeAsync();
                 return;
             }
-            if (NameRegex != string.Empty && DescRegex != string.Empty && AlergensString != string.Empty)
+            if (Model.NameRegex != string.Empty && Model.DescRegex != string.Empty && Model.AlergensString != string.Empty)
             {
-                name = await FoodFacade.GetByNameAsync(NameRegex);
-                desc = await FoodFacade.GetByDescAsync(DescRegex);
-                alergens = await FoodFacade.GetWithoutAlergensAsync(AlergensString);
+                name = await FoodFacade.GetByNameAsync(Model.NameRegex);
+                desc = await FoodFacade.GetByDescAsync(Model.DescRegex);
+                alergens = await FoodFacade.GetWithoutAlergensAsync(Model.AlergensString);
                 ret = desc.Intersect(alergens).Intersect(name).ToList();
                 Foods = ret;
                 await SearchCallback.InvokeAsync();
                 return;
             }
-            if (NameRegex != string.Empty && DescRegex != string.Empty && AlergensString == string.Empty)
+            if (Model.NameRegex != string.Empty && Model.DescRegex != string.Empty && Model.AlergensString == string.Empty)
             {
-                name = await FoodFacade.GetByNameAsync(NameRegex);
-                desc = await FoodFacade.GetByDescAsync(DescRegex);
+                name = await FoodFacade.GetByNameAsync(Model.NameRegex);
+                desc = await FoodFacade.GetByDescAsync(Model.DescRegex);
                 ret = desc.Intersect(name).ToList();
                 Foods = ret;
                 await SearchCallback.InvokeAsync();
                 return;
             }
-            if (NameRegex != string.Empty && DescRegex == string.Empty && AlergensString != string.Empty)
+            if (Model.NameRegex != string.Empty && Model.DescRegex == string.Empty && Model.AlergensString != string.Empty)
             {
-                name = await FoodFacade.GetByNameAsync(NameRegex);
-                alergens = await FoodFacade.GetWithoutAlergensAsync(AlergensString);
+                name = await FoodFacade.GetByNameAsync(Model.NameRegex);
+                alergens = await FoodFacade.GetWithoutAlergensAsync(Model.AlergensString);
                 ret = alergens.Intersect(name).ToList();
                 Foods = ret;
                 await SearchCallback.InvokeAsync();
                 return;
             }
-            if (NameRegex != string.Empty && DescRegex == string.Empty && AlergensString == string.Empty)
+            if (Model.NameRegex != string.Empty && Model.DescRegex == string.Empty && Model.AlergensString == string.Empty)
             {
-                Foods = await FoodFacade.GetByNameAsync(NameRegex);
+                Foods = await FoodFacade.GetByNameAsync(Model.NameRegex);
                 await SearchCallback.InvokeAsync();
                 return;
             }
-            if (NameRegex == string.Empty && DescRegex != string.Empty && AlergensString == string.Empty)
+            if (Model.NameRegex == string.Empty && Model.DescRegex != string.Empty && Model.AlergensString == string.Empty)
             {
-                Foods = await FoodFacade.GetByDescAsync(NameRegex);
+                Foods = await FoodFacade.GetByDescAsync(Model.NameRegex);
                 await SearchCallback.InvokeAsync();
                 return;
             }
@@ -110,70 +115,70 @@ namespace DameChales.Web.App.Shared
         public async Task FilterId()
         {
             Foods.Clear();
-            AlergensString = Alergens.EnumSetToString();
+            Model.AlergensString = Alergens.EnumSetToString();
             var ret = new List<FoodListModel>();
             var name = new List<FoodListModel>();
             var desc = new List<FoodListModel>();
             var alergens = new List<FoodListModel>();
 
-            if (NameRegex == string.Empty && DescRegex == string.Empty && AlergensString == string.Empty)
+            if (Model.NameRegex == string.Empty && Model.DescRegex == string.Empty && Model.AlergensString == string.Empty)
             {
                 Foods = await FoodFacade.GetAllAsync();
                 await SearchCallback.InvokeAsync();
                 return;
             }
-            if (NameRegex == string.Empty && DescRegex == string.Empty && AlergensString != string.Empty)
+            if (Model.NameRegex == string.Empty && Model.DescRegex == string.Empty && Model.AlergensString != string.Empty)
             {
-                Foods = await FoodFacade.GetWithoutAlergensAsync(Id, AlergensString);
+                Foods = await FoodFacade.GetWithoutAlergensAsync(Id, Model.AlergensString);
                 await SearchCallback.InvokeAsync();
                 return;
             }
-            if (NameRegex == string.Empty && DescRegex != string.Empty && AlergensString != string.Empty)
+            if (Model.NameRegex == string.Empty && Model.DescRegex != string.Empty && Model.AlergensString != string.Empty)
             {
-                desc = await FoodFacade.GetByDescAsync(Id, DescRegex);
-                alergens = await FoodFacade.GetWithoutAlergensAsync(Id, AlergensString);
+                desc = await FoodFacade.GetByDescAsync(Id, Model.DescRegex);
+                alergens = await FoodFacade.GetWithoutAlergensAsync(Id, Model.AlergensString);
                 ret = desc.Intersect(alergens).ToList();
                 Foods = ret;
                 await SearchCallback.InvokeAsync();
                 return;
             }
-            if (NameRegex != string.Empty && DescRegex != string.Empty && AlergensString != string.Empty)
+            if (Model.NameRegex != string.Empty && Model.DescRegex != string.Empty && Model.AlergensString != string.Empty)
             {
-                name = await FoodFacade.GetByNameAsync(Id, NameRegex);
-                desc = await FoodFacade.GetByDescAsync(Id, DescRegex);
-                alergens = await FoodFacade.GetWithoutAlergensAsync(Id, AlergensString);
+                name = await FoodFacade.GetByNameAsync(Id, Model.NameRegex);
+                desc = await FoodFacade.GetByDescAsync(Id, Model.DescRegex);
+                alergens = await FoodFacade.GetWithoutAlergensAsync(Id, Model.AlergensString);
                 ret = desc.Intersect(alergens).Intersect(name).ToList();
                 Foods = ret;
                 await SearchCallback.InvokeAsync();
                 return;
             }
-            if (NameRegex != string.Empty && DescRegex != string.Empty && AlergensString == string.Empty)
+            if (Model.NameRegex != string.Empty && Model.DescRegex != string.Empty && Model.AlergensString == string.Empty)
             {
-                name = await FoodFacade.GetByNameAsync(Id, NameRegex);
-                desc = await FoodFacade.GetByDescAsync(Id, DescRegex);
+                name = await FoodFacade.GetByNameAsync(Id, Model.NameRegex);
+                desc = await FoodFacade.GetByDescAsync(Id, Model.DescRegex);
                 ret = desc.Intersect(name).ToList();
                 Foods = ret;
                 await SearchCallback.InvokeAsync();
                 return;
             }
-            if (NameRegex != string.Empty && DescRegex == string.Empty && AlergensString != string.Empty)
+            if (Model.NameRegex != string.Empty && Model.DescRegex == string.Empty && Model.AlergensString != string.Empty)
             {
-                name = await FoodFacade.GetByNameAsync(Id, NameRegex);
-                alergens = await FoodFacade.GetWithoutAlergensAsync(Id, AlergensString);
+                name = await FoodFacade.GetByNameAsync(Id, Model.NameRegex);
+                alergens = await FoodFacade.GetWithoutAlergensAsync(Id, Model.AlergensString);
                 ret = alergens.Intersect(name).ToList();
                 Foods = ret;
                 await SearchCallback.InvokeAsync();
                 return;
             }
-            if (NameRegex != string.Empty && DescRegex == string.Empty && AlergensString == string.Empty)
+            if (Model.NameRegex != string.Empty && Model.DescRegex == string.Empty && Model.AlergensString == string.Empty)
             {
-                Foods = await FoodFacade.GetByNameAsync(Id, NameRegex);
+                Foods = await FoodFacade.GetByNameAsync(Id, Model.NameRegex);
                 await SearchCallback.InvokeAsync();
                 return;
             }
-            if (NameRegex == string.Empty && DescRegex != string.Empty && AlergensString == string.Empty)
+            if (Model.NameRegex == string.Empty && Model.DescRegex != string.Empty && Model.AlergensString == string.Empty)
             {
-                Foods = await FoodFacade.GetByDescAsync(Id, NameRegex);
+                Foods = await FoodFacade.GetByDescAsync(Id, Model.NameRegex);
                 await SearchCallback.InvokeAsync();
                 return;
             }
