@@ -104,7 +104,7 @@ namespace DameChales.Web.App.Shared
             }
             if (Model.NameRegex == string.Empty && Model.DescRegex != string.Empty && Model.AlergensString == string.Empty)
             {
-                Foods = await FoodFacade.GetByDescAsync(Model.NameRegex);
+                Foods = await FoodFacade.GetByDescAsync(Model.DescRegex);
                 await SearchCallback.InvokeAsync();
                 return;
             }
@@ -178,7 +178,7 @@ namespace DameChales.Web.App.Shared
             }
             if (Model.NameRegex == string.Empty && Model.DescRegex != string.Empty && Model.AlergensString == string.Empty)
             {
-                Foods = await FoodFacade.GetByDescAsync(Id, Model.NameRegex);
+                Foods = await FoodFacade.GetByDescAsync(Id, Model.DescRegex);
                 await SearchCallback.InvokeAsync();
                 return;
             }

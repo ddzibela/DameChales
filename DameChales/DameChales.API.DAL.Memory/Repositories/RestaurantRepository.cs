@@ -126,7 +126,7 @@ namespace DameChales.API.DAL.Memory.Repositories
 
         public IList<RestaurantEntity> GetByDescription(string description)
         {
-            var descRegex = new Regex(description);
+            var descRegex = new Regex("(?i)" + description);
             return restaurants.Where(e => descRegex.IsMatch(e.Description)).ToList();
         }
     }
