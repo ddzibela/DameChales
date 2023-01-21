@@ -90,6 +90,15 @@ namespace DameChales.Web.App.Resources.Texts {
         /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
+        public static string Filter {
+            get {
+                return ResourceManager.GetString("Filter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
         public static string GPS_FormLabel {
             get {
                 return ResourceManager.GetString("GPS_FormLabel", resourceCulture);

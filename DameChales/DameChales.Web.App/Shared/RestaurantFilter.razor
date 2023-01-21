@@ -10,22 +10,20 @@
 
 <EditForm Model="@NameFilter">
 
-    <h5 class="card-title">@FoodLocalizer["Filter"]</h5>
+    <h5 class="card-title">@RestaurantEditPageLocalizer["Filter"]</h5>
         <div class="input-group-pb2">
-            <div style="float: left; width: 45%">
+            <div class="input-group">
             <label class="w-100 font-weight-bold">
                 @RestaurantEditPageLocalizer["Name_FormLabel"]
                 <InputText @bind-Value="@NameFilter" class="form-control" aria-describedby="basic-addon2" />
             </label>
-            </div>
-            <div style="float: left; width: 50%">
             <label class="w-100 font-weight-bold">
                 @RestaurantEditPageLocalizer["Address_FormLabel"]
-                <InputTextArea @bind-Value="@AddressFilter" class="form-control" aria-describedby="basic-addon2" />
+                <InputText @bind-Value="@AddressFilter" class="form-control" aria-describedby="basic-addon2" />
             </label>
             </div>
             <div class="input-group-btn">
-                <button type="submit" class="btn btn-success" @onclick="@Filter">
+            <button type="submit" class="btn btn-success  mb-2" @onclick="@Filter">
                 @FoodLocalizer["search"]
                 </button>
             </div>

@@ -126,6 +126,9 @@
   <data name="Description_FormLabel" xml:space="preserve">
     <value />
   </data>
+  <data name="Filter" xml:space="preserve">
+    <value />
+  </data>
   <data name="GPS_FormLabel" xml:space="preserve">
     <value />
   </data>

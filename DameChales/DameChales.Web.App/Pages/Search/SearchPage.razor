@@ -14,7 +14,11 @@
 
 <FoodFilter @ref="FoodFilter" SearchCallback=@( () => StateHasChanged()) Id="Guid.Empty"/>
 
+<hr class="mt-1 py-20" />
+
 <RestaurantFilter @ref="RestaurantFilter" SearchCallback=@( () => StateHasChanged())/>
+
+<hr class="mt-1 py-20" />
 
 @if (FoodFilter != null)
 {

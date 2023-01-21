@@ -141,6 +141,9 @@
   <data name="Eggs" xml:space="preserve">
     <value />
   </data>
+  <data name="Filter" xml:space="preserve">
+    <value />
+  </data>
   <data name="Fish" xml:space="preserve">
     <value />
   </data>

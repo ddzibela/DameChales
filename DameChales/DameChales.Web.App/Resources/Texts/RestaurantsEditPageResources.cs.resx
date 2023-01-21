@@ -129,6 +129,9 @@
   <data name="Eggs" xml:space="preserve">
     <value>Eggs</value>
   </data>
+  <data name="Filter" xml:space="preserve">
+    <value>Filtr restaurací</value>
+  </data>
   <data name="Fish" xml:space="preserve">
     <value>Fish</value>
   </data>
