@@ -16,56 +16,60 @@
 
 <hr class="mt-1 py-20" />
 
-<RestaurantFilter @ref="RestaurantFilter" SearchCallback=@( () => StateHasChanged())/>
-
-<hr class="mt-1 py-20" />
-
+<div class="d-flex flex-wrap">
 @if (FoodFilter != null)
 {
     foreach (var food in FoodFilter.Foods)
     {
-        <a href="@($" /restaurants/{food.RestaurantGuid}")">
-            <div class="card m-1" style="width: 16rem;">
+        <div class="card m-1" style="width: 16rem;">
+            <a href="@($" /restaurants/{food.RestaurantGuid}")">
                 <img class="card-img-top" src="@food.PhotoURL" alt="Card image cap">
                 <div class="card-body text-center">
                     <h5 class="card-title">
                         @{
-                            <span>@food.Name</span>
+                                    <span>@food.Name</span>
                         }
                     </h5>
                     <p class="card-text">
                         @{
-                            @food.Description
+                                    @food.Description
                         }
                     </p>
                 </div>
-            </div>
-        </a>
+           
+            </a>
+        </div>
     }
 }
+</div>
 
+<RestaurantFilter @ref="RestaurantFilter" SearchCallback=@( () => StateHasChanged()) />
 
+<hr class="mt-1 py-20" />
+
+<div class="d-flex flex-wrap">
 @if (RestaurantFilter != null)
 {
     foreach (var restaurant in RestaurantFilter.RestaurantList)
     {
-        <a href="@($" /restaurants/{restaurant.Id}")">
-            <div class="card m-1" style="width: 16rem;">
+        <div class="card m-1" style="width: 16rem;">
+            <a href="@($" /restaurants/{restaurant.Id}")">
                 <img class="card-img-top" src="@restaurant.PhotoURL" alt="Card image cap">
                 <div class="card-body text-center">
                     <h5 class="card-title">
                         @{
-                            <span>@restaurant.Name</span>
+                                    <span>@restaurant.Name</span>
                         }
                     </h5>
                     <p class="card-text">
                         @{
-                            @restaurant.Description
+                                    @restaurant.Description
                         }
                     </p>
                 </div>
-            </div>
-        </a>
+            </a>
+        </div>
     }
 }
+</div>
 
