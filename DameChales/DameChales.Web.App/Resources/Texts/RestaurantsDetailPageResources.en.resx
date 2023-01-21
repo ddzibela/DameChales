@@ -136,7 +136,7 @@
     <value>Filter</value>
   </data>
   <data name="Order_Date" xml:space="preserve">
-    <value>Delivery date</value>
+    <value>Delivery date and time</value>
   </data>
   <data name="Order_Food" xml:space="preserve">
     <value>Meals</value>
@@ -170,5 +170,8 @@
   </data>
   <data name="Name" xml:space="preserve">
     <value>Name</value>
+  </data>
+  <data name="Price" xml:space="preserve">
+    <value>Price</value>
   </data>
 </root>

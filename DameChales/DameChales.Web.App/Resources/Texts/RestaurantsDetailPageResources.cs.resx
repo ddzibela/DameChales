@@ -136,7 +136,7 @@
     <value>Statistiky</value>
   </data>
   <data name="Order_Date" xml:space="preserve">
-    <value>Datum doručení</value>
+    <value>Datum a čas doručení</value>
   </data>
   <data name="Order_Food" xml:space="preserve">
     <value>Jídla</value>
@@ -170,5 +170,8 @@
   </data>
   <data name="Name" xml:space="preserve">
     <value>Jméno</value>
+  </data>
+  <data name="Price" xml:space="preserve">
+    <value>Cena</value>
   </data>
 </root>
